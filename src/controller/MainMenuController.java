@@ -40,6 +40,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
+    private final String LEAP_YEAR = "config_files" + File.separator + "Schedule Model Leap Year.xlsx";
+    private final String REGULAR = "config_files" + File.separator + "Schedule Model Regular Year.xlsx";
 
     private TrayNotification notification;
 
@@ -82,12 +84,12 @@ public class MainMenuController implements Initializable {
         view.setFitHeight(25);
         btnLoadCalendar.setGraphic(view);
         btnLoadCalendar.setCursor(Cursor.HAND);
-        JFXButton btnHorary = new JFXButton("Generar Horarios");
+        JFXButton btnSchedule = new JFXButton("Generar Horarios");
         ImageView view1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/excel.png")));
         view1.setFitWidth(25);
         view1.setFitHeight(25);
-        btnHorary.setGraphic(view1);
-        btnHorary.setCursor(Cursor.HAND);
+        btnSchedule.setGraphic(view1);
+        btnSchedule.setCursor(Cursor.HAND);
         JFXButton close = new JFXButton("Cerrar");
         ImageView view2 = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/logout.png")));
         view2.setFitWidth(25);
@@ -97,7 +99,7 @@ public class MainMenuController implements Initializable {
 
 
         vBox.getChildren().add(btnLoadCalendar);
-        vBox.getChildren().add(btnHorary);
+        vBox.getChildren().add(btnSchedule);
         vBox.getChildren().add(close);
         popupPane.getChildren().add(vBox);
         JFXPopup popup = new JFXPopup(popupPane);
@@ -115,8 +117,8 @@ public class MainMenuController implements Initializable {
             }
             popup.hide();
         });
-        btnHorary.setOnAction(event -> {
-            popupEnterprise.show(btnHorary,JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT, btnHorary.getLayoutX()+140, btnHorary.getLayoutY()-30);
+        btnSchedule.setOnAction(event -> {
+            popupEnterprise.show(btnSchedule,JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT, btnSchedule.getLayoutX()+140, btnSchedule.getLayoutY()-30);
             //mergeExcel(event);
             //popup.hide();
 
@@ -310,9 +312,9 @@ public class MainMenuController implements Initializable {
             int year = Integer.parseInt(nombre[0]);
             File file = null;
             if(year%4 !=0 ){
-                file = new File("resources"+File.separator+"schedule_models"+File.separator+"Horary Model Regular.xlsx");
+                file = new File(REGULAR);
             }else{
-                file = new File("resources"+File.separator+"schedule_models"+File.separator+"Horary Model Bisiesto.xlsx");
+                file = new File(LEAP_YEAR);
             }
 
             listFiles.add(file);

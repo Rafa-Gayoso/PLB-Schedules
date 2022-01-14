@@ -11,6 +11,8 @@ import java.io.*;
 import java.util.*;
 
 public class Controller {
+    private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
+    private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
 
     private void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet) {
         copySheets(newWorkbook, newSheet, sheet, true);
@@ -204,7 +206,7 @@ public class Controller {
                 FileInputStream inputStream1 = new FileInputStream(files.get(0));
                 Empleado employee = listaEmpleados.get(j);
                 String employeeFullName = formatEmployeeName(employee);
-                InputStream inputStream2 = getClass().getResourceAsStream(files.get(1).getName());
+                FileInputStream inputStream2 = new FileInputStream(files.get(1));
 
                 list.add(inputStream1);
                 list.add(inputStream2);
@@ -214,12 +216,12 @@ public class Controller {
 
                 //FileInputStream obtains input bytes from the image file
 
-                InputStream inputStream = null;
+                FileInputStream inputStream = null;
                 if(empresa.getNombre().contains("Palobiofarma")){
-                    inputStream = getClass().getResourceAsStream(files.get(2).getName());
+                    inputStream = new FileInputStream(new File(PALOBIOFARMA));
                 }
                 else{
-                    inputStream = getClass().getResourceAsStream(files.get(3).getName());
+                    inputStream = new FileInputStream(new File(MEDIBIOFARMA));
                 }
                 //Get the contents of an InputStream as a byte[].
                 byte[] bytes = IOUtils.toByteArray(inputStream);
