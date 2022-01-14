@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.*;
 
 public class Controller {
+
     private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
     private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
 

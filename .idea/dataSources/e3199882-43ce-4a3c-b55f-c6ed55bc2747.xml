@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="palobiofarma">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.19">
+    <root id="1">
+      <ServerVersion>3.34.0</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="empleado"/>
+    <table id="7" parent="2" name="empresa"/>
+    <table id="8" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="9" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="10" parent="6" name="cod_empleado">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="11" parent="6" name="nombre_empleado">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="12" parent="6" name="primer_apellido">
+      <Position>3</Position>
+      <DataType>TEXT(120)|0s</DataType>
+    </column>
+    <column id="13" parent="6" name="segundo_apellido">
+      <Position>4</Position>
+      <DataType>TEXT(120)|0s</DataType>
+    </column>
+    <column id="14" parent="6" name="nif">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="6" name="numero_afiliacion">
+      <Position>6</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="6" name="horas_laborables">
+      <Position>7</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="17" parent="6" name="cod_empresa">
+      <Position>8</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="18" parent="6" name="sqlite_autoindex_empleado_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>nif</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="6">
+      <ColNames>cod_empleado</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="20" parent="6">
+      <ColNames>nif</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_empleado_1</UnderlyingIndexName>
+    </key>
+    <key id="21" parent="6">
+      <ColNames>nif</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_empleado_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="22" parent="6">
+      <ColNames>cod_empresa</ColNames>
+      <RefTableName>empresa</RefTableName>
+      <RefColNames>cod_empresa</RefColNames>
+    </foreign-key>
+    <column id="23" parent="7" name="cod_empresa">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="24" parent="7" name="nombre_empresa">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="7" name="nif">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="7" name="centro_trabajo">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="7" name="c_c_c">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="7" name="logo">
+      <Position>6</Position>
+      <DataType>blob(120)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="7" name="sqlite_autoindex_empresa_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>nombre_empresa</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="30" parent="7" name="sqlite_autoindex_empresa_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>c_c_c</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="7">
+      <ColNames>cod_empresa</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="32" parent="7">
+      <ColNames>nombre_empresa</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_empresa_1</UnderlyingIndexName>
+    </key>
+    <key id="33" parent="7">
+      <ColNames>c_c_c</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_empresa_2</UnderlyingIndexName>
+    </key>
+    <column id="34" parent="8" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="35" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="36" parent="8" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="37" parent="8" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="38" parent="8" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="39" parent="9" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="40" parent="9" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>

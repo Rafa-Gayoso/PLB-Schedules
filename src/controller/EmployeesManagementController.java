@@ -20,11 +20,11 @@ import tray.notification.TrayNotification;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployesManagementController implements Initializable {
+public class EmployeesManagementController implements Initializable {
+    private final String EMPTY_FIELD_MESSAGE = "Debe rellenar todos los campos vacíos";
+    private final String EMPTY_FIELD_TITLE = "Campos vacíos";
 
-    private MainMenuController mainMenuController;
     private TrayNotification notification;
-
 
     @FXML
     private JFXTextField nombreTextField;
@@ -72,10 +72,6 @@ public class EmployesManagementController implements Initializable {
     @FXML
     private JFXTextField horasLaborables;
 
-
-    private ObservableList<Empleado> employes;
-    private ObservableList<String> empresas;
-
     @FXML
     private JFXComboBox<String> comboEmpresa;
 
@@ -99,40 +95,39 @@ public class EmployesManagementController implements Initializable {
                 (change.getControlNewText().matches("^[4-8]*$")) ? change : null));
 
         codCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, Integer>("cod_empleado")
+                new PropertyValueFactory<>("cod_empleado")
         );
 
         nombreCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("nombre")
+                new PropertyValueFactory<>("nombre")
         );
 
         primerApCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("primer_apellido")
+                new PropertyValueFactory<>("primer_apellido")
         );
         segundoApCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("segundo_apellido")
+                new PropertyValueFactory<>("segundo_apellido")
         );
         nifCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("nif")
+                new PropertyValueFactory<>("nif")
         );
         numCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("numero_afiliacion")
+                new PropertyValueFactory<>("numero_afiliacion")
         );
         empresaCol.setCellValueFactory(
-                new PropertyValueFactory<Empleado, String>("nombre_empresa")
+                new PropertyValueFactory<>("nombre_empresa")
         );
 
         horasColum.setCellValueFactory(
-                new PropertyValueFactory<Empleado, Integer>("horas_laborables")
+                new PropertyValueFactory<>("horas_laborables")
         );
-
 
         btnInsert.setDisable(false);
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
 
 
-        empresas = FXCollections.observableArrayList(ServicesLocator.getEmpresa().nombreEmpresas());
+        ObservableList<String> empresas = FXCollections.observableArrayList(ServicesLocator.getEnterprise().nombreEmpresas());
         comboEmpresa.setItems(empresas);
 
         populateTable();
@@ -146,15 +141,10 @@ public class EmployesManagementController implements Initializable {
         notification = new TrayNotification();
     }
 
-
     private void populateTable() {
-        employes = FXCollections.observableArrayList(ServicesLocator.getEmpleado().listadoEmpleadosModelo());
+        ObservableList<Empleado> employes = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
         employesTable.setItems(employes);
 
-    }
-
-    public void setMainMenuController(MainMenuController mainMenuController) {
-        this.mainMenuController = mainMenuController;
     }
 
     public void showEmployeeDetails(Empleado empleado) {
@@ -167,7 +157,6 @@ public class EmployesManagementController implements Initializable {
             segApellidoTextfield.setText(empleado.getSegundo_apellido());
             nifTextfield.setText(empleado.getNif());
             numTextfield.setText(empleado.getNumero_afiliacion());
-            //ObservableList<String> empresa = FXCollections.observableArrayList(empleado.getCod_empresa());
             comboEmpresa.getSelectionModel().select(empleado.getNombre_empresa());
             horasLaborables.setText(String.valueOf(empleado.getHoras_laborables()));
         } else {
@@ -177,94 +166,64 @@ public class EmployesManagementController implements Initializable {
         }
     }
 
-
-    void deleteEmployee() {
+    private void deleteEmployee() {
         Empleado empleado = employesTable.getSelectionModel().getSelectedItem();
-        ServicesLocator.getEmpleado().deleteEmpleado(empleado);
+        ServicesLocator.getEmployee().deleteEmployee(empleado);
         resetValues();
-        populateTable();
 
-        notification.setMessage("Empleando eliminado del sistema con éxito");
-        notification.setTitle("Empleado eliminado");
-        notification.setNotificationType(NotificationType.SUCCESS);
+        String DELETED_MESSAGE = "Empleando eliminado del sistema con éxito";
+        String DELETED_TITLE = "Empleado eliminado";
+        setNotificationData(DELETED_MESSAGE, DELETED_TITLE,NotificationType.SUCCESS);
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
     }
 
-
-    void insertEmployee() {
-
-        if (nombreTextField.getText().equalsIgnoreCase("") || nombreTextField.getText().trim().equalsIgnoreCase("")
-                || primApellidoTextField.getText().equalsIgnoreCase("") || primApellidoTextField.getText().trim().equalsIgnoreCase("")
-                || nifTextfield.getText().equalsIgnoreCase("") || nifTextfield.getText().trim().equalsIgnoreCase("")
-                || numTextfield.getText().equalsIgnoreCase("") || numTextfield.getText().trim().equalsIgnoreCase("")
-                || horasLaborables.getText().equalsIgnoreCase("") || horasLaborables.getText().trim().equalsIgnoreCase("")
-                || comboEmpresa.getSelectionModel().getSelectedIndex() == -1) {
-
-            notification.setMessage("Debe rellenar todos los campos");
-            notification.setTitle("Campos vacíos");
-            notification.setNotificationType(NotificationType.ERROR);
+    private void insertEmployee() {
+        boolean validated = validateData();
+        if (!validated) {
+            setNotificationData(EMPTY_FIELD_MESSAGE, EMPTY_FIELD_TITLE,NotificationType.ERROR);
         } else {
             Empleado empleado = new Empleado();
-            empleado.setNombre(nombreTextField.getText());
-            empleado.setPrimer_apellido(primApellidoTextField.getText());
-            empleado.setSegundo_apellido(segApellidoTextfield.getText());
-            empleado.setNif(nifTextfield.getText());
-            empleado.setNumero_afiliacion(numTextfield.getText());
-            int cod_empresa = ServicesLocator.getEmpresa().getEmpresaCodByName(comboEmpresa.getSelectionModel().getSelectedItem());
-            empleado.setCod_empresa(cod_empresa);
-            empleado.setHoras_laborables(Integer.parseInt(horasLaborables.getText()));
-            ServicesLocator.getEmpleado().insertarEmpleado(empleado);
+            setEmployeeData(empleado);
+            ServicesLocator.getEmployee().insertEmployee(empleado);
             resetValues();
-            populateTable();
-
-            notification.setMessage("Empleando insertado al sistema con éxito");
-            notification.setTitle("Empleado insertado");
-            notification.setNotificationType(NotificationType.SUCCESS);
+            String INSERTED_MESSAGE = "Empleando insertado al sistema con éxito";
+            String INSERTED_TITLE = "Empleado insertado";
+            setNotificationData(INSERTED_MESSAGE, INSERTED_TITLE,NotificationType.SUCCESS);
         }
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
-
     }
 
-
-    void updateEmployee() {
-
-        if (nombreTextField.getText().equalsIgnoreCase("") || nombreTextField.getText().trim().equalsIgnoreCase("")
-                || primApellidoTextField.getText().equalsIgnoreCase("") || primApellidoTextField.getText().trim().equalsIgnoreCase("")
-                || nifTextfield.getText().equalsIgnoreCase("") || nifTextfield.getText().trim().equalsIgnoreCase("")
-                || numTextfield.getText().equalsIgnoreCase("") || numTextfield.getText().trim().equalsIgnoreCase("")
-                || horasLaborables.getText().equalsIgnoreCase("") || horasLaborables.getText().trim().equalsIgnoreCase("")
-                || comboEmpresa.getSelectionModel().getSelectedIndex() == -1) {
-
-            notification.setMessage("Debe rellenar todos los campos");
-            notification.setTitle("Campos vacíos");
-            notification.setNotificationType(NotificationType.ERROR);
-
-
+    private void updateEmployee() {
+        boolean validated = validateData();
+        if (!validated) {
+            setNotificationData(EMPTY_FIELD_MESSAGE, EMPTY_FIELD_TITLE,NotificationType.ERROR );
         } else {
             Empleado empleado = employesTable.getSelectionModel().getSelectedItem();
-            empleado.setNombre(nombreTextField.getText());
-            empleado.setPrimer_apellido(primApellidoTextField.getText());
-            empleado.setSegundo_apellido(segApellidoTextfield.getText());
-            empleado.setNif(nifTextfield.getText());
-            empleado.setNumero_afiliacion(numTextfield.getText());
-            int cod_empresa = ServicesLocator.getEmpresa().getEmpresaCodByName(comboEmpresa.getSelectionModel().getSelectedItem());
-            empleado.setCod_empresa(cod_empresa);
-            empleado.setHoras_laborables(Integer.parseInt(horasLaborables.getText()));
-            ServicesLocator.getEmpleado().updateEmpleado(empleado);
+            setEmployeeData(empleado);
+            ServicesLocator.getEmployee().updateEmployee(empleado);
             resetValues();
-            populateTable();
 
-            notification.setMessage("Cambios realizados con éxito");
-            notification.setTitle("Información de empleado editada");
+            String UPDATED_MESSAGE = "Cambios realizados con éxito";
+            String UPDATED_TITLE = "Información de empleado editada";
+            setNotificationData(UPDATED_MESSAGE, UPDATED_TITLE,NotificationType.SUCCESS);
             notification.setNotificationType(NotificationType.SUCCESS);
         }
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
-
     }
 
+    private void setEmployeeData(Empleado empleado) {
+        empleado.setNombre(nombreTextField.getText());
+        empleado.setPrimer_apellido(primApellidoTextField.getText());
+        empleado.setSegundo_apellido(segApellidoTextfield.getText());
+        empleado.setNif(nifTextfield.getText());
+        empleado.setNumero_afiliacion(numTextfield.getText());
+        int cod_empresa = ServicesLocator.getEnterprise().getEmpresaCodByName(comboEmpresa.getSelectionModel().getSelectedItem());
+        empleado.setCod_empresa(cod_empresa);
+        empleado.setHoras_laborables(Integer.parseInt(horasLaborables.getText()));
+    }
 
     private void resetValues() {
         nombreTextField.setText("");
@@ -274,6 +233,7 @@ public class EmployesManagementController implements Initializable {
         numTextfield.setText("");
         comboEmpresa.getSelectionModel().select(-1);
         horasLaborables.setText("8");
+        populateTable();
     }
 
     @FXML
@@ -290,6 +250,25 @@ public class EmployesManagementController implements Initializable {
             comboEmpresa.getSelectionModel().select(-1);
             horasLaborables.setText("8");
         }
-
     }
+
+    private boolean validateData() {
+        boolean validated = true;
+        if (nombreTextField.getText().equalsIgnoreCase("") || nombreTextField.getText().trim().equalsIgnoreCase("")
+                || primApellidoTextField.getText().equalsIgnoreCase("") || primApellidoTextField.getText().trim().equalsIgnoreCase("")
+                || nifTextfield.getText().equalsIgnoreCase("") || nifTextfield.getText().trim().equalsIgnoreCase("")
+                || numTextfield.getText().equalsIgnoreCase("") || numTextfield.getText().trim().equalsIgnoreCase("")
+                || horasLaborables.getText().equalsIgnoreCase("") || horasLaborables.getText().trim().equalsIgnoreCase("")
+                || comboEmpresa.getSelectionModel().getSelectedIndex() == -1) {
+            validated = false;
+        }
+        return validated;
+    }
+
+    private void setNotificationData(String message,String title, NotificationType type ){
+        notification.setMessage(message);
+        notification.setTitle(title);
+        notification.setNotificationType(type);
+    }
+
 }

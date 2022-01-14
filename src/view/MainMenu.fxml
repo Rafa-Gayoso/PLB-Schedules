@@ -31,7 +31,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="fileMenu" onAction="#showCalendarMenu" prefHeight="47.0" prefWidth="106.0" styleClass="menu-item1" stylesheets="@../styles/Style.css" text="Archivo">
+                  <JFXButton fx:id="fileMenu" prefHeight="47.0" prefWidth="106.0" styleClass="menu-item1" stylesheets="@../styles/Style.css" text="Archivo">
                      <font>
                         <Font name="Microsoft JhengHei" size="18.0" />
                      </font>

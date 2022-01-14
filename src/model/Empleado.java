@@ -6,16 +6,17 @@ import services.ServicesLocator;
 
 public class Empleado {
     private SimpleIntegerProperty cod_empleado;
-    private SimpleStringProperty nombre;
-    private SimpleStringProperty primer_apellido;
-    private SimpleStringProperty segundo_apellido;
-    private SimpleStringProperty nif;
-    private SimpleStringProperty numero_afiliacion;
-    private SimpleIntegerProperty cod_empresa;
-    private SimpleStringProperty nombre_empresa;
-    private SimpleIntegerProperty horas_laborables;
+    private final SimpleStringProperty nombre;
+    private final SimpleStringProperty primer_apellido;
+    private final SimpleStringProperty segundo_apellido;
+    private final SimpleStringProperty nif;
+    private final SimpleStringProperty numero_afiliacion;
+    private final SimpleIntegerProperty cod_empresa;
+    private final SimpleStringProperty nombre_empresa;
+    private final SimpleIntegerProperty horas_laborables;
 
-    public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables,int cod_empresa) {
+    @SuppressWarnings("unused")
+    public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables, int cod_empresa) {
         this.nombre = new SimpleStringProperty(nombre);
         this.primer_apellido = new SimpleStringProperty(primer_apellido);
         this.segundo_apellido = new SimpleStringProperty(segundo_apellido);
@@ -23,7 +24,7 @@ public class Empleado {
         this.numero_afiliacion = new SimpleStringProperty(numero_afiliacion);
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
-        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEmpresa().getEmpresaNombreByCod(cod_empresa));
+        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
     }
 
     public Empleado(int cod_empleado, String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables,int cod_empresa) {
@@ -35,7 +36,7 @@ public class Empleado {
         this.numero_afiliacion = new SimpleStringProperty(numero_afiliacion);
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
-        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEmpresa().getEmpresaNombreByCod(cod_empresa));
+        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
     }
 
     public Empleado() {
@@ -57,10 +58,12 @@ public class Empleado {
         return cod_empleado.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleIntegerProperty cod_empleadoProperty() {
         return cod_empleado;
     }
 
+    @SuppressWarnings("unused")
     public void setCod_empleado(int cod_empleado) {
         this.cod_empleado.set(cod_empleado);
     }
@@ -69,6 +72,7 @@ public class Empleado {
         return nombre.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty nombreProperty() {
         return nombre;
     }
@@ -81,6 +85,7 @@ public class Empleado {
         return primer_apellido.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty primer_apellidoProperty() {
         return primer_apellido;
     }
@@ -93,6 +98,7 @@ public class Empleado {
         return segundo_apellido.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty segundo_apellidoProperty() {
         return segundo_apellido;
     }
@@ -105,6 +111,7 @@ public class Empleado {
         return nif.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty nifProperty() {
         return nif;
     }
@@ -117,6 +124,7 @@ public class Empleado {
         return numero_afiliacion.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty numero_afiliacionProperty() {
         return numero_afiliacion;
     }
@@ -129,6 +137,7 @@ public class Empleado {
         return cod_empresa.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleIntegerProperty cod_empresaProperty() {
         return cod_empresa;
     }
@@ -141,10 +150,12 @@ public class Empleado {
         return nombre_empresa.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleStringProperty nombre_empresaProperty() {
         return nombre_empresa;
     }
 
+    @SuppressWarnings("unused")
     public void setNombre_empresa(String nombre_empresa) {
         this.nombre_empresa.set(nombre_empresa);
     }
@@ -153,6 +164,7 @@ public class Empleado {
         return horas_laborables.get();
     }
 
+    @SuppressWarnings("unused")
     public SimpleIntegerProperty horas_laborablesProperty() {
         return horas_laborables;
     }
@@ -161,6 +173,7 @@ public class Empleado {
         this.horas_laborables.set(horas_laborables);
     }
 
+    @SuppressWarnings("unused")
     public String toStringCode() {
         return "Empleado{" +
                 "cod_empleado=" + cod_empleado +

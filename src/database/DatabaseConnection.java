@@ -1,25 +1,24 @@
 package database;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
-public class Connection {
+public class DatabaseConnection {
     private static java.sql.Connection connection;
 
-    public Connection()  {
+    public DatabaseConnection()  {
 
         try{
             Class.forName("org.sqlite.JDBC");
             String url = "jdbc:sqlite::resource:database/palobiofarma.db";
             connection = DriverManager.getConnection(url);
-            System.out.println("Conectado");
         }catch (Exception e){
             System.err.println("Error");
         }
 
     }
 
-    public java.sql.Connection getConnection() {
+    public Connection getConnection() {
         return connection;
     }
 }

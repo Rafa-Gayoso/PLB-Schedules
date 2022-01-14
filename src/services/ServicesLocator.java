@@ -1,23 +1,21 @@
 package services;
 
-import database.Connection;
+import database.DatabaseConnection;
+
+import java.sql.Connection;
 
 public class ServicesLocator {
 
 	private static EmpleadoServices empleado;
 	private static EmpresaServices empresa;
 
-	
-
-
-
-	public static EmpleadoServices getEmpleado(){
+	public static EmpleadoServices getEmployee(){
 		if (empleado == null){
 			empleado = new EmpleadoServices();
 		}
 		return empleado;
 	}
-	public static EmpresaServices getEmpresa(){
+	public static EmpresaServices getEnterprise(){
 		if (empresa == null){
 			empresa = new EmpresaServices();
 		}
@@ -26,9 +24,8 @@ public class ServicesLocator {
 
 
 	//metodo q crea la conexion con la base de datos.
-	public static java.sql.Connection getConnection(){
-		Connection connection = null;
-		connection = new Connection();
+	public static Connection getConnection(){
+		DatabaseConnection connection = new DatabaseConnection();
 		return connection.getConnection();
 	}
 }

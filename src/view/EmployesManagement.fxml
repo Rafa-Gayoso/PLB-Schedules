@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="723.0" prefWidth="1825.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployesManagementController">
+<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="723.0" prefWidth="1825.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesManagementController">
    <children>
       <TableView fx:id="employesTable" editable="true" layoutX="226.0" minHeight="481.0" minWidth="874.0" onKeyPressed="#resetAllValues" prefHeight="481.0" prefWidth="1299.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
