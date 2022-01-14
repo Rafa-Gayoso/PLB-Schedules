@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmpresaServices {
-
+    @SuppressWarnings("unused")
     public ArrayList<Empresa> listadoEmpresas(){
         ArrayList<Empresa> lista= new ArrayList<>();
         try{
@@ -91,7 +91,7 @@ public class EmpresaServices {
         return empresa;
     }
 
-
+    @SuppressWarnings("unused")
     public void readPicture(int materialId, String filename) {
         // update sql
         String selectSQL = "SELECT logo FROM empresa WHERE cod_empresa=?";
@@ -152,14 +152,15 @@ public class EmpresaServices {
             for (int len; (len = fis.read(buffer)) != -1;) {
                 bos.write(buffer, 0, len);
             }
-        } catch (FileNotFoundException e) {
-            System.err.println(e.getMessage());
-        } catch (IOException e2) {
+
+
+        } catch (Exception e2) {
             System.err.println(e2.getMessage());
         }
         return bos != null ? bos.toByteArray() : null;
     }
 
+    @SuppressWarnings("unused")
     public void updatePicture(int materialId, String filename) {
         // update sql
         String updateSQL = "UPDATE materials "

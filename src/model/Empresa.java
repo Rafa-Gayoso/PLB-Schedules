@@ -7,10 +7,12 @@ public class Empresa {
     private String centro_de_trabajo;
     private String c_c_c;
 
+    @SuppressWarnings("unused")
     public int getCod_empresa() {
         return cod_empresa;
     }
 
+    @SuppressWarnings("unused")
     public void setCod_empresa(int cod_empresa) {
         this.cod_empresa = cod_empresa;
     }
@@ -19,6 +21,7 @@ public class Empresa {
         return nombre;
     }
 
+    @SuppressWarnings("unused")
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -27,6 +30,7 @@ public class Empresa {
         return nif;
     }
 
+    @SuppressWarnings("unused")
     public void setNif(String nif) {
         this.nif = nif;
     }
@@ -35,6 +39,7 @@ public class Empresa {
         return centro_de_trabajo;
     }
 
+    @SuppressWarnings("unused")
     public void setCentro_de_trabajo(String centro_de_trabajo) {
         this.centro_de_trabajo = centro_de_trabajo;
     }
@@ -43,6 +48,7 @@ public class Empresa {
         return c_c_c;
     }
 
+    @SuppressWarnings("unused")
     public void setC_c_c(String c_c_c) {
         this.c_c_c = c_c_c;
     }
