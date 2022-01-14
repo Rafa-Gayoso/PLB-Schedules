@@ -1,0 +1,104 @@
+.menu-item1:hover {
+    -fx-border-color:#077187;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.menu-item2:hover {
+    -fx-border-color:#78BC61;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+
+.menu-item3:hover {
+    -fx-border-color:#574B60;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.table-view {
+
+    -fx-base: white;
+    -fx-control-inner-background: white;
+    -fx-background-color: white;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 60pt;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color:
+            transparent
+            transparent
+            derive(-fx-base, 80%)
+            transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #2f2484;
+    -fx-alignment: center;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.table-cell {
+    -fx-border-color: -fx-box-border -fx-box-border transparent transparent;
+    -fx-font: 21px "Segoe UI Symbol";
+    -fx-text-fill: #2f2484;
+}
+
+.combo-box,
+.choice-box {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-background-color: none;
+
+}
+
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+    -fx-fill: black;
+}
+
+.combo-box .arrow,
+.choice-box .arrow {
+    -fx-background-color: #4d4d4d;
+}
+
+.spinner {
+    -fx-prompt-text-fill: black;
+    -fx-text-fill: black;
+    -fx-background-color: none;
+    -fx-padding: 0 0 3 0;
+}
+
+.spinner .increment-arrow-button, .spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button .increment-arrow, .spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #2F2484;
+    -fx-font-size: 20px;
+}
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #bdbdbd;
+    -fx-font-size: 20px;
+}
+
+
+
+
+
