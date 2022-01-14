@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="ooxml-lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libs/ooxml-lib" />
+      <root url="file://$PROJECT_DIR$/libs/poi" />
+      <root url="file://$PROJECT_DIR$/libs/poi_lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/ooxml-lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/poi" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libs/poi_lib" recursive="false" />
+  </library>
+</component>
