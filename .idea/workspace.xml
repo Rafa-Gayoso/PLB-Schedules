@@ -30,14 +30,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/view/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/view/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/medibiofarma.png" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/medibiofarma.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/palobiofarma.png" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/palobiofarma.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/schedule_models/Horary Model Bisiesto.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horary Model Bisiesto.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/schedule_models/Horary Model Regular.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horary Model Regular.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +125,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config_files" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/SceneBuilder/SceneBuilder.exe" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -144,6 +139,9 @@
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\schedule_models" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\database" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
@@ -278,7 +276,7 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1620425550406" duration="2913000" />
       <workItem from="1642149571339" duration="4795000" />
-      <workItem from="1642154615357" duration="5466000" />
+      <workItem from="1642154615357" duration="7038000" />
     </task>
     <servers />
   </component>
@@ -313,38 +311,42 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state width="596" height="466" key="DebuggerActiveHint/0.0.1536.832@0.0.1536.832" timestamp="1642159080939" />
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1642160225513">
+    <state x="549" y="158" key="FileChooserDialogImpl" timestamp="1642161617735">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642160225513" />
-    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1642160225513">
+    <state x="549" y="158" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1642161617735" />
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1642161715136">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1642160225513" />
-    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1642160225513">
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642161715136" />
+    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1642161715136">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1642160225513" />
-    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1642160225513">
+    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1642161715136" />
+    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1642161715136">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1642160225513" />
-    <state width="1493" height="264" key="GridCell.Tab.1.bottom" timestamp="1642159359530">
+    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1642161715136" />
+    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1642161715136">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642159359530" />
-    <state width="1493" height="264" key="GridCell.Tab.1.center" timestamp="1642159359530">
+    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1642161715136" />
+    <state width="1493" height="264" key="GridCell.Tab.1.bottom" timestamp="1642161541284">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1642159359530" />
-    <state width="1493" height="264" key="GridCell.Tab.1.left" timestamp="1642159359530">
+    <state width="1493" height="264" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642161541284" />
+    <state width="1493" height="264" key="GridCell.Tab.1.center" timestamp="1642161541284">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1642159359530" />
-    <state width="1493" height="264" key="GridCell.Tab.1.right" timestamp="1642159359530">
+    <state width="1493" height="264" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1642161541284" />
+    <state width="1493" height="264" key="GridCell.Tab.1.left" timestamp="1642161541284">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="264" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1642159359530" />
+    <state width="1493" height="264" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1642161541284" />
+    <state width="1493" height="264" key="GridCell.Tab.1.right" timestamp="1642161541284">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="1493" height="264" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1642161541284" />
     <state width="775" height="423" key="XDebugger.FullValuePopup" timestamp="1642157871967">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
@@ -362,6 +364,11 @@
           <url>file://$PROJECT_DIR$/src/main/Controller.java</url>
           <line>205</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/MainMenuController.java</url>
+          <line>397</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

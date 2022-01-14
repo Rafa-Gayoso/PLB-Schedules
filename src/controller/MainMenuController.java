@@ -42,6 +42,9 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
     private final String LEAP_YEAR = "config_files" + File.separator + "Schedule Model Leap Year.xlsx";
     private final String REGULAR = "config_files" + File.separator + "Schedule Model Regular Year.xlsx";
+    private final String HELP = "config_files" + File.separator + "Control de horarios Palobiofarma S,L & Medibiofarma.pdf";
+    private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
+    private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
 
     private TrayNotification notification;
 
@@ -318,23 +321,16 @@ public class MainMenuController implements Initializable {
             }
 
             listFiles.add(file);
-            //list.add(inputStream2);
             if (listFiles.size() < 2) {
                 System.out.println("ERROR");
             }
 
-            File foto1 = new File("resources"+File.separator+"images"+File.separator+"palobiofarma.png");
+            File foto1 = new File(PALOBIOFARMA);
             listFiles.add(foto1);
 
-            File foto2 = new File("resources"+File.separator+"images"+File.separator+"medibiofarma.png");
+            File foto2 = new File(MEDIBIOFARMA);
             listFiles.add(foto2);
 
-            /*//FileInputStream inputStream1 = new FileInputStream("2021.xlsx");
-            FileInputStream inputStream2 = new FileInputStream("Horary Model.xlsx");
-
-            //if(listFiles.get)
-            listFiles.add(inputStream2);
-            //list.add(inputStream2);*/
             if (file == null) {
                 notification.setMessage("Debe importar el calendario a analizar");
                 notification.setTitle("Importacion de calendario");
@@ -348,8 +344,6 @@ public class MainMenuController implements Initializable {
                     protected Void call() throws Exception {
                         Controller controller = new Controller();
                         controller.mergeExcelFiles(lista, empresa, listFiles, ruta);
-                        //Controller.mergeExcelFiles(new File("Test.xlsx"), listFiles);
-                        //progressBar.setProgress(this.getProgress());
                         return null;
                     }
                 };
@@ -358,7 +352,7 @@ public class MainMenuController implements Initializable {
                     @Override
                     public void handle(WorkerStateEvent event) {
                         progressBar.setProgress(100);
-                        resultLabel.setText("DONE!!!");
+                        resultLabel.setText("   DONE!!!");
                         notification.setMessage("Modelos de horarios creados");
                         notification.setTitle("Control de horario");
                         notification.setNotificationType(NotificationType.SUCCESS);
@@ -401,8 +395,14 @@ public class MainMenuController implements Initializable {
 
     private ImageView[] getSlides() {
         slides = new ImageView[100];
-        Image image1 = new Image("resources"+File.separator+"images"+File.separator+"palobiofarma.png");
-        Image image2 = new Image("resources"+File.separator+"images"+File.separator+"medibiofarma.png");
+        Image image1 = null;
+        Image image2 = null;
+        try{
+            image1 = new Image(new FileInputStream(PALOBIOFARMA));
+            image2 = new Image(new FileInputStream(MEDIBIOFARMA));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         for (int i = 0; i < 100; i++) {
             if (i % 2 == 0) {
                 slides[i] = new ImageView(image1);
@@ -450,8 +450,8 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    void loadHelp(ActionEvent event) throws IOException {
-        File file = new File("src/main/Control de horarios Palobiofarma S,L & Medibiofarma.pdf");
+    void showHelp(ActionEvent event) throws IOException {
+        File file = new File(HELP);
 
         //first check if Desktop is supported by Platform or not
         if(!Desktop.isDesktopSupported()){
@@ -464,7 +464,6 @@ public class MainMenuController implements Initializable {
         //let's try to open PDF file
         if(file.exists()){
             desktop.open(file);
-            System.out.println("Abriendo");
         }
     }
 
