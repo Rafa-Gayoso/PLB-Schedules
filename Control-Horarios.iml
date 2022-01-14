@@ -14,5 +14,7 @@
     <orderEntry type="library" name="controlsfx-samples-8.40.15" level="project" />
     <orderEntry type="library" name="TrayNotification" level="project" />
     <orderEntry type="library" name="sqlite-jdbc-3.32.3.2" level="project" />
+    <orderEntry type="library" name="jPDFViewer" level="project" />
+    <orderEntry type="library" name="bcmail-jdk16-140" level="project" />
   </component>
 </module>
