@@ -299,16 +299,10 @@ public class Controller {
                                     cell.setCellFormula("'" + book.getSheetAt(total_sheets-2).getSheetName() + "'!I15-"+"("+cell.getCellFormula()+")/8");
                                     System.out.println(cell.getCellFormula());
                                 }
-
-
-                                //passWeekendsToSheets
-                                //passWeekendToSheets(book, total_sheets);
                             }
                         }
-                   /*b.close();
-                   fin.close();*/
                     }
-                    setDataWorkerInHoraryModel(book, empresa, listaEmpleados.get(j));
+                    setDataWorkerInScheduleModel(book, empresa, listaEmpleados.get(j));
                     passWeekendToSheets(book);
                     writeFile(book, file, ruta);
                 } catch (Exception e) {
@@ -321,12 +315,11 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 
 
-    private static void setDataWorkerInHoraryModel(XSSFWorkbook book, Empresa empresa, Empleado empleado) {
+    private static void setDataWorkerInScheduleModel(XSSFWorkbook book, Empresa empresa, Empleado empleado) {
 
         for (int i = 1; i < 13; i++) {
             //set name empresa
@@ -348,7 +341,9 @@ public class Controller {
             book.getSheetAt(i).getRow(10).getCell(2).setCellValue(empresa.getC_c_c());
 
             //empleado
-            book.getSheetAt(i).getRow(7).getCell(5).setCellValue(empleado.getNombre() + empleado.getPrimer_apellido() + empleado.getSegundo_apellido());
+            String employeeFullName = empleado.getNombre() +" "+empleado.getPrimer_apellido()+
+                    " "+empleado.getSegundo_apellido();
+            book.getSheetAt(i).getRow(7).getCell(5).setCellValue(employeeFullName);
 
             //set CIF empresa
             book.getSheetAt(i).getRow(8).getCell(5).setCellValue(empleado.getNif());
