@@ -1,3 +1,3 @@
 # PLB
-Software to generate schedule templates on Excel using java
+Software to generate schedule templates for medical chemistry enterprises Palobiofarma S.L & Medibiofarma.
 
