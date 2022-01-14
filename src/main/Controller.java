@@ -1,5 +1,7 @@
 package main;
 
+import model.Empleado;
+import model.Empresa;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.util.IOUtils;
@@ -10,13 +12,11 @@ import java.util.*;
 
 public class Controller {
 
-
-
-    private static void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet) {
+    private void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet) {
         copySheets(newWorkbook, newSheet, sheet, true);
     }
 
-    private static void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet, boolean copyStyle) {
+    private void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet, boolean copyStyle) {
         int newRownumber = newSheet.getLastRowNum() + 1;
         int maxColumnNum = 0;
         Map<Integer, XSSFCellStyle> styleMap = (copyStyle) ? new HashMap<Integer, XSSFCellStyle>() : null;
@@ -42,7 +42,7 @@ public class Controller {
         }
     }
 
-    public static void copyRow(XSSFWorkbook newWorkbook, XSSFSheet srcSheet, XSSFSheet destSheet, XSSFRow srcRow, XSSFRow destRow, Map<Integer, XSSFCellStyle> styleMap) {
+    public void copyRow(XSSFWorkbook newWorkbook, XSSFSheet srcSheet, XSSFSheet destSheet, XSSFRow srcRow, XSSFRow destRow, Map<Integer, XSSFCellStyle> styleMap) {
         destRow.setHeight(srcRow.getHeight());
         for (int j = srcRow.getFirstCellNum(); j <= srcRow.getLastCellNum(); j++) {
             if (j > 0) {
@@ -59,7 +59,7 @@ public class Controller {
         }
     }
 
-    public static void copyCell(XSSFWorkbook newWorkbook, XSSFCell oldCell, XSSFCell newCell, Map<Integer, XSSFCellStyle> styleMap) {
+    public void copyCell(XSSFWorkbook newWorkbook, XSSFCell oldCell, XSSFCell newCell, Map<Integer, XSSFCellStyle> styleMap) {
         if (styleMap != null) {
             int stHashCode = oldCell.getCellStyle().hashCode();
             XSSFCellStyle newCellStyle = styleMap.get(stHashCode);
@@ -103,7 +103,7 @@ public class Controller {
         out.close();
     }
 
-    private static ArrayList<String> generateCellToFormula() {
+    private ArrayList<String> generateCellToFormula() {
         ArrayList<String> cells = new ArrayList<>();
         cells.add("!H11");
         cells.add("!P11");
@@ -120,8 +120,7 @@ public class Controller {
         return cells;
     }
 
-
-    private static void passWeekendToSheets(XSSFWorkbook workbook) {
+    private void passWeekendToSheets(XSSFWorkbook workbook) {
 
         XSSFSheet calendarSheet = workbook.getSheetAt(0);
 
@@ -166,21 +165,21 @@ public class Controller {
         }
     }
 
-    private static void pass(XSSFSheet sheet, int day, CellStyle cellStyle) {
+    private void pass(XSSFSheet sheet, int day, CellStyle cellStyle) {
 
         boolean match = false;
         int rowStart = 15;
 
         while (!match) {
             if (sheet.getRow(rowStart).getCell(1).getNumericCellValue() == day) {
-                fixAdyacentsCell(sheet.getRow(rowStart).getCell(1), sheet.getRow(rowStart), cellStyle);
+                fixAdjacentCell(sheet.getRow(rowStart).getCell(1), sheet.getRow(rowStart), cellStyle);
                 match = true;
             } else
                 rowStart++;
         }
     }
 
-    private static void fixAdyacentsCell(XSSFCell cell, XSSFRow row, CellStyle style) {
+    private void fixAdjacentCell(XSSFCell cell, XSSFRow row, CellStyle style) {
         cell.setCellStyle(style);
         cell.setCellType(CellType.NUMERIC);
         row.getCell(2).setCellStyle(style);
@@ -203,15 +202,15 @@ public class Controller {
             for (int j = 0; j < listaEmpleados.size(); j++) {
                 ArrayList<InputStream> list = new ArrayList<>();
                 FileInputStream inputStream1 = new FileInputStream(files.get(0));
-
-                System.out.println(files.get(0).getAbsolutePath());
+                Empleado employee = listaEmpleados.get(j);
+                String employeeFullName = formatEmployeeName(employee);
                 InputStream inputStream2 = getClass().getResourceAsStream(files.get(1).getName());
-                System.out.println("inputStream2" + inputStream2.toString());
+
                 list.add(inputStream1);
                 list.add(inputStream2);
                 XSSFWorkbook book = new XSSFWorkbook();
                 XSSFSheet sheet = null;
-                file = new File(dir.getAbsolutePath()+"/"+listaEmpleados.get(j).getNombre() + ".xlsx");
+                file = new File(dir.getAbsolutePath()+"/"+employeeFullName + ".xlsx");
 
                 //FileInputStream obtains input bytes from the image file
 
@@ -222,7 +221,6 @@ public class Controller {
                 else{
                     inputStream = getClass().getResourceAsStream(files.get(3).getName());
                 }
-
                 //Get the contents of an InputStream as a byte[].
                 byte[] bytes = IOUtils.toByteArray(inputStream);
                 //Adds a picture to the workbook
@@ -284,10 +282,7 @@ public class Controller {
                                     //-2 para qiue coincida el numero de la lista con el numero de la hoja
                                     cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
                                             cell_formulas.get(total_sheets - 2)+"*"+listaEmpleados.get(j).getHoras_laborables()+")/8");
-                                    //System.out.println(cell.getCellFormula());
                                 }
-
-
 
                                 cell = sheet.getRow(14).getCell(8);
                                 if(total_sheets == 2 && cell != null){
@@ -317,9 +312,7 @@ public class Controller {
         }
     }
 
-
-
-    private static void setDataWorkerInScheduleModel(XSSFWorkbook book, Empresa empresa, Empleado empleado) {
+    private void setDataWorkerInScheduleModel(XSSFWorkbook book, Empresa empresa, Empleado empleado) {
 
         for (int i = 1; i < 13; i++) {
             //set name empresa
@@ -341,8 +334,7 @@ public class Controller {
             book.getSheetAt(i).getRow(10).getCell(2).setCellValue(empresa.getC_c_c());
 
             //empleado
-            String employeeFullName = empleado.getNombre() +" "+empleado.getPrimer_apellido()+
-                    " "+empleado.getSegundo_apellido();
+            String employeeFullName = formatEmployeeName(empleado);
             book.getSheetAt(i).getRow(7).getCell(5).setCellValue(employeeFullName);
 
             //set CIF empresa
@@ -351,6 +343,13 @@ public class Controller {
             //set Centro de trabajo
             book.getSheetAt(i).getRow(9).getCell(5).setCellValue(empleado.getNumero_afiliacion());
         }
+    }
+
+    private String formatEmployeeName(Empleado employee){
+        String employeeName = employee.getNombre() +" "+employee.getPrimer_apellido()+
+                " "+employee.getSegundo_apellido();
+
+        return employeeName;
     }
 
 
