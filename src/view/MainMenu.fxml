@@ -39,7 +39,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <JFXButton onAction="#showEmployesData" prefHeight="38.0" prefWidth="122.0" styleClass="menu-item2" stylesheets="@../styles/Style.css" text="Empleados" GridPane.columnIndex="1">
+                  <JFXButton onAction="#showEmployeesData" prefHeight="38.0" prefWidth="122.0" styleClass="menu-item2" stylesheets="@../styles/Style.css" text="Empleados" GridPane.columnIndex="1">
                      <font>
                         <Font name="Microsoft JhengHei" size="18.0" />
                      </font>

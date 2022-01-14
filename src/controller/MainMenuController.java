@@ -149,19 +149,34 @@ public class MainMenuController implements Initializable {
         JFXListView<JFXButton> list = new JFXListView<JFXButton>();
 
         JFXButton btnPaloMataro = new JFXButton("Palobiofarma Mataró S.L");
-        ImageView view = new ImageView(new Image("/resources/images/palobiofarma.png"));
+        ImageView view = null;
+        try {
+            view = new ImageView(new Image(new FileInputStream(PALOBIOFARMA)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         view.setFitWidth(25);
         view.setFitHeight(25);
         btnPaloMataro.setGraphic(view);
         btnPaloMataro.setCursor(Cursor.HAND);
         JFXButton btnPaloPamplona  = new JFXButton("Palobiofarma Pamplona S.L");
-        ImageView view1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
+        ImageView view1 = null;
+        try {
+            view1 = new ImageView(new Image(new FileInputStream(PALOBIOFARMA)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         view1.setFitWidth(25);
         view1.setFitHeight(25);
         btnPaloPamplona.setGraphic(view1);
         btnPaloPamplona.setCursor(Cursor.HAND);
         JFXButton btnMedi = new JFXButton("Medibiofarma");
-        ImageView view2 = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/medibiofarma.png")));
+        ImageView view2 = null;
+        try {
+            view2 = new ImageView(new Image(new FileInputStream(MEDIBIOFARMA)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         view2.setFitWidth(25);
         view2.setFitHeight(25);
         btnMedi.setGraphic(view2);
@@ -174,11 +189,6 @@ public class MainMenuController implements Initializable {
 
         btnPaloMataro.setOnAction(event -> {
             DirectoryChooser fc = new DirectoryChooser();
-
-            //Set extension filter for text files
-            //FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xlsx");
-
-
 
             //dc = new DirectoryChooser();
             File f = fc.showDialog(new Stage());
@@ -218,27 +228,6 @@ public class MainMenuController implements Initializable {
 
     private void createSlideShow() {
 
-        /*images = new ArrayList<>();
-        images.add(new Image("/resources/medibiofarma.png"));
-        images.add(new Image("/resources/palobiofarma.jpg"));
-
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),event -> {
-            SequentialTransition sequentialTransition = new SequentialTransition();
-
-            //slideShow.setImage(null);
-            slideShow.setImage(images.get(count));
-            FadeTransition ft = getFadeTransition(slideShow,0.0,1.0,2000);
-            PauseTransition pauseTransition = new PauseTransition(Duration.millis(2000));
-            FadeTransition fadeOut = getFadeTransition(slideShow, 1.0, 0.0, 2000);
-            sequentialTransition.getChildren().addAll(ft, pauseTransition, fadeOut);
-            count++;
-            if(count == 2){
-                count = 0;
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();*/
         SequentialTransition slideshow = new SequentialTransition();
         for (ImageView slide : slides) {
 
@@ -254,11 +243,8 @@ public class MainMenuController implements Initializable {
             slideshow.getChildren().add(sequentialTransition);
 
         }
-        //root.getChildren().clear();
-        //slideshow.setAutoReverse(true);
+       
         slideshow.play();
-
-
     }
 
 
@@ -267,9 +253,7 @@ public class MainMenuController implements Initializable {
         FadeTransition ft = new FadeTransition(Duration.millis(durationInMilliseconds), imageView);
         ft.setFromValue(fromValue);
         ft.setToValue(toValue);
-
         return ft;
-
     }
 
     @FXML
@@ -281,26 +265,18 @@ public class MainMenuController implements Initializable {
         file = fc.showOpenDialog(stage);
 
         if (file == null) {
-
-
             notification.setMessage("Falló la importación del calendario");
             notification.setTitle("Importación de calendario");
             notification.setNotificationType(NotificationType.ERROR);
-            notification.showAndDismiss(Duration.millis(5000));
-            notification.setAnimationType(AnimationType.POPUP);
         }
         else{
             listFiles.add(file);
-
-
             notification.setMessage("Se ha importado el calendario");
             notification.setTitle("Importacion de calendario");
             notification.setNotificationType(NotificationType.SUCCESS);
-            notification.showAndDismiss(Duration.millis(5000));
-            notification.setAnimationType(AnimationType.POPUP);
         }
-
-
+        notification.showAndDismiss(Duration.millis(5000));
+        notification.setAnimationType(AnimationType.POPUP);
     }
 
     public void mergeExcel(ActionEvent actionEvent, int cod_empresa, String ruta) {
@@ -386,8 +362,6 @@ public class MainMenuController implements Initializable {
 
     }
 
-
-
     @FXML
     void closeApplication(ActionEvent event) {
         System.exit(0);
@@ -421,7 +395,7 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    void showEmployesData(ActionEvent event) {
+    void showEmployeesData(ActionEvent event) {
         try {
             System.out.println("Panel de edicion de empleados" + "\n" + "-------------------------");
             ScalableContentPane scale = new ScalableContentPane();
@@ -462,7 +436,7 @@ public class MainMenuController implements Initializable {
         Desktop desktop = Desktop.getDesktop();
 
         //let's try to open PDF file
-        if(file.exists()){
+        if(file.exists()) {
             desktop.open(file);
         }
     }
