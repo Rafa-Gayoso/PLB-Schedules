@@ -23,7 +23,6 @@ public class ServicesLocator {
 	}
 
 
-	//metodo q crea la conexion con la base de datos.
 	public static Connection getConnection(){
 		DatabaseConnection connection = new DatabaseConnection();
 		return connection.getConnection();

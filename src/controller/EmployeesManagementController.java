@@ -5,12 +5,15 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
+import javafx.util.converter.IntegerStringConverter;
 import model.Empleado;
 import services.ServicesLocator;
 import tray.animations.AnimationType;
@@ -41,12 +44,8 @@ public class EmployeesManagementController implements Initializable {
     @FXML
     private JFXTextField numTextfield;
 
-
     @FXML
-    private TableView<Empleado> employesTable;
-
-    @FXML
-    private TableColumn<Empleado, Integer> codCol;
+    private TableView<Empleado> employeesTable;
 
     @FXML
     private TableColumn<Empleado, String> nombreCol;
@@ -84,47 +83,104 @@ public class EmployeesManagementController implements Initializable {
     @FXML
     private JFXButton btnDelete;
 
+    @FXML
+    private MenuItem deleteItem;
+
+    @FXML
+    private MenuItem insertItem;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         horasLaborables.setText("8");
+        employeesTable.setEditable(true);
 
         horasLaborables.setTextFormatter(new TextFormatter<>(change ->
                 (change.getControlNewText().matches("^[4-8]*$")) ? change : null));
 
-        codCol.setCellValueFactory(
-                new PropertyValueFactory<>("cod_empleado")
-        );
 
         nombreCol.setCellValueFactory(
                 new PropertyValueFactory<>("nombre")
         );
+        nombreCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        nombreCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setNombre(event.getNewValue());
+            updateEmployee(employee);
+        });
 
         primerApCol.setCellValueFactory(
                 new PropertyValueFactory<>("primer_apellido")
         );
+        primerApCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        primerApCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setPrimer_apellido(event.getNewValue());
+            updateEmployee(employee);
+        });
+
         segundoApCol.setCellValueFactory(
                 new PropertyValueFactory<>("segundo_apellido")
         );
+        segundoApCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        segundoApCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setSegundo_apellido(event.getNewValue());
+            updateEmployee(employee);
+        });
+
+
         nifCol.setCellValueFactory(
                 new PropertyValueFactory<>("nif")
         );
+        nifCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nifCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setNif(event.getNewValue());
+            updateEmployee(employee);
+        });
+
+
         numCol.setCellValueFactory(
                 new PropertyValueFactory<>("numero_afiliacion")
         );
+        numCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        numCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setNumero_afiliacion(event.getNewValue());
+            updateEmployee(employee);
+        });
+
+
         empresaCol.setCellValueFactory(
                 new PropertyValueFactory<>("nombre_empresa")
         );
+        empresaCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        empresaCol.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            int cod_empresa = ServicesLocator.getEnterprise().getEmpresaCodByName(event.getNewValue());
+            employee.setCod_empresa(cod_empresa);
+            updateEmployee(employee);
+        });
 
         horasColum.setCellValueFactory(
                 new PropertyValueFactory<>("horas_laborables")
         );
+        horasColum.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        horasColum.setOnEditCommit(event -> {
+            Empleado employee = event.getRowValue();
+            employee.setHoras_laborables(event.getNewValue());
+            updateEmployee(employee);
+        });
+
+        deleteItem.setOnAction(event -> deleteEmployee());
+
+
 
         btnInsert.setDisable(false);
-        btnDelete.setDisable(true);
-        btnUpdate.setDisable(true);
 
 
         ObservableList<String> empresas = FXCollections.observableArrayList(ServicesLocator.getEnterprise().nombreEmpresas());
@@ -132,10 +188,11 @@ public class EmployeesManagementController implements Initializable {
 
         populateTable();
 
-        employesTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEmployeeDetails(newValue));
+        employeesTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+                showEmployeeDetails(newValue));
 
         btnInsert.setOnAction(event -> insertEmployee());
-        btnUpdate.setOnAction(event -> updateEmployee());
+        //btnUpdate.setOnAction(event -> updateEmployee());
         btnDelete.setOnAction(event -> deleteEmployee());
 
         notification = new TrayNotification();
@@ -143,14 +200,12 @@ public class EmployeesManagementController implements Initializable {
 
     private void populateTable() {
         ObservableList<Empleado> employes = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
-        employesTable.setItems(employes);
+        employeesTable.setItems(employes);
 
     }
 
     public void showEmployeeDetails(Empleado empleado) {
         btnInsert.setDisable(true);
-        btnDelete.setDisable(false);
-        btnUpdate.setDisable(false);
         if (empleado != null) {
             nombreTextField.setText(empleado.getNombre());
             primApellidoTextField.setText(empleado.getPrimer_apellido());
@@ -161,13 +216,11 @@ public class EmployeesManagementController implements Initializable {
             horasLaborables.setText(String.valueOf(empleado.getHoras_laborables()));
         } else {
             btnInsert.setDisable(false);
-            btnDelete.setDisable(true);
-            btnUpdate.setDisable(true);
         }
     }
 
     private void deleteEmployee() {
-        Empleado empleado = employesTable.getSelectionModel().getSelectedItem();
+        Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
         ServicesLocator.getEmployee().deleteEmployee(empleado);
         resetValues();
 
@@ -195,21 +248,21 @@ public class EmployeesManagementController implements Initializable {
         notification.setAnimationType(AnimationType.POPUP);
     }
 
-    private void updateEmployee() {
+    private void updateEmployee(Empleado employee) {
         boolean validated = validateData();
-        if (!validated) {
+        /*if (!validated) {
             setNotificationData(EMPTY_FIELD_MESSAGE, EMPTY_FIELD_TITLE,NotificationType.ERROR );
-        } else {
-            Empleado empleado = employesTable.getSelectionModel().getSelectedItem();
-            setEmployeeData(empleado);
-            ServicesLocator.getEmployee().updateEmployee(empleado);
+        } else {*/
+            //employee = employeesTable.getSelectionModel().getSelectedItem();
+            //setEmployeeData(employee);
+            ServicesLocator.getEmployee().updateEmployee(employee);
             resetValues();
 
             String UPDATED_MESSAGE = "Cambios realizados con éxito";
             String UPDATED_TITLE = "Información de empleado editada";
             setNotificationData(UPDATED_MESSAGE, UPDATED_TITLE,NotificationType.SUCCESS);
             notification.setNotificationType(NotificationType.SUCCESS);
-        }
+        //}
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
     }
@@ -270,5 +323,6 @@ public class EmployeesManagementController implements Initializable {
         notification.setTitle(title);
         notification.setNotificationType(type);
     }
+
 
 }

@@ -1,7 +1,10 @@
 package model;
 
+import com.jfoenix.controls.JFXComboBox;
+import javafx.beans.Observable;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import services.ServicesLocator;
 
 public class Empleado {
@@ -27,7 +30,8 @@ public class Empleado {
         this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
     }
 
-    public Empleado(int cod_empleado, String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables,int cod_empresa) {
+    public Empleado(int cod_empleado, String nombre, String primer_apellido, String segundo_apellido, String nif,
+                    String numero_afiliacion, int horas_laborables, int cod_empresa) {
         this.cod_empleado = new SimpleIntegerProperty(cod_empleado);
         this.nombre = new SimpleStringProperty(nombre);
         this.primer_apellido = new SimpleStringProperty(primer_apellido);
@@ -37,7 +41,9 @@ public class Empleado {
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
         this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
+
     }
+
 
     public Empleado() {
         this.cod_empleado = new SimpleIntegerProperty();
