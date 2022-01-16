@@ -98,6 +98,10 @@
     -fx-font-size: 20px;
 }
 
+#insertBtn{
+    -fx-background-color: #1EA896;
+}
+
 
 
 

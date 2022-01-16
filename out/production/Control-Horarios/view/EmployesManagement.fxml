@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
@@ -13,132 +11,94 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="640.0" prefWidth="1825.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesManagementController">
+<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="647.0" prefWidth="1496.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesManagementController">
    <children>
-      <TableView fx:id="employeesTable" editable="true" layoutX="226.0" minHeight="481.0" minWidth="874.0" onKeyPressed="#resetAllValues" prefHeight="630.0" prefWidth="1490.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-          <TableColumn fx:id="nombreCol" prefWidth="181.99996948242188" text="Nombre" />
-          <TableColumn fx:id="primerApCol" prefWidth="227.0" text="Primer Apellido" />
-            <TableColumn fx:id="segundoApCol" prefWidth="228.0" text="Segundo Apellido" />
-            <TableColumn fx:id="nifCol" editable="false" prefWidth="196.0" text="NIF" />
-            <TableColumn fx:id="numCol" prefWidth="218.0" text="Número de Afiliación" />
-            <TableColumn fx:id="horasColum" prefWidth="190.0" text="Horas Laborables" />
-            <TableColumn fx:id="empresaCol" minWidth="6.0" prefWidth="244.0" text="Empresa" />
-        </columns>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <MenuItem fx:id="insertItem" mnemonicParsing="false" text="Insertar empleado">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/images/plus.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                <MenuItem fx:id="deleteItem" mnemonicParsing="false" text="Eliminar empleado">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/images/delete.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-              </items>
-            </ContextMenu>
-         </contextMenu>
-      </TableView>
-      <GridPane layoutX="7.0" layoutY="39.0" prefHeight="571.0" prefWidth="297.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="39.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox prefHeight="647.0" prefWidth="1496.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXTextField fx:id="nombreTextField" labelFloat="true" promptText="Nombre del empleado">
-               <font>
-                  <Font size="16.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="primApellidoTextField" labelFloat="true" promptText="Primer Apellido" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="segApellidoTextfield" labelFloat="true" promptText="Segundo Apellido" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="nifTextfield" labelFloat="true" promptText="NIF/NIE" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="numTextfield" labelFloat="true" promptText="Número de afiliación" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font></JFXTextField>
-            <JFXComboBox fx:id="comboEmpresa" labelFloat="true" prefHeight="37.0" prefWidth="495.0" promptText="Empresa" stylesheets="@../styles/Style.css" GridPane.rowIndex="6">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></JFXComboBox>
-            <JFXTextField fx:id="horasLaborables" labelFloat="true" promptText="Horas laborables" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXTextField>
-            <GridPane prefHeight="124.0" prefWidth="297.0" GridPane.rowIndex="7">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <HBox prefHeight="80.0" prefWidth="1428.0">
                <children>
-                  <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="108.0" prefWidth="105.0" text=" " GridPane.columnIndex="2">
-                     <graphic>
-                        <ImageView fitHeight="83.0" fitWidth="83.0" pickOnBounds="true">
+                  <GridPane prefHeight="80.0" prefWidth="1498.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="252.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="623.0" minWidth="10.0" prefWidth="311.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="571.0" minWidth="10.0" prefWidth="571.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="108.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/images/employee_add.png" />
+                              <Image url="@../resources/images/palobiofarma.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </JFXButton>
-                  <JFXButton fx:id="btnDelete" buttonType="RAISED" contentDisplay="CENTER" prefHeight="108.0" prefWidth="105.0" text=" " GridPane.columnIndex="1">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </JFXButton>
+                        <ImageView fitHeight="97.0" fitWidth="415.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../resources/images/medibiofarma.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="insertBtn" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="62.0" prefWidth="198.0" ripplerFill="#3855f8" stylesheets="@../styles/Style.css" text="Añadir Empleado" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
                </children>
-            </GridPane>
+            </HBox>
+            <HBox prefHeight="572.0" prefWidth="1488.0">
+               <children>
+                  <TableView fx:id="employeesTable" editable="true" minHeight="481.0" minWidth="874.0" prefHeight="587.0" prefWidth="1493.0" stylesheets="@../styles/Style.css">
+                    
+                                                    <columns>
+                        <TableColumn fx:id="codCol" prefWidth="75.0" visible="false" />
+                      <TableColumn fx:id="nombreCol" prefWidth="181.99996948242188" text="Nombre" />
+                      <TableColumn fx:id="primerApCol" prefWidth="227.0" text="Primer Apellido" />
+                        <TableColumn fx:id="segundoApCol" prefWidth="228.0" text="Segundo Apellido" />
+                        <TableColumn fx:id="nifCol" editable="false" prefWidth="191.0" text="NIF" />
+                        <TableColumn fx:id="numCol" prefWidth="223.0" text="Número de Afiliación" />
+                        <TableColumn fx:id="horasColum" prefWidth="77.0" text="H/L" />
+                        <TableColumn fx:id="empresaCol" minWidth="6.0" prefWidth="354.0" text="Empresa" />
+                    </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                              <MenuItem fx:id="insertItem" mnemonicParsing="false" text="Insertar empleado">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuItem>
+                            <MenuItem fx:id="deleteItem" mnemonicParsing="false" text="Eliminar empleado">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/images/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuItem>
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </TableView>
+               </children>
+            </HBox>
          </children>
-      </GridPane>
+      </VBox>
    </children>
 </AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="561.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddEmployeeDialogController">
+        <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" layoutX="336.0" layoutY="423.0" prefHeight="108.0" prefWidth="105.0" text=" ">
+            <graphic>
+                <ImageView fitHeight="83.0" fitWidth="83.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@../resources/images/employee_add.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+    <GridPane layoutX="7.0" layoutY="39.0" prefHeight="571.0" prefWidth="297.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="39.0">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <JFXTextField fx:id="nombreTextField" labelFloat="true" promptText="Nombre del empleado">
+                <font>
+                    <Font size="16.0" />
+                </font></JFXTextField>
+            <JFXTextField fx:id="primApellidoTextField" labelFloat="true" promptText="Primer Apellido" GridPane.rowIndex="1">
+                <font>
+                    <Font size="16.0" />
+                </font></JFXTextField>
+            <JFXTextField fx:id="segApellidoTextfield" labelFloat="true" promptText="Segundo Apellido" GridPane.rowIndex="2">
+                <font>
+                    <Font size="16.0" />
+                </font></JFXTextField>
+            <JFXTextField fx:id="nifTextfield" labelFloat="true" promptText="NIF/NIE" GridPane.rowIndex="3">
+                <font>
+                    <Font size="16.0" />
+                </font></JFXTextField>
+            <JFXTextField fx:id="numTextfield" labelFloat="true" promptText="Número de afiliación" GridPane.rowIndex="4">
+                <font>
+                    <Font size="16.0" />
+                </font></JFXTextField>
+            <JFXComboBox fx:id="comboEmpresa" labelFloat="true" prefHeight="37.0" prefWidth="495.0" promptText="Empresa" stylesheets="@../styles/Style.css" GridPane.rowIndex="6">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor></JFXComboBox>
+            <JFXTextField fx:id="horasLaborables" labelFloat="true" promptText="Horas laborables" GridPane.rowIndex="5">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </JFXTextField>
+        </children>
+    </GridPane>
+</AnchorPane>
