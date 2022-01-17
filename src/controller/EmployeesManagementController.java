@@ -132,6 +132,7 @@ public class EmployeesManagementController implements Initializable {
             int cod_empresa = ServicesLocator.getEnterprise().getEmpresaCodByName(event.getNewValue());
             employee.setCod_empresa(cod_empresa);
             updateEmployee(employee);
+            populateTable();
         });
 
         horasColum.setCellValueFactory(
@@ -142,8 +143,11 @@ public class EmployeesManagementController implements Initializable {
             Empleado employee = event.getRowValue();
             employee.setHoras_laborables(event.getNewValue());
             updateEmployee(employee);
+
         });
+
         populateTable();
+
         deleteItem.setOnAction(event -> deleteEmployee());
         insertBtn.setOnAction(event -> openModal());
     }

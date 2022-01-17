@@ -8,7 +8,6 @@
     -fx-border-width: 0px 0px 3px 0px;
 }
 
-
 .menu-item3:hover {
     -fx-border-color:#574B60;
     -fx-border-width: 0px 0px 3px 0px;
@@ -96,6 +95,7 @@
     -fx-background-color: #2F2484;
     -fx-font-size: 20px;
 }
+
 .spinner .text-field {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 1 0;
