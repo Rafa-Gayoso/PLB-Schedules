@@ -3,19 +3,10 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Control_Horarios_jar</output-path>
     <root id="archive" name="Control-Horarios.jar">
       <element id="module-output" name="Control-Horarios" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/opencsv-4.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-text-1.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-lang3-3.6.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-logging-1.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-beanutils-1.9.3.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-collections-3.2.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/controlsfx-8.40.15.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/fontawesomefx-8.0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/scaledfx-0.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jfoenix-8.0.8.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/controlsfx-samples-8.40.15.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/TrayNotification.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/sqlite-jdbc-3.32.3.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jfoenix-8.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/TrayNotification.jar" path-in-jar="/" />
+      <element id="library" level="project" name="bcmail-jdk16-140" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/ooxml-lib/curvesapi-1.06.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/ooxml-lib/xmlbeans-3.1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/poi/poi-4.1.2.jar" path-in-jar="/" />
@@ -36,6 +27,24 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/poi_lib/commons-math3-3.6.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/poi_lib/commons-compress-1.19.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/poi_lib/commons-collections4-4.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/opencsv-4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-text-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-lang3-3.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-logging-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-beanutils-1.9.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/csv_reader/commons-collections-3.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/controlsfx-8.40.15.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/fontawesomefx-8.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/scaledfx-0.4.jar" path-in-jar="/" />
+      <element id="library" level="project" name="jPDFViewer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/controlsfx-samples-8.40.15.jar" path-in-jar="/" />
+      <element id="library" level="project" name="controlsfx-8.40.15" />
+      <element id="library" level="project" name="controlsfx-samples-8.40.15" />
+      <element id="library" level="project" name="csv_reader" />
+      <element id="library" level="project" name="jfoenix-8.0.8" />
+      <element id="library" level="project" name="ooxml-lib" />
+      <element id="library" level="project" name="sqlite-jdbc-3.32.3.2" />
+      <element id="library" level="project" name="TrayNotification" />
     </root>
   </artifact>
 </component>

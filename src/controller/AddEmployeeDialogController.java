@@ -67,24 +67,31 @@ public class AddEmployeeDialogController implements Initializable {
 
     }
 
-    private void insertEmployee(javafx.event.ActionEvent event) {
+    private void insertEmployee(ActionEvent event) {
         boolean validated = validateData();
-        if (!validated) {
-            setNotificationData("Debe rellenar todos los campos vacíos", "Campos vacíos",
-                    NotificationType.ERROR);
-        } else {
-            Empleado empleado = new Empleado();
-            setEmployeeData(empleado);
-            ServicesLocator.getEmployee().insertEmployee(empleado);
-            resetValues();
-            setNotificationData("Empleando insertado al sistema con éxito", "Empleado insertado",
-                    NotificationType.SUCCESS);
-            ObservableList<Empleado> employees = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
-            appMainObservableList.setAll(employees);
-            closeStage(event);
-        }
-        notification.showAndDismiss(Duration.millis(5000));
-        notification.setAnimationType(AnimationType.POPUP);
+        boolean existEmployee = ServicesLocator.getEmployee().getEmployeeByNif(nifTextfield.getText());
+            if (!validated) {
+                setNotificationData("Debe rellenar todos los campos vacíos", "Campos vacíos",
+                        NotificationType.ERROR);
+
+
+            } else if(existEmployee){
+                setNotificationData("Ya existe un trabajador con ese NIF/NIE", "Datos erróneos",
+                        NotificationType.ERROR);
+            } else{
+                Empleado empleado = new Empleado();
+                setEmployeeData(empleado);
+                ServicesLocator.getEmployee().insertEmployee(empleado);
+                resetValues();
+                setNotificationData("Empleando insertado al sistema con éxito", "Empleado insertado",
+                        NotificationType.SUCCESS);
+                ObservableList<Empleado> employees = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
+                appMainObservableList.setAll(employees);
+                closeStage(event);
+            }
+            notification.showAndDismiss(Duration.millis(5000));
+            notification.setAnimationType(AnimationType.POPUP);
+
     }
 
     private void setEmployeeData(Empleado empleado) {
