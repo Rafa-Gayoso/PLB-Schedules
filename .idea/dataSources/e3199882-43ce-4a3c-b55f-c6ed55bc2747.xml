@@ -105,59 +105,54 @@
       <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="7" name="logo">
-      <Position>6</Position>
-      <DataType>blob(120)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="29" parent="7" name="sqlite_autoindex_empresa_1">
+    <index id="28" parent="7" name="sqlite_autoindex_empresa_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>nombre_empresa</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="30" parent="7" name="sqlite_autoindex_empresa_2">
+    <index id="29" parent="7" name="sqlite_autoindex_empresa_2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>c_c_c</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="31" parent="7">
+    <key id="30" parent="7">
       <ColNames>cod_empresa</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="32" parent="7">
+    <key id="31" parent="7">
       <ColNames>nombre_empresa</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_empresa_1</UnderlyingIndexName>
     </key>
-    <key id="33" parent="7">
+    <key id="32" parent="7">
       <ColNames>c_c_c</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_empresa_2</UnderlyingIndexName>
     </key>
-    <column id="34" parent="8" name="type">
+    <column id="33" parent="8" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="35" parent="8" name="name">
+    <column id="34" parent="8" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="36" parent="8" name="tbl_name">
+    <column id="35" parent="8" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="37" parent="8" name="rootpage">
+    <column id="36" parent="8" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="38" parent="8" name="sql">
+    <column id="37" parent="8" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="39" parent="9" name="name">
+    <column id="38" parent="9" name="name">
       <Position>1</Position>
     </column>
-    <column id="40" parent="9" name="seq">
+    <column id="39" parent="9" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

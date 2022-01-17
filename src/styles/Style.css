@@ -8,14 +8,12 @@
     -fx-border-width: 0px 0px 3px 0px;
 }
 
-
 .menu-item3:hover {
     -fx-border-color:#574B60;
     -fx-border-width: 0px 0px 3px 0px;
 }
 
 .table-view {
-
     -fx-base: white;
     -fx-control-inner-background: white;
     -fx-background-color: white;
@@ -23,7 +21,7 @@
     -fx-table-header-border-color: transparent;
     -fx-border-width: 1px;
     -fx-border-color: #5598b8;
-    /*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);*/
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
 
 .table-view .column-header-background {
@@ -97,6 +95,7 @@
     -fx-background-color: #2F2484;
     -fx-font-size: 20px;
 }
+
 .spinner .text-field {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 1 0;

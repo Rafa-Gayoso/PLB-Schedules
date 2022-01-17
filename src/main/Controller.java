@@ -16,13 +16,10 @@ public class Controller {
     private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
 
     private void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet) {
-        copySheets(newWorkbook, newSheet, sheet, true);
-    }
-
-    private void copySheets(XSSFWorkbook newWorkbook, XSSFSheet newSheet, XSSFSheet sheet, boolean copyStyle) {
+        //copySheets(newWorkbook, newSheet, sheet, true);
         int newRownumber = newSheet.getLastRowNum() + 1;
         int maxColumnNum = 0;
-        Map<Integer, XSSFCellStyle> styleMap = (copyStyle) ? new HashMap<Integer, XSSFCellStyle>() : null;
+        Map<Integer, XSSFCellStyle> styleMap = new HashMap<>();
 
         for (int i = 0; i < sheet.getNumMergedRegions(); i++) {
             CellRangeAddress region = sheet.getMergedRegion(i);
@@ -34,7 +31,7 @@ public class Controller {
             XSSFRow srcRow = sheet.getRow(i);
             XSSFRow destRow = newSheet.createRow(i + newRownumber);
             if (srcRow != null) {
-                copyRow(newWorkbook, sheet, newSheet, srcRow, destRow, styleMap);
+                copyRow(newWorkbook, srcRow, destRow, styleMap);
                 if (srcRow.getLastCellNum() > maxColumnNum) {
                     maxColumnNum = srcRow.getLastCellNum();
                 }
@@ -45,7 +42,7 @@ public class Controller {
         }
     }
 
-    public void copyRow(XSSFWorkbook newWorkbook, XSSFSheet srcSheet, XSSFSheet destSheet, XSSFRow srcRow, XSSFRow destRow, Map<Integer, XSSFCellStyle> styleMap) {
+    public void copyRow(XSSFWorkbook newWorkbook,XSSFRow srcRow, XSSFRow destRow, Map<Integer, XSSFCellStyle> styleMap) {
         destRow.setHeight(srcRow.getHeight());
         for (int j = srcRow.getFirstCellNum(); j <= srcRow.getLastCellNum(); j++) {
             if (j > 0) {
@@ -73,7 +70,7 @@ public class Controller {
             }
             newCell.setCellStyle(newCellStyle);
         }
-        switch (oldCell.getCellTypeEnum()) {
+        switch (oldCell.getCellType()) {
             case STRING:
                 newCell.setCellValue(oldCell.getRichStringCellValue());
                 break;
@@ -97,7 +94,7 @@ public class Controller {
         }
     }
 
-    protected void writeFile(XSSFWorkbook book, File file,String ruta) throws Exception {
+    protected void writeFile(XSSFWorkbook book, File file) throws Exception {
 
         OutputStream out = new FileOutputStream(file.getAbsolutePath(), false);
         book.write(out);
@@ -127,17 +124,13 @@ public class Controller {
 
         XSSFSheet calendarSheet = workbook.getSheetAt(0);
 
-        Iterator<Row> rowIterator = calendarSheet.iterator();
+        for (Row cells : calendarSheet) {
+            XSSFRow row = (XSSFRow) cells;
 
-        while (rowIterator.hasNext()) {
-            XSSFRow row = (XSSFRow) rowIterator.next();
+            for (Cell value : row) {
+                XSSFCell cell = (XSSFCell) value;
 
-            Iterator<Cell> cellIterator = row.iterator();
-
-            while (cellIterator.hasNext()) {
-                XSSFCell cell = (XSSFCell) cellIterator.next();
-
-                if (cell.getCellType() != CellType.STRING && cell != null) {
+                if (cell.getCellType() != CellType.STRING) {
                     if (DateUtil.isCellDateFormatted(cell)) {
                         Date date = cell.getDateCellValue();
 
@@ -193,35 +186,33 @@ public class Controller {
 
     }
 
-    public void mergeExcelFiles(ArrayList<Empleado> listaEmpleados, Empresa empresa, ArrayList<File> files, String ruta) throws IOException {
+    public void mergeExcelFiles(ArrayList<Empleado> listaEmpleados, Empresa empresa, ArrayList<File> files, String ruta) {
         ArrayList<String> cell_formulas = generateCellToFormula();
 
         try {
-            File file = null;
+            File file;
             File dir = new File(ruta+"/"+empresa.getNombre());
             if(!dir.exists()){
                 dir.mkdir();
             }
-            for (int j = 0; j < listaEmpleados.size(); j++) {
+            for (Empleado listaEmpleado : listaEmpleados) {
                 ArrayList<InputStream> list = new ArrayList<>();
                 FileInputStream inputStream1 = new FileInputStream(files.get(0));
-                Empleado employee = listaEmpleados.get(j);
-                String employeeFullName = formatEmployeeName(employee);
+                String employeeFullName = formatEmployeeName(listaEmpleado);
                 FileInputStream inputStream2 = new FileInputStream(files.get(1));
 
                 list.add(inputStream1);
                 list.add(inputStream2);
                 XSSFWorkbook book = new XSSFWorkbook();
-                XSSFSheet sheet = null;
-                file = new File(dir.getAbsolutePath()+"/"+employeeFullName + ".xlsx");
+                XSSFSheet sheet;
+                file = new File(dir.getAbsolutePath() + "/" + employeeFullName + ".xlsx");
 
                 //FileInputStream obtains input bytes from the image file
 
-                FileInputStream inputStream = null;
-                if(empresa.getNombre().contains("Palobiofarma")){
+                FileInputStream inputStream;
+                if (empresa.getNombre().contains("Palobiofarma")) {
                     inputStream = new FileInputStream(new File(PALOBIOFARMA));
-                }
-                else{
+                } else {
                     inputStream = new FileInputStream(new File(MEDIBIOFARMA));
                 }
                 //Get the contents of an InputStream as a byte[].
@@ -284,25 +275,24 @@ public class Controller {
                                 if (cell != null) {
                                     //-2 para qiue coincida el numero de la lista con el numero de la hoja
                                     cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
-                                            cell_formulas.get(total_sheets - 2)+"*"+listaEmpleados.get(j).getHoras_laborables()+")/8");
+                                            cell_formulas.get(total_sheets - 2) + "*" + listaEmpleado.getHoras_laborables() + ")/8");
                                 }
 
                                 cell = sheet.getRow(14).getCell(8);
-                                if(total_sheets == 2 && cell != null){
+                                if (total_sheets == 2 && cell != null) {
 
-                                    cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-"+"("+cell.getCellFormula()+")/8");
+                                    cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" + cell.getCellFormula() + ")/8");
                                     System.out.println(cell.getCellFormula());
-                                }
-                                else if(total_sheets >2){
-                                    cell.setCellFormula("'" + book.getSheetAt(total_sheets-2).getSheetName() + "'!I15-"+"("+cell.getCellFormula()+")/8");
+                                } else if (total_sheets > 2) {
+                                    cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" + cell.getCellFormula() + ")/8");
                                     System.out.println(cell.getCellFormula());
                                 }
                             }
                         }
                     }
-                    setDataWorkerInScheduleModel(book, empresa, listaEmpleados.get(j));
+                    setDataWorkerInScheduleModel(book, empresa, listaEmpleado);
                     passWeekendToSheets(book);
-                    writeFile(book, file, ruta);
+                    writeFile(book, file);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -349,10 +339,9 @@ public class Controller {
     }
 
     private String formatEmployeeName(Empleado employee){
-        String employeeName = employee.getNombre() +" "+employee.getPrimer_apellido()+
-                " "+employee.getSegundo_apellido();
 
-        return employeeName;
+        return employee.getNombre() +" "+employee.getPrimer_apellido()+
+                " "+employee.getSegundo_apellido();
     }
 
 

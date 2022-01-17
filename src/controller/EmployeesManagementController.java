@@ -1,15 +1,11 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -106,7 +102,6 @@ public class EmployeesManagementController implements Initializable {
             updateEmployee(employee);
         });
 
-
         nifCol.setCellValueFactory(
                 new PropertyValueFactory<>("nif")
         );
@@ -116,7 +111,6 @@ public class EmployeesManagementController implements Initializable {
             employee.setNif(event.getNewValue());
             updateEmployee(employee);
         });
-
 
         numCol.setCellValueFactory(
                 new PropertyValueFactory<>("numero_afiliacion")
@@ -138,6 +132,7 @@ public class EmployeesManagementController implements Initializable {
             int cod_empresa = ServicesLocator.getEnterprise().getEmpresaCodByName(event.getNewValue());
             employee.setCod_empresa(cod_empresa);
             updateEmployee(employee);
+            populateTable();
         });
 
         horasColum.setCellValueFactory(
@@ -148,15 +143,61 @@ public class EmployeesManagementController implements Initializable {
             Empleado employee = event.getRowValue();
             employee.setHoras_laborables(event.getNewValue());
             updateEmployee(employee);
+
         });
+
         populateTable();
+
         deleteItem.setOnAction(event -> deleteEmployee());
-        insertBtn.setOnAction(event ->  {
+        insertBtn.setOnAction(event -> openModal());
+    }
+
+    private void populateTable() {
+        ObservableList<Empleado> employees = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
+        employeesTable.setItems(employees);
+    }
+
+    private void deleteEmployee() {
+        Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
+        if(empleado != null){
+            ServicesLocator.getEmployee().deleteEmployee(empleado);
+            setNotificationData("Empleando eliminado del sistema con éxito", "Empleado eliminado");
+            notification.showAndDismiss(Duration.millis(5000));
+            notification.setAnimationType(AnimationType.POPUP);
+            populateTable();
+        }
+
+    }
+
+    private void updateEmployee(Empleado employee) {
+        ServicesLocator.getEmployee().updateEmployee(employee);
+        setNotificationData("Información de empleado editada", "Cambios realizados con éxito");
+
+        notification.showAndDismiss(Duration.millis(5000));
+        notification.setAnimationType(AnimationType.POPUP);
+    }
+
+    private void setNotificationData(String message,String title){
+        notification.setMessage(message);
+        notification.setTitle(title);
+        notification.setNotificationType(NotificationType.SUCCESS);
+    }
+
+    @FXML
+    void deleteEmployee(KeyEvent event) {
+        KeyCode code = event.getCode();
+        if(code == KeyCode.DELETE || code == KeyCode.SUBTRACT ){
+            deleteEmployee();
+        }
+
+    }
+
+    private void openModal(){
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/AddEmployeeDialog.fxml"));
                 Parent parent = fxmlLoader.load();
 
-                AddEmployeeDialogController dialogController = fxmlLoader.<AddEmployeeDialogController>getController();
+                AddEmployeeDialogController dialogController = fxmlLoader.getController();
                 dialogController.setAppMainObservableList(employeesTable.getItems());
 
                 Scene scene = new Scene(parent);
@@ -169,54 +210,12 @@ public class EmployeesManagementController implements Initializable {
                 stage.show(); }
             catch (IOException e) {
                 e.printStackTrace();
-            }});
+            }
     }
 
-    private void populateTable() {
-        ObservableList<Empleado> employes = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
-        employeesTable.setItems(employes);
-    }
-
-    private void deleteEmployee() {
-        Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
-        ServicesLocator.getEmployee().deleteEmployee(empleado);
-
-        String DELETED_MESSAGE = "Empleando eliminado del sistema con éxito";
-        String DELETED_TITLE = "Empleado eliminado";
-        setNotificationData(DELETED_MESSAGE, DELETED_TITLE,NotificationType.SUCCESS);
-        notification.showAndDismiss(Duration.millis(5000));
-        notification.setAnimationType(AnimationType.POPUP);
-        populateTable();
-    }
-
-
-
-    private void updateEmployee(Empleado employee) {
-
-        ServicesLocator.getEmployee().updateEmployee(employee);
-
-        String UPDATED_MESSAGE = "Cambios realizados con éxito";
-        String UPDATED_TITLE = "Información de empleado editada";
-        setNotificationData(UPDATED_MESSAGE, UPDATED_TITLE,NotificationType.SUCCESS);
-        notification.setNotificationType(NotificationType.SUCCESS);
-
-        notification.showAndDismiss(Duration.millis(5000));
-        notification.setAnimationType(AnimationType.POPUP);
-    }
-
-
-    private void setNotificationData(String message,String title, NotificationType type ){
-        notification.setMessage(message);
-        notification.setTitle(title);
-        notification.setNotificationType(type);
-    }
-
-    @FXML
-    void deleteEmployee(KeyEvent event) {
-        if(event.getCode() == KeyCode.DELETE){
-            deleteEmployee();
+    public void openInsertModal(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ADD){
+            openModal();
         }
     }
-
-
 }

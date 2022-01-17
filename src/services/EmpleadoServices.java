@@ -106,4 +106,25 @@ public class EmpleadoServices {
             e.printStackTrace();
         }
     }
+
+    public boolean getEmployeeByNif(String nif){
+        Empleado employee = null;
+        try {
+            Connection connection = ServicesLocator.getConnection();
+            String consulta = "Select empleado.* from empleado join empresa on empleado.cod_empresa = empresa.cod_empresa " +
+                    "where empleado.nif = " + "'" + nif + "'";
+            PreparedStatement prepare = connection.prepareStatement(consulta);//para consultas
+            prepare.execute();
+            ResultSet result = prepare.getResultSet();//para quedarme con lo q devuelve la consulta
+            while (result.next()){ //para varias filas
+                employee = new Empleado(result.getInt(1), result.getString(2),
+                        result.getString(3),result.getString(4),result.getString(5),
+                        result.getString(6),result.getInt(7),result.getInt(8));
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employee == null ? false: true;
+    }
 }

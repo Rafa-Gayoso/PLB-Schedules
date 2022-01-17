@@ -1,7 +1,6 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.controls.JFXProgressBar;
 import eu.mihosoft.scaledfx.ScalableContentPane;
 import javafx.animation.*;
@@ -9,13 +8,13 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.*;
 import javafx.util.Duration;
 
@@ -64,36 +63,12 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
         //File button
         fileMenu.requestFocus();
-        AnchorPane popupPane = new AnchorPane();
-        VBox vBox = new VBox();
-        JFXButton btnLoadCalendar =createMainPopUpBtn("/resources/images/calendar.png","Cargar Calendario" );
-        
-        JFXButton btnSchedule =createMainPopUpBtn("/resources/images/excel.png", "Generar Horarios");
-
-        JFXButton close = createMainPopUpBtn("/resources/images/logout.png", "Cerrar");
-
-        vBox.getChildren().add(btnLoadCalendar);
-        vBox.getChildren().add(btnSchedule);
-        vBox.getChildren().add(close);
-        popupPane.getChildren().add(vBox);
-        JFXPopup popup = new JFXPopup(popupPane);
-
-        JFXPopup popupEnterprise = new JFXPopup(enterprisesPopUp());
 
         //file button
-        fileMenu.setOnAction(event -> popup.show(fileMenu, JFXPopup.PopupVPosition.TOP,
-                JFXPopup.PopupHPosition.LEFT, fileMenu.getLayoutX(), fileMenu.getLayoutY() + 50));
+        fileMenu.setOnAction(event -> generateSchedule());
 
-        btnLoadCalendar.setOnAction(event -> loadSchedule(popup));
-
-        btnSchedule.setOnAction(event -> popupEnterprise.show(btnSchedule,JFXPopup.PopupVPosition.TOP,
-                JFXPopup.PopupHPosition.LEFT, btnSchedule.getLayoutX()+140,
-                btnSchedule.getLayoutY()-30));
-
-        close.setOnAction(event -> closeApplication());
 
         notification = new TrayNotification();
         listFiles = new ArrayList<>();
@@ -102,62 +77,6 @@ public class MainMenuController implements Initializable {
         resultLabel.setText("");
 
         progressBar.setProgress(0);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private AnchorPane enterprisesPopUp() throws FileNotFoundException {
-        AnchorPane popupPane = new AnchorPane();
-        VBox vBox = new VBox();
-
-        JFXButton btnPaloMataro = createEnterprisePopUpBtn(PALOBIOFARMA, "Palobiofarma Mataró S.L", 1);
-        JFXButton btnPaloPamplona  = createEnterprisePopUpBtn(PALOBIOFARMA, "Palobiofarma Pamplona S.L", 2);
-        JFXButton btnMedi = createEnterprisePopUpBtn(MEDIBIOFARMA, "Medibiofarma", 3);
-
-        vBox.getChildren().add(btnPaloMataro);
-        vBox.getChildren().add(btnPaloPamplona);
-        vBox.getChildren().add(btnMedi);
-
-        popupPane.getChildren().add(vBox);
-
-        return popupPane;
-    }
-    
-    private ImageView createImageViewBtn(String enterprise) throws FileNotFoundException {
-        ImageView view = new ImageView(new Image(new FileInputStream(enterprise)));
-        view.setFitWidth(25);
-        view.setFitHeight(25);
-        return view;
-    }
-
-    private ImageView createMainImageView(String logo){
-        ImageView view = new ImageView(new Image(getClass().getResourceAsStream(logo)));
-        view.setFitWidth(25);
-        view.setFitHeight(25);
-        return view;
-    }
-
-    private JFXButton createMainPopUpBtn(String logo, String text){
-        JFXButton btn = new JFXButton(text);
-        ImageView view = createMainImageView(logo);
-        btn.setGraphic(view);
-        btn.setCursor(Cursor.HAND);
-        return btn;
-    }
-
-
-    private JFXButton createEnterprisePopUpBtn(String enterprise, String text, int cod_enterprise) throws FileNotFoundException {
-        JFXButton btn = new JFXButton(text);
-        ImageView view = createImageViewBtn(enterprise);
-        btn.setGraphic(view);
-        btn.setCursor(Cursor.HAND);
-        btn.setOnAction(event -> {
-            DirectoryChooser fc = new DirectoryChooser();
-            File f = fc.showDialog(new Stage());
-            mergeExcel(cod_enterprise, f.getAbsolutePath());
-        });
-        return btn;
     }
 
     private void createSlideShow() {
@@ -190,7 +109,7 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    void loadSchedule(JFXPopup popup){
+    void generateSchedule(){
         Stage stage = new Stage();
         FileChooser fc = new FileChooser();
 
@@ -204,14 +123,20 @@ public class MainMenuController implements Initializable {
         }
         else{
             listFiles.add(file);
+            if(file.getName().contains("Mat")){
+                mergeExcel(1, System.getProperty("user.home") + "/Desktop");
+
+            }else{
+                mergeExcel(2, System.getProperty("user.home") + "/Desktop");
+                mergeExcel(3, System.getProperty("user.home") + "/Desktop");
+            }
+
             notification.setMessage("Se ha importado el calendario");
             notification.setTitle("Importacion de calendario");
             notification.setNotificationType(NotificationType.SUCCESS);
         }
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
-
-        popup.hide();
     }
 
     public void mergeExcel(int cod_empresa, String ruta) {
@@ -232,9 +157,9 @@ public class MainMenuController implements Initializable {
             }
 
             listFiles.add(file);
-            if (listFiles.size() < 2) {
+            /*if (listFiles.size() < 2) {
                 System.out.println("ERROR");
-            }
+            }*/
 
             File foto1 = new File(PALOBIOFARMA);
             listFiles.add(foto1);
@@ -245,7 +170,7 @@ public class MainMenuController implements Initializable {
 
             Task<Void> longTask = new Task<Void>() {
                 @Override
-                protected Void call() throws Exception {
+                protected Void call() {
                     Controller controller = new Controller();
                     controller.mergeExcelFiles(lista, empresa, listFiles, ruta);
                     return null;
@@ -254,7 +179,6 @@ public class MainMenuController implements Initializable {
 
             longTask.setOnSucceeded(event -> {
                 progressBar.setProgress(100);
-                resultLabel.setText("   DONE!!!");
                 notification.setMessage("Modelos de horarios creados");
                 notification.setTitle("Control de horario");
                 notification.setNotificationType(NotificationType.SUCCESS);
@@ -264,8 +188,16 @@ public class MainMenuController implements Initializable {
             });
 
             longTask.setOnRunning(event -> {
-                resultLabel.setText("Working on it");
+                resultLabel.setText("Generando horarios de los trabajadores");
                 progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS); //el progressbar este esta al berro
+            });
+
+            longTask.setOnSucceeded(event -> {
+                progressBar.setProgress(100);
+                resultLabel.setText("Horarios generados satisfactoriamente");
+                notification.setMessage("Modelos de horarios creados");
+                notification.setTitle("Control de horario");
+                notification.setNotificationType(NotificationType.SUCCESS);
             });
 
             new Thread(longTask).start();
@@ -277,11 +209,6 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
 
-    }
-
-    @FXML
-    void closeApplication() {
-        System.exit(0);
     }
 
     private void getSlides() {
@@ -350,5 +277,17 @@ public class MainMenuController implements Initializable {
         }
     }
 
-
+    @FXML
+    void executeKeyboardShortcuts(KeyEvent event) throws IOException{
+        KeyCode code = event.getCode();
+        if(code == KeyCode.A){
+            showHelp();
+        }
+        else if(code == KeyCode.G){
+            generateSchedule();
+        }
+        else if(code == KeyCode.E){
+            showEmployeesData();
+        }
+    }
 }
