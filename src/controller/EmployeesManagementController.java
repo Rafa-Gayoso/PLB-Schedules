@@ -9,14 +9,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.util.converter.IntegerStringConverter;
 import model.Empleado;
@@ -64,11 +68,7 @@ public class EmployeesManagementController implements Initializable {
     @FXML
     private MenuItem deleteItem;
 
-    @FXML
-    private MenuItem insertItem;
-
-
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         notification = new TrayNotification();
@@ -161,16 +161,15 @@ public class EmployeesManagementController implements Initializable {
 
                 Scene scene = new Scene(parent);
                 Stage stage = new Stage();
+                scene.setFill(Color.TRANSPARENT);
+                stage.initStyle(StageStyle.TRANSPARENT);
                 stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setAlwaysOnTop(true);
+                //stage.setAlwaysOnTop(true);
                 stage.setScene(scene);
                 stage.show(); }
             catch (IOException e) {
                 e.printStackTrace();
             }});
-
-
-
     }
 
     private void populateTable() {
@@ -210,6 +209,13 @@ public class EmployeesManagementController implements Initializable {
         notification.setMessage(message);
         notification.setTitle(title);
         notification.setNotificationType(type);
+    }
+
+    @FXML
+    void deleteEmployee(KeyEvent event) {
+        if(event.getCode() == KeyCode.DELETE){
+            deleteEmployee();
+        }
     }
 
 
