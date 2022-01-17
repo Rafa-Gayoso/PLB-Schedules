@@ -23,8 +23,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddEmployeeDialogController implements Initializable {
-    private final String EMPTY_FIELD_MESSAGE = "Debe rellenar todos los campos vacíos";
-    private final String EMPTY_FIELD_TITLE = "Campos vacíos";
     private TrayNotification notification;
 
     private ObservableList<Empleado> appMainObservableList;
@@ -54,9 +52,6 @@ public class AddEmployeeDialogController implements Initializable {
     private JFXComboBox<String> comboEmpresa;
 
 
-    @FXML
-    private JFXButton btnClose;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> empresas = FXCollections.observableArrayList(ServicesLocator.getEnterprise().nombreEmpresas());
@@ -75,15 +70,15 @@ public class AddEmployeeDialogController implements Initializable {
     private void insertEmployee(javafx.event.ActionEvent event) {
         boolean validated = validateData();
         if (!validated) {
-            setNotificationData(EMPTY_FIELD_MESSAGE, EMPTY_FIELD_TITLE, NotificationType.ERROR);
+            setNotificationData("Debe rellenar todos los campos vacíos", "Campos vacíos",
+                    NotificationType.ERROR);
         } else {
             Empleado empleado = new Empleado();
             setEmployeeData(empleado);
             ServicesLocator.getEmployee().insertEmployee(empleado);
             resetValues();
-            String INSERTED_MESSAGE = "Empleando insertado al sistema con éxito";
-            String INSERTED_TITLE = "Empleado insertado";
-            setNotificationData(INSERTED_MESSAGE, INSERTED_TITLE,NotificationType.SUCCESS);
+            setNotificationData("Empleando insertado al sistema con éxito", "Empleado insertado",
+                    NotificationType.SUCCESS);
             ObservableList<Empleado> employees = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
             appMainObservableList.setAll(employees);
             closeStage(event);

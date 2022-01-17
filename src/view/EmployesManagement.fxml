@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="647.0" prefWidth="1303.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesManagementController">
+<AnchorPane minHeight="481.0" minWidth="1099.0" prefHeight="647.0" onKeyPressed="#openInsertModal" prefWidth="1303.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesManagementController">
    <children>
       <VBox layoutX="2.0" prefHeight="637.0" prefWidth="1311.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -61,8 +61,7 @@
             <HBox prefHeight="532.0" prefWidth="1310.0">
                <children>
                   <TableView fx:id="employeesTable" editable="true" minHeight="481.0" minWidth="874.0" onKeyPressed="#deleteEmployee" prefHeight="532.0" prefWidth="1292.0" stylesheets="@../styles/Style.css">
-                    
-                                                    <columns>
+                      <columns>
                         <TableColumn fx:id="codCol" prefWidth="75.0" visible="false" />
                       <TableColumn fx:id="nombreCol" prefWidth="141.0" text="Nombre" />
                       <TableColumn fx:id="primerApCol" prefWidth="173.0" text="Primer Apellido" />
