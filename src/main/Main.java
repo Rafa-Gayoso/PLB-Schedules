@@ -22,8 +22,6 @@ public class Main extends Application {
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        Calendar c = Calendar.getInstance();
-        System.out.println("The Current Date is:" + c.get(Calendar.DAY_OF_WEEK));
     }
 
 
