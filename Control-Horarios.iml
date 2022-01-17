@@ -16,5 +16,6 @@
     <orderEntry type="library" name="sqlite-jdbc-3.32.3.2" level="project" />
     <orderEntry type="library" name="jPDFViewer" level="project" />
     <orderEntry type="library" name="bcmail-jdk16-140" level="project" />
+    <orderEntry type="library" name="itextpdf-5.5.9" level="project" />
   </component>
 </module>

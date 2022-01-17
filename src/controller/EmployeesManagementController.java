@@ -1,5 +1,10 @@
 package controller;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
@@ -25,12 +31,18 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EmployeesManagementController implements Initializable {
-
+    private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
+    private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
+    private final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator +
+            "Empleados de Palobiofarma y Medibiofarma.pdf";
 
     private TrayNotification notification;
 
@@ -217,5 +229,89 @@ public class EmployeesManagementController implements Initializable {
         if(keyEvent.getCode() == KeyCode.ADD){
             openModal();
         }
+    }
+
+    @FXML
+    void exportEmployees() {
+        Document document = new Document();
+        try
+        {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(PDF_Directory));
+            document.open();
+            document.addAuthor("Palobiofarma S.L");
+            document.addCreationDate();
+            document.addTitle("Listado de empleados Palobiofarma y Medibiofarma");
+            //document.addSubject("An example to show how attributes can be added to pdf files.");
+            PdfPTable table = new PdfPTable(6); // 6 columns.
+            table.setWidthPercentage(100); //Width 100%
+            table.setSpacingBefore(10f); //Space before table
+            table.setSpacingAfter(10f); //Space after table
+
+            //Add Image
+            Image image1 = Image.getInstance(PALOBIOFARMA);
+
+            //Fixed Positioning
+            image1.setAbsolutePosition(35f, 780f);
+
+            //Scale to new height and new width of image
+            image1.scaleAbsolute(100, 55);
+
+            //Add to document
+            document.add(image1);
+
+            Image image2 = Image.getInstance(MEDIBIOFARMA);
+            image2.setAbsolutePosition(415f, 780f);
+
+            //Scale to new height and new width of image
+            image2.scaleAbsolute(150, 55);
+
+            //Add to document
+            document.add(image2);
+            document.add(new Paragraph(" "));
+            //Set Column widths
+            float[] columnWidths = {1.5f, 2.1f, 1.3f, 1.8f, 0.5f, 1.7f};
+            table.setWidths(columnWidths);
+
+            table.addCell(createCell("Nombre"));
+            table.addCell(createCell("Apellidos"));
+            table.addCell(createCell("NIF/NIE"));
+            table.addCell(createCell("Número de Afiliación"));
+            table.addCell(createCell("H"));
+            table.addCell(createCell("Empresa"));
+
+            for(Empleado employee: employeesTable.getItems()){
+                table.addCell(createCell(employee.getNombre()));
+                table.addCell(createCell(employee.getPrimer_apellido() + " "+ employee.getSegundo_apellido()));
+                table.addCell(createCell(employee.getNif()));
+                table.addCell(createCell(employee.getNumero_afiliacion()));
+                table.addCell(createCell(Integer.toString(employee.getHoras_laborables())));
+                table.addCell(createCell(employee.getNombre_empresa()));
+            }
+            File file = new File(PDF_Directory);
+
+            //first check if Desktop is supported by Platform or not
+            Desktop desktop = Desktop.getDesktop();
+
+            if(file.exists()) {
+                desktop.open(file);
+            }
+            document.add(table);
+            document.close();
+            writer.close();
+
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private PdfPCell createCell(String text){
+        PdfPCell cell = new PdfPCell(new Paragraph(text));
+        cell.setPaddingLeft(7);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setUseBorderPadding(true);
+        return cell;
     }
 }

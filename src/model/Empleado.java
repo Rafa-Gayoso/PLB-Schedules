@@ -179,6 +179,8 @@ public class Empleado {
         this.horas_laborables.set(horas_laborables);
     }
 
+
+
     @SuppressWarnings("unused")
     public String toStringCode() {
         return "Empleado{" +
