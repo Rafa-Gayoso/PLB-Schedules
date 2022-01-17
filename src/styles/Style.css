@@ -19,13 +19,15 @@
     -fx-base: white;
     -fx-control-inner-background: white;
     -fx-background-color: white;
-    -fx-table-cell-border-color: transparent;
+    /*-fx-table-cell-border-color: transparent;*/
     -fx-table-header-border-color: transparent;
-    -fx-padding: 5;
+    -fx-border-width: 1px;
+    -fx-border-color: #5598b8;
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);*/
 }
 
 .table-view .column-header-background {
-    -fx-background-color: transparent;
+    -fx-background-color: #5598b8;
 }
 
 .table-view .column-header, .table-view .filler {
@@ -43,7 +45,7 @@
 .table-view .column-header .label {
     -fx-font-size: 20px;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #2f2484;
+    -fx-text-fill: white;
     -fx-alignment: center;
     -fx-opacity: 1;
 }
@@ -54,8 +56,12 @@
 
 .table-cell {
     -fx-border-color: -fx-box-border -fx-box-border transparent transparent;
-    -fx-font: 21px "Segoe UI Symbol";
+    -fx-font: 18px "Segoe UI Symbol";
     -fx-text-fill: #2f2484;
+}
+
+.table-view .table-column {
+    -fx-alignment: CENTER;
 }
 
 .combo-box,
@@ -98,8 +104,21 @@
     -fx-font-size: 20px;
 }
 
-#insertBtn{
-    -fx-background-color: #1EA896;
+#dataPane{
+    -fx-background-color: white;
+    -fx-background-radius: 50px;
+
+    -fx-border-radius: 50px;
+    -fx-border-width: 5px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.insertBtn{
+    -fx-background-color: #5598b8;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 22px;
 }
 
 

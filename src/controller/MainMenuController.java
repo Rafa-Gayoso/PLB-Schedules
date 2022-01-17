@@ -309,7 +309,6 @@ public class MainMenuController implements Initializable {
     @FXML
     void showEmployeesData() {
         try {
-            System.out.println("Panel de edicion de empleados" + "\n" + "-------------------------");
             ScalableContentPane scale = new ScalableContentPane();
             FXMLLoader loader = new FXMLLoader();
             Parent root = FXMLLoader.load(getClass().getResource("/view/EmployesManagement.fxml"));
@@ -319,9 +318,11 @@ public class MainMenuController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Gestionar Empleados");
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setResizable(false);
+            dialogStage.setMinHeight(dialogStage.getMinHeight());
+            dialogStage.setMinWidth(dialogStage.getMinWidth());
+            //dialogStage.setResizable(false);
             dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-            dialogStage.setAlwaysOnTop(true);
+            //dialogStage.setAlwaysOnTop(true);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 

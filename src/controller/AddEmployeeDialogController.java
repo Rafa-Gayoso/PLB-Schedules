@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Empleado;
@@ -17,8 +19,6 @@ import services.ServicesLocator;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
-
-;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,6 +53,10 @@ public class AddEmployeeDialogController implements Initializable {
     @FXML
     private JFXComboBox<String> comboEmpresa;
 
+
+    @FXML
+    private JFXButton btnClose;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> empresas = FXCollections.observableArrayList(ServicesLocator.getEnterprise().nombreEmpresas());
@@ -64,8 +68,7 @@ public class AddEmployeeDialogController implements Initializable {
 
         notification = new TrayNotification();
 
-        btnInsert.setOnAction(event -> insertEmployee(event));
-
+        btnInsert.setOnAction(this::insertEmployee);
 
     }
 
@@ -139,5 +142,15 @@ public class AddEmployeeDialogController implements Initializable {
         Node source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void closeModal(KeyEvent event) {
+        if(event.getCode() == KeyCode.ESCAPE){
+            Node source = (Node)  event.getSource();
+            Stage stage  = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
+
     }
 }
