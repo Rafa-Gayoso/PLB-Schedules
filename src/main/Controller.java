@@ -262,7 +262,6 @@ public class Controller {
                                 if (cell != null) {
                                     cell.setCellValue(Integer.parseInt(calendar_year));
                                     cell.setCellType(CellType.NUMERIC);
-                                    System.out.println(cell.getNumericCellValue());
                                 }
 
                                 cell = sheet.getRow(53).getCell(1);
@@ -280,12 +279,9 @@ public class Controller {
 
                                 cell = sheet.getRow(14).getCell(8);
                                 if (total_sheets == 2 && cell != null) {
-
                                     cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" + cell.getCellFormula() + ")/8");
-                                    System.out.println(cell.getCellFormula());
                                 } else if (total_sheets > 2) {
                                     cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" + cell.getCellFormula() + ")/8");
-                                    System.out.println(cell.getCellFormula());
                                 }
                             }
                         }
@@ -340,8 +336,7 @@ public class Controller {
 
     private String formatEmployeeName(Empleado employee){
 
-        return employee.getNombre() +" "+employee.getPrimer_apellido()+
-                " "+employee.getSegundo_apellido();
+        return employee.getNombre() +" "+employee.getPrimer_apellido();
     }
 
 

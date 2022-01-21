@@ -25,19 +25,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_5_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/itextpdf-5.5.9.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e3199882-43ce-4a3c-b55f-c6ed55bc2747.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control-Horarios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Control-Horarios.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/palobiofarma.png" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/palobiofarma.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios_jar/Control-Horarios.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios_jar/Control-Horarios.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/database/palobiofarma.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/database/palobiofarma.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/model/Empleado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/model/Empleado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/view/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/view/EmployesManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/palobiofarma.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/palobiofarma.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EmployesManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,17 +214,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -295,6 +277,11 @@
       <workItem from="1642271699519" duration="12165000" />
       <workItem from="1642407857569" duration="23422000" />
       <workItem from="1642444752752" duration="3057000" />
+      <workItem from="1642588668826" duration="216000" />
+      <workItem from="1642669208798" duration="212000" />
+      <workItem from="1642671291713" duration="1008000" />
+      <workItem from="1642679883443" duration="194000" />
+      <workItem from="1642754013665" duration="3486000" />
     </task>
     <servers />
   </component>
@@ -345,10 +332,10 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1642286567280" />
-    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1642415796378">
+    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1642671311698">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.832@0.0.1536.832" timestamp="1642415796378" />
+    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.832@0.0.1536.832" timestamp="1642671311698" />
     <state x="518" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1642180448837">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
@@ -373,50 +360,50 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="549" y="158" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1642161617735" />
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1642447857222">
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1642756761598">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642447857222" />
-    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1642447857222">
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642756761598" />
+    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1642756761598">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1642447857222" />
-    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1642447857222">
+    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1642756761598" />
+    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1642756761597">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1642447857222" />
-    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1642447857222">
+    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1642756761597" />
+    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1642756761598">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1642447857222" />
-    <state width="1493" height="217" key="GridCell.Tab.1.bottom" timestamp="1642447662574">
+    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1642756761598" />
+    <state width="1493" height="217" key="GridCell.Tab.1.bottom" timestamp="1642755844548">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642447662574" />
-    <state width="1493" height="217" key="GridCell.Tab.1.center" timestamp="1642447662573">
+    <state width="1493" height="217" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1642755844548" />
+    <state width="1493" height="217" key="GridCell.Tab.1.center" timestamp="1642755844548">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1642447662573" />
-    <state width="1493" height="217" key="GridCell.Tab.1.left" timestamp="1642447662573">
+    <state width="1493" height="217" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1642755844548" />
+    <state width="1493" height="217" key="GridCell.Tab.1.left" timestamp="1642755844546">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1642447662573" />
-    <state width="1493" height="217" key="GridCell.Tab.1.right" timestamp="1642447662573">
+    <state width="1493" height="217" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1642755844546" />
+    <state width="1493" height="217" key="GridCell.Tab.1.right" timestamp="1642755844548">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1642447662573" />
+    <state width="1493" height="217" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1642755844548" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1642179836806">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.832@0.0.1536.832" timestamp="1642179836806" />
-    <state x="349" y="151" key="IDE.errors.dialog" timestamp="1642407884764">
+    <state x="349" y="151" key="IDE.errors.dialog" timestamp="1642671346388">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="349" y="151" key="IDE.errors.dialog/0.0.1536.832@0.0.1536.832" timestamp="1642407884764" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1642415804679">
+    <state x="349" y="151" key="IDE.errors.dialog/0.0.1536.832@0.0.1536.832" timestamp="1642671346388" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1642671326686">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1642415804679" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1642671326686" />
     <state width="334" height="441" key="SqlResolveConfigurable" timestamp="1642180150914">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
@@ -459,19 +446,15 @@
     <state x="431" y="153" width="672" height="678" key="search.everywhere.popup/0.0.1536.832@0.0.1536.832" timestamp="1642440758667" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/Controller.java</url>
-          <line>193</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression=" cell.getCellStyle().getFillBackgroundColorColor().getARGBHex()" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PLB_Schedules$Main.ic" NAME="Main Coverage Results" MODIFIED="1642508646686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
   </component>
 </project>
