@@ -39,7 +39,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/mysql-connector-java-8.0.28.jar" path-in-jar="/" />
       <element id="library" level="project" name="controlsfx-8.40.15" />
       <element id="library" level="project" name="controlsfx-samples-8.40.15" />
-      <element id="library" level="project" name="csv_reader" />
       <element id="library" level="project" name="itextpdf-5.5.9" />
       <element id="library" level="project" name="jfoenix-8.0.8" />
       <element id="library" level="project" name="mysql-connector-java-8.0.28" />
