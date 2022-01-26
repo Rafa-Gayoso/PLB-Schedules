@@ -130,30 +130,28 @@ public class Controller {
 
             for (Cell value : row) {
                 XSSFCell cell = (XSSFCell) value;
-
-                if (cell.getCellType() != CellType.STRING) {
-                    if (DateUtil.isCellDateFormatted(cell)) {
-                        Date date = cell.getDateCellValue();
-
-                        if (date != null) {
-                            int month = date.getMonth() + 1;
-                            int day = date.getDate();
-                            if (date.getDay() == 0 || date.getDay() == 6 || !cell.getCellStyle().getFillForegroundColorColor().getARGBHex().equalsIgnoreCase("FFFFFFFF")) {
-
-                                pass(workbook.getSheetAt(month), day, cell.getCellStyle(), month);
-                            }
-
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                            String strDate = dateFormat.format(date);
-                            workbook.getSheetAt(month).getRow(10).getCell(5).setCellValue(strDate.substring(0,6) + calendarYear);
-                        }
-                    }
+                if (cell.getCellType() != CellType.STRING && DateUtil.isCellDateFormatted(cell) ) {
+                    Date date = cell.getDateCellValue();
+                    if (date != null)
+                        setStyleAndData(workbook, cell, date, calendarYear);
                 }
             }
         }
     }
 
-    private void pass(XSSFSheet sheet, int day, CellStyle cellStyle, int month) {
+    private void setStyleAndData(XSSFWorkbook book,XSSFCell cell,Date date, String calendarYear){
+        int month = date.getMonth() + 1;
+        int day = date.getDate();
+        if (date.getDay() == 0 || date.getDay() == 6 || !cell.getCellStyle().getFillForegroundColorColor().getARGBHex().equalsIgnoreCase("FFFFFFFF")) {
+            passStyleToCell(book.getSheetAt(month), day, cell.getCellStyle(), month);
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = dateFormat.format(date);
+        book.getSheetAt(month).getRow(10).getCell(5).setCellValue(strDate.substring(0,6) + calendarYear);
+    }
+
+    private void passStyleToCell(XSSFSheet sheet, int day, CellStyle cellStyle, int month) {
 
         boolean match = false;
         int rowStart = 15;
