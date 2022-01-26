@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="palobiofarma.db" uuid="940e34b0-ec0c-496c-a4aa-1183437952f3">
+    <data-source source="LOCAL" name="palobiofarma.db" uuid="d944eaad-f131-4a48-a201-ba3fea9a4dbc">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\database\palobiofarma.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/database/palobiofarma.db</jdbc-url>
     </data-source>
   </component>
 </project>

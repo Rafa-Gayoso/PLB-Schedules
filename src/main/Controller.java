@@ -195,10 +195,10 @@ public class Controller {
             if(!dir.exists()){
                 dir.mkdir();
             }
-            for (Empleado listaEmpleado : listaEmpleados) {
+            for (Empleado empleado : listaEmpleados) {
                 ArrayList<InputStream> list = new ArrayList<>();
                 FileInputStream inputStream1 = new FileInputStream(files.get(0));
-                String employeeFullName = formatEmployeeName(listaEmpleado);
+                String employeeFullName = formatEmployeeName(empleado);
                 FileInputStream inputStream2 = new FileInputStream(files.get(1));
 
                 list.add(inputStream1);
@@ -274,19 +274,24 @@ public class Controller {
                                 if (cell != null) {
                                     //-2 para qiue coincida el numero de la lista con el numero de la hoja
                                     cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
-                                            cell_formulas.get(total_sheets - 2) + "*" + listaEmpleado.getHoras_laborables() + ")/8");
+                                            cell_formulas.get(total_sheets - 2) + "*" + empleado.getHoras_laborables() + ")/8");
                                 }
 
                                 cell = sheet.getRow(14).getCell(8);
                                 if (total_sheets == 2 && cell != null) {
-                                    cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" + cell.getCellFormula() + ")/8");
+                                    cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" +
+                                            cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
                                 } else if (total_sheets > 2) {
-                                    cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" + cell.getCellFormula() + ")/8");
+                                    cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" +
+                                            cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
                                 }
                             }
                         }
                     }
-                    setDataWorkerInScheduleModel(book, empresa, listaEmpleado);
+                    setDataWorkerInScheduleModel(book, empresa, empleado);
+                    if(empleado.getHoras_laborables() == 4){
+                        fixEmployeeMidDay(book);
+                    }
                     passWeekendToSheets(book);
                     writeFile(book, file);
                 } catch (Exception e) {
@@ -329,7 +334,7 @@ public class Controller {
             //set CIF empresa
             book.getSheetAt(i).getRow(8).getCell(5).setCellValue(empleado.getNif());
 
-            //set Centro de trabajo
+            //set Numero de afiliación
             book.getSheetAt(i).getRow(9).getCell(5).setCellValue(empleado.getNumero_afiliacion());
         }
     }
@@ -337,6 +342,27 @@ public class Controller {
     private String formatEmployeeName(Empleado employee){
 
         return employee.getNombre() +" "+employee.getPrimer_apellido();
+    }
+
+    private void fixEmployeeMidDay(XSSFWorkbook book){
+        int cellNumber = 6;
+        String originalFormula;
+        String correctedFormula;
+        for (int i = 1; i < 13; i++) {
+            XSSFSheet currentSheet =  book.getSheetAt(i);
+            for(int j = 15; j < 46; j++) {
+                Row row = currentSheet.getRow(j);
+                Cell cell = row.getCell(cellNumber);
+                if (cell != null)
+                    cell.setCellFormula("((E" + (j + 1) + "-C" + (j + 1) + ")*24)");
+            }
+            //need to change the formula to calculate the remaining vacations day
+            originalFormula = currentSheet.getRow(46).getCell(cellNumber).getCellFormula();
+            correctedFormula =  originalFormula.replace(originalFormula.charAt(originalFormula.length()-1),'4');
+            currentSheet.getRow(46).getCell(cellNumber).setCellFormula(correctedFormula);
+        }
+
+
     }
 
 
