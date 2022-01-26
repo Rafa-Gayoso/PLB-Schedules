@@ -8,6 +8,7 @@ import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Controller {
@@ -120,7 +121,7 @@ public class Controller {
         return cells;
     }
 
-    private void passWeekendToSheets(XSSFWorkbook workbook) {
+    private void passWeekendToSheets(XSSFWorkbook workbook, String calendarYear) {
 
         XSSFSheet calendarSheet = workbook.getSheetAt(0);
 
@@ -135,25 +136,16 @@ public class Controller {
                         Date date = cell.getDateCellValue();
 
                         if (date != null) {
+                            int month = date.getMonth() + 1;
+                            int day = date.getDate();
                             if (date.getDay() == 0 || date.getDay() == 6 || !cell.getCellStyle().getFillForegroundColorColor().getARGBHex().equalsIgnoreCase("FFFFFFFF")) {
-                                //System.out.println("Color: " + cell.getCellStyle().getFillForegroundColorColor().getARGBHex());
-                                int mouth = date.getMonth();
-                                int day = date.getDate();
 
-                                pass(workbook.getSheetAt(mouth + 1), day, cell.getCellStyle());
+                                pass(workbook.getSheetAt(month), day, cell.getCellStyle(), month);
                             }
 
-                            if ((date.getMonth() == 0 || date.getMonth() == 2 || date.getMonth() == 4 || date.getMonth() == 6 || date.getMonth() == 7 || date.getMonth() == 9 || date.getMonth() == 11) && date.getDate() == 31) {
-                                workbook.getSheetAt(date.getMonth() + 1).getRow(10).getCell(5).setCellValue(date);
-                            } else if ((date.getMonth() == 3 || date.getMonth() == 5 || date.getMonth() == 8 || date.getMonth() == 10) && date.getDate() == 30) {
-                                workbook.getSheetAt(date.getMonth() + 1).getRow(10).getCell(5).setCellValue(date);
-                            } else if (date.getMonth() == 1) {
-                                if (date.getYear() % 4 == 0 && date.getDate() == 29) {
-                                    workbook.getSheetAt(date.getMonth() + 1).getRow(10).getCell(5).setCellValue(date);
-                                } else if (date.getYear() % 4 != 0 && date.getDate() == 28) {
-                                    workbook.getSheetAt(date.getMonth() + 1).getRow(10).getCell(5).setCellValue(date);
-                                }
-                            }
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            String strDate = dateFormat.format(date);
+                            workbook.getSheetAt(month).getRow(10).getCell(5).setCellValue(strDate.substring(0,6) + calendarYear);
                         }
                     }
                 }
@@ -161,7 +153,7 @@ public class Controller {
         }
     }
 
-    private void pass(XSSFSheet sheet, int day, CellStyle cellStyle) {
+    private void pass(XSSFSheet sheet, int day, CellStyle cellStyle, int month) {
 
         boolean match = false;
         int rowStart = 15;
@@ -172,6 +164,10 @@ public class Controller {
                 match = true;
             } else
                 rowStart++;
+        }
+        if(month == 12 && day == 31){
+            XSSFCellStyle style = sheet.getRow(38).getCell(1).getCellStyle();
+            fixAdjacentCell(sheet.getRow(45).getCell(1), sheet.getRow(45), style);
         }
     }
 
@@ -292,7 +288,7 @@ public class Controller {
                     if(empleado.getHoras_laborables() == 4){
                         fixEmployeeMidDay(book);
                     }
-                    passWeekendToSheets(book);
+                    passWeekendToSheets(book, calendar_year);
                     writeFile(book, file);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
