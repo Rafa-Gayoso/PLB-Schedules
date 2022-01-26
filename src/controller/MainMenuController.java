@@ -137,6 +137,7 @@ public class MainMenuController implements Initializable {
         }
         notification.showAndDismiss(Duration.millis(5000));
         notification.setAnimationType(AnimationType.POPUP);
+        listFiles = new ArrayList<>();
     }
 
     public void mergeExcel(int cod_empresa, String ruta) {
@@ -192,18 +193,19 @@ public class MainMenuController implements Initializable {
                 progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS); //el progressbar este esta al berro
             });
 
-            longTask.setOnSucceeded(event -> {
+            /*longTask.setOnSucceeded(event -> {
                 progressBar.setProgress(100);
                 resultLabel.setText("Horarios generados satisfactoriamente");
                 notification.setMessage("Modelos de horarios creados");
                 notification.setTitle("Control de horario");
                 notification.setNotificationType(NotificationType.SUCCESS);
-            });
+
+            });*/
 
             new Thread(longTask).start();
 
 
-            //listFiles.remove(listFiles.size()-1);
+
 
         } catch (Exception e) {
             e.printStackTrace();

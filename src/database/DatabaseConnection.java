@@ -9,9 +9,14 @@ public class DatabaseConnection {
     public DatabaseConnection()  {
 
         try{
-            Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite::resource:database/palobiofarma.db";
-            connection = DriverManager.getConnection(url);
+            String url = "jdbc:mysql://palo-db.crra9zetpa9g.eu-west-3.rds.amazonaws.com:3306/palo-db";
+
+            String userName = "RafaGayoso";
+            String password = "rafa1997.";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, userName,
+                    password);
         }catch (Exception e){
             System.err.println("Error");
         }
