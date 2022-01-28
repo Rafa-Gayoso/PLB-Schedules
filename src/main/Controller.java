@@ -220,78 +220,57 @@ public class Controller {
                 String calendar_year = "";
                 String location = "";
                 int total_sheets = 0;
-                try {
-                    for (InputStream fin : list) {
-                        XSSFWorkbook b = new XSSFWorkbook(fin);
-                        for (int i = 0; i < b.getNumberOfSheets(); i++) {
-                            sheet = book.createSheet(b.getSheetName(i));
-                            copySheets(book, sheet, b.getSheetAt(i));
-                            total_sheets++;
-                            if (book.getNumberOfSheets() == 1) {
-                                calendar_year = book.getSheetAt(0).getRow(0).getCell(1).getStringCellValue();
-                                calendar_year = calendar_year.split(" ")[1];
-                                location = book.getSheetAt(0).getRow(0).getCell(6).getStringCellValue();
+                for (InputStream fin : list) {
+                    XSSFWorkbook b = new XSSFWorkbook(fin);
+                    for (int i = 0; i < b.getNumberOfSheets(); i++) {
+                        sheet = book.createSheet(b.getSheetName(i));
+                        copySheets(book, sheet, b.getSheetAt(i));
+                        total_sheets++;
+                        if (book.getNumberOfSheets() == 1) {
+                            calendar_year = book.getSheetAt(0).getRow(0).getCell(1).getStringCellValue();
+                            calendar_year = calendar_year.split(" ")[1];
+                            location = book.getSheetAt(0).getRow(0).getCell(6).getStringCellValue();
+                        }
+                        if (total_sheets > 1) {
+                            addEnterpriseLogoToSheet(book, sheet, pictureIdx);
+                            //Push date
+                            Cell cell = sheet.getRow(53).getCell(6);
+                            if (cell != null) {
+                                cell.setCellValue(Integer.parseInt(calendar_year));
+                                cell.setCellType(CellType.NUMERIC);
                             }
-                            if (total_sheets > 1) {
-                                //LOGO Creation
-                                //Returns an object that handles instantiating concrete classes
-                                CreationHelper helper = book.getCreationHelper();
 
-                                //Creates the top-level drawing patriarch.
-                                Drawing drawing = sheet.createDrawingPatriarch();
+                            cell = sheet.getRow(53).getCell(1);
+                            if (cell != null) {
+                                cell.setCellValue("En " + location + " a");
+                                cell.setCellType(CellType.STRING);
+                            }
 
-                                //Create an anchor that is attached to the worksheet
-                                ClientAnchor anchor = helper.createClientAnchor();
-                                //set top-left corner for the image
-                                anchor.setCol1(1);
-                                anchor.setRow1(1);
+                            cell = sheet.getRow(48).getCell(6);
+                            if (cell != null) {
+                                //-2 para qiue coincida el numero de la lista con el numero de la hoja
+                                cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
+                                        cell_formulas.get(total_sheets - 2) + "*" + empleado.getHoras_laborables() + ")/8");
+                            }
 
-                                //Creates a picture
-                                Picture pict = drawing.createPicture(anchor, pictureIdx);
-                                //Reset the image to the original size
-                                pict.resize(3, 3);
-
-                                //Push date
-                                Cell cell = sheet.getRow(53).getCell(6);
-                                if (cell != null) {
-                                    cell.setCellValue(Integer.parseInt(calendar_year));
-                                    cell.setCellType(CellType.NUMERIC);
-                                }
-
-                                cell = sheet.getRow(53).getCell(1);
-                                if (cell != null) {
-                                    cell.setCellValue("En " + location + " a");
-                                    cell.setCellType(CellType.STRING);
-                                }
-
-                                cell = sheet.getRow(48).getCell(6);
-                                if (cell != null) {
-                                    //-2 para qiue coincida el numero de la lista con el numero de la hoja
-                                    cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
-                                            cell_formulas.get(total_sheets - 2) + "*" + empleado.getHoras_laborables() + ")/8");
-                                }
-
-                                cell = sheet.getRow(14).getCell(8);
-                                if (total_sheets == 2 && cell != null) {
-                                    cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" +
-                                            cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
-                                } else if (total_sheets > 2) {
-                                    cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" +
-                                            cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
-                                }
+                            cell = sheet.getRow(14).getCell(8);
+                            if (total_sheets == 2 && cell != null) {
+                                cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" +
+                                        cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
+                            } else if (total_sheets > 2) {
+                                cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" +
+                                        cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
                             }
                         }
                     }
-                    setDataWorkerInScheduleModel(book, empresa, empleado);
-                    if(empleado.getHoras_laborables() == 4){
-                        fixEmployeeMidDay(book);
-                    }
-                    passWeekendToSheets(book, calendar_year);
-                    writeFile(book, file);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
                 }
+                setDataWorkerInScheduleModel(book, empresa, empleado);
+                if(empleado.getHoras_laborables() == 4){
+                    fixEmployeeMidDay(book);
+                }
+                passWeekendToSheets(book, calendar_year);
+                writeFile(book, file);
+
                 inputStream1.close();
                 inputStream2.close();
             }
@@ -359,5 +338,24 @@ public class Controller {
 
     }
 
+    private void addEnterpriseLogoToSheet(XSSFWorkbook book, XSSFSheet sheet, int pictureIdx){
+        //LOGO Creation
+        //Returns an object that handles instantiating concrete classes
+        CreationHelper helper = book.getCreationHelper();
+
+        //Creates the top-level drawing patriarch.
+        Drawing drawing = sheet.createDrawingPatriarch();
+
+        //Create an anchor that is attached to the worksheet
+        ClientAnchor anchor = helper.createClientAnchor();
+        //set top-left corner for the image
+        anchor.setCol1(1);
+        anchor.setRow1(1);
+
+        //Creates a picture
+        Picture pict = drawing.createPicture(anchor, pictureIdx);
+        //Reset the image to the original size
+        pict.resize(3, 3);
+    }
 
 }
