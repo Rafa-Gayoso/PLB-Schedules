@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dataPane" onKeyPressed="#closeModal" prefHeight="668.0" prefWidth="367.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddEmployeeDialogController">
+   <children>
+      <GridPane layoutX="38.0" layoutY="11.0" prefHeight="646.0" prefWidth="292.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXTextField fx:id="nombreTextField" labelFloat="true" prefHeight="12.0" prefWidth="292.0" promptText="Nombre del empleado">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="primApellidoTextField" labelFloat="true" prefHeight="12.0" prefWidth="292.0" promptText="Primer Apellido" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="segApellidoTextfield" labelFloat="true" prefHeight="22.0" prefWidth="292.0" promptText="Segundo Apellido" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="nifTextfield" labelFloat="true" promptText="NIF/NIE" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="numTextfield" labelFloat="true" promptText="Número de afiliación" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox fx:id="comboEmpresa" labelFloat="true" prefHeight="21.0" prefWidth="292.0" promptText="Empresa" stylesheets="@../styles/Style.css" GridPane.rowIndex="7">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXComboBox>
+            <JFXTextField fx:id="horasLaborables" labelFloat="true" prefHeight="27.0" prefWidth="292.0" promptText="Horas laborables" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="44.0" prefWidth="202.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Añadir empleado" GridPane.rowIndex="8">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="email" labelFloat="true" prefHeight="12.0" prefWidth="292.0" promptText="Email" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

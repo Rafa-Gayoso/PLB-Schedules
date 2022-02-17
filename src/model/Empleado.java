@@ -1,11 +1,11 @@
 package model;
 
-import com.jfoenix.controls.JFXComboBox;
-import javafx.beans.Observable;
+import dao.implementation.EmpresaDaoImpl;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ObservableList;
 import services.ServicesLocator;
+
+import java.io.File;
 
 public class Empleado {
     private SimpleIntegerProperty cod_empleado;
@@ -17,9 +17,13 @@ public class Empleado {
     private final SimpleIntegerProperty cod_empresa;
     private final SimpleStringProperty nombre_empresa;
     private final SimpleIntegerProperty horas_laborables;
+    private String direccionCronograma;
+    private int codUsuario;
+    private String email;
 
     @SuppressWarnings("unused")
-    public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion, int horas_laborables, int cod_empresa) {
+    public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion,
+                    int horas_laborables, int cod_empresa) {
         this.nombre = new SimpleStringProperty(nombre);
         this.primer_apellido = new SimpleStringProperty(primer_apellido);
         this.segundo_apellido = new SimpleStringProperty(segundo_apellido);
@@ -27,11 +31,12 @@ public class Empleado {
         this.numero_afiliacion = new SimpleStringProperty(numero_afiliacion);
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
-        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
+        this.nombre_empresa = new SimpleStringProperty(new EmpresaDaoImpl().getEmpresaNombreByCod(cod_empresa));
+        this.codUsuario = 0;
     }
 
     public Empleado(int cod_empleado, String nombre, String primer_apellido, String segundo_apellido, String nif,
-                    String numero_afiliacion, int horas_laborables, int cod_empresa) {
+                    String numero_afiliacion, int horas_laborables, int cod_empresa, String direccionCronograma,int codUsuario, String email) {
         this.cod_empleado = new SimpleIntegerProperty(cod_empleado);
         this.nombre = new SimpleStringProperty(nombre);
         this.primer_apellido = new SimpleStringProperty(primer_apellido);
@@ -40,7 +45,10 @@ public class Empleado {
         this.numero_afiliacion = new SimpleStringProperty(numero_afiliacion);
         this.horas_laborables = new SimpleIntegerProperty(horas_laborables);
         this.cod_empresa = new SimpleIntegerProperty(cod_empresa);
-        this.nombre_empresa = new SimpleStringProperty(ServicesLocator.getEnterprise().getEmpresaNombreByCod(cod_empresa));
+        this.nombre_empresa = new SimpleStringProperty(new EmpresaDaoImpl().getEmpresaNombreByCod(cod_empresa));
+        this.direccionCronograma = direccionCronograma;
+        this.codUsuario = codUsuario;
+        this.email = email;
 
     }
 
@@ -55,6 +63,8 @@ public class Empleado {
         this.cod_empresa = new SimpleIntegerProperty();
         this.nombre_empresa = new SimpleStringProperty();
         this.horas_laborables = new SimpleIntegerProperty();
+        this.direccionCronograma = "";
+        this.email = "";
     }
 
 
@@ -181,28 +191,44 @@ public class Empleado {
 
 
 
-    @SuppressWarnings("unused")
-    public String toStringCode() {
-        return "Empleado{" +
-                "cod_empleado=" + cod_empleado +
-                ", nombre='" + nombre + '\'' +
-                ", primer_apellido='" + primer_apellido + '\'' +
-                ", segundo_apellido='" + segundo_apellido + '\'' +
-                ", nif='" + nif + '\'' +
-                ", numero_afiliacion='" + numero_afiliacion + '\'' +
-                ", nombre_empresa=" + nombre_empresa +
-                '}';
+    public String getDireccionCronograma() {
+        return direccionCronograma;
+    }
+
+    public void setDireccionCronograma(String direccionCronograma) {
+        this.direccionCronograma = direccionCronograma;
+    }
+
+
+    public int getCodUsuario() {
+        return codUsuario;
+    }
+
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
         return "Empleado{" +
-                "nombre='" + nombre + '\'' +
-                ", primer_apellido='" + primer_apellido + '\'' +
-                ", segundo_apellido='" + segundo_apellido + '\'' +
-                ", nif='" + nif + '\'' +
-                ", numero_afiliacion='" + numero_afiliacion + '\'' +
+                "cod_empleado=" + cod_empleado +
+                ", nombre=" + nombre +
+                ", primer_apellido=" + primer_apellido +
+                ", segundo_apellido=" + segundo_apellido +
+                ", nif=" + nif +
+                ", numero_afiliacion=" + numero_afiliacion +
+                ", cod_empresa=" + cod_empresa +
                 ", nombre_empresa=" + nombre_empresa +
+                ", horas_laborables=" + horas_laborables +
+                ", direccionCronograma='" + direccionCronograma + '\'' +
                 '}';
     }
 }

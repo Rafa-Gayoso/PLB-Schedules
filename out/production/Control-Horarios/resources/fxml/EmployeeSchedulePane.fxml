@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="740.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeSchedulePaneController">
+    <children>
+        <TabPane fx:id="tabPane" prefHeight="740.0" prefWidth="632.0" stylesheets="@../styles/Style.css">
+            <tabs>
+                <Tab text="Enero" />
+                <Tab text="Febrero" />
+                <Tab text="Marzo" />
+                <Tab text="Abril" />
+                <Tab text="Mayo" />
+                <Tab text="Junio" />
+                <Tab text="Julio" />
+                <Tab text="Agosto" />
+                <Tab text="Septiembre" />
+                <Tab text="Octubre" />
+                <Tab text="Noviembre" />
+                <Tab text="Diciembre" />
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

@@ -6,7 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import utils.SMBUtils;
 
+import java.io.File;
 import java.util.Calendar;
 
 public class Main extends Application {
@@ -14,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //ScalableContentPane scale = new ScalableContentPane();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/Login.fxml"));
         //scale.setContent(root);
         root.requestFocus();
         primaryStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
@@ -22,6 +24,8 @@ public class Main extends Application {
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+
     }
 
 

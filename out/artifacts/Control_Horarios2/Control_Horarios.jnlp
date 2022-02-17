@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Control_Horarios.jnlp">
+  <information>
+    <title>Control-Horarios2</title>
+    <vendor>Unknown</vendor>
+    <description>Control-Horarios2</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AnimateFX-1.2.1.jar" size="94267" download="eager" />
+    <jar href="Control_Horarios.jar" size="1336614" download="eager" />
+    <jar href="SparseBitSet-1.2.jar" size="24510" download="eager" />
+    <jar href="TrayNotification.jar" size="41019" download="eager" />
+    <jar href="activation-1.1.1.jar" size="69409" download="eager" />
+    <jar href="asn-one-0.5.0.jar" size="68389" download="eager" />
+    <jar href="bcprov-jdk15on-1.69.jar" size="5743920" download="eager" />
+    <jar href="commons-codec-1.13.jar" size="344339" download="eager" />
+    <jar href="commons-collections4-4.4.jar" size="751914" download="eager" />
+    <jar href="commons-compress-1.19.jar" size="615064" download="eager" />
+    <jar href="commons-io-2.11.0-tests.jar" size="662564" download="eager" />
+    <jar href="commons-io-2.11.0.jar" size="327135" download="eager" />
+    <jar href="commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="commons-math3-3.6.1.jar" size="2213560" download="eager" />
+    <jar href="commons-net-3.8.0.jar" size="307305" download="eager" />
+    <jar href="commons-net-examples-3.8.0.jar" size="92684" download="eager" />
+    <jar href="controlsfx-8.40.15.jar" size="1402490" download="eager" />
+    <jar href="controlsfx-samples-8.40.15.jar" size="792003" download="eager" />
+    <jar href="curvesapi-1.06.jar" size="111875" download="eager" />
+    <jar href="fontawesomefx-8.0.1.jar" size="65486" download="eager" />
+    <jar href="itextpdf-5.5.9.jar" size="2287148" download="eager" />
+    <jar href="javax.mail.jar" size="659033" download="eager" />
+    <jar href="jaxb-api-2.3.1.jar" size="128076" download="eager" />
+    <jar href="jaxb-core-2.3.0.1.jar" size="254858" download="eager" />
+    <jar href="jaxb-impl-2.3.2.jar" size="1017695" download="eager" />
+    <jar href="jcifs-1.3.17.jar" size="402249" download="eager" />
+    <jar href="jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="junit-4.12.jar" size="314932" download="eager" />
+    <jar href="log4j-1.2.17.jar" size="489884" download="eager" />
+    <jar href="mbassador-1.3.0.jar" size="97128" download="eager" />
+    <jar href="mysql-connector-java-8.0.28.jar" size="2476480" download="eager" />
+    <jar href="poi-4.1.2.jar" size="2915337" download="eager" />
+    <jar href="poi-examples-4.1.2.jar" size="377209" download="eager" />
+    <jar href="poi-excelant-4.1.2.jar" size="31321" download="eager" />
+    <jar href="poi-ooxml-4.1.2.jar" size="1888231" download="eager" />
+    <jar href="poi-ooxml-schemas-4.1.2.jar" size="7912488" download="eager" />
+    <jar href="poi-scratchpad-4.1.2.jar" size="1834265" download="eager" />
+    <jar href="scaledfx-0.4.jar" size="7724" download="eager" />
+    <jar href="slf4j-api-1.7.25.jar" size="41203" download="eager" />
+    <jar href="smbj-0.11.3.jar" size="569304" download="eager" />
+    <jar href="spring-core-5.3.15.jar" size="1480617" download="eager" />
+    <jar href="spring-jcl-5.3.15.jar" size="24440" download="eager" />
+    <jar href="xmlbeans-3.1.0.jar" size="2579738" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="main.Main"  name="Control-Horarios2" />
+  <update check="background"/>
+</jnlp>
