@@ -1,11 +1,16 @@
 package controller;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
+import dao.implementation.EmpleadoDaoImpl;
+import dao.implementation.EmpresaDaoImpl;
+import dao.interfaces.Dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,23 +18,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 import javafx.util.converter.IntegerStringConverter;
 import model.Empleado;
 import services.ServicesLocator;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import utils.FormatEmployeeName;
+import utils.Roles;
+import utils.SMBUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -44,7 +50,7 @@ public class EmployeesManagementController implements Initializable {
     private final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator +
             "Empleados de Palobiofarma y Medibiofarma.pdf";
 
-    private TrayNotification notification;
+
 
     @FXML
     private TableView<Empleado> employeesTable;
@@ -76,11 +82,16 @@ public class EmployeesManagementController implements Initializable {
     @FXML
     private MenuItem deleteItem;
 
-    
+    @FXML
+    private MenuItem scheduleBtn;
+
+    private Dao dao;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        notification = new TrayNotification();
 
+        dao = new EmpleadoDaoImpl();
         employeesTable.setEditable(true);
 
         nombreCol.setCellValueFactory(
@@ -141,7 +152,7 @@ public class EmployeesManagementController implements Initializable {
         empresaCol.setCellFactory(TextFieldTableCell.forTableColumn());
         empresaCol.setOnEditCommit(event -> {
             Empleado employee = event.getRowValue();
-            int cod_empresa = ServicesLocator.getEnterprise().getEmpresaCodByName(event.getNewValue());
+            int cod_empresa = new EmpresaDaoImpl().getEmpresaCodByName(event.getNewValue());
             employee.setCod_empresa(cod_empresa);
             updateEmployee(employee);
             populateTable();
@@ -160,39 +171,62 @@ public class EmployeesManagementController implements Initializable {
 
         populateTable();
 
+        employeesTable.getItems().stream().forEach(empleado -> System.out.println(empleado.getDireccionCronograma()));
+
         deleteItem.setOnAction(event -> deleteEmployee());
+        scheduleBtn.setOnAction(event -> showSchedule());
         insertBtn.setOnAction(event -> openModal());
     }
 
+    private void showSchedule() {
+        try {
+            Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
+            if(empleado != null){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/EmployeeSchedulePane.fxml"));
+                Parent parent = fxmlLoader.load();
+                EmployeeSchedulePaneController test  = fxmlLoader.getController();
+                String employeeFileName = FormatEmployeeName.getEmployeesFileName(empleado);
+                SMBUtils.downloadSmbFile(empleado.getNombre_empresa(),employeeFileName, empleado.getDireccionCronograma());
+                test.setData(empleado);
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
+                dialogStage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
+
+                Scene scene = new Scene(parent);
+                dialogStage.setScene(scene);
+                dialogStage.show();
+            }
+
+
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void populateTable() {
-        ObservableList<Empleado> employees = FXCollections.observableArrayList(ServicesLocator.getEmployee().listadoEmpleadosModelo());
+        ObservableList<Empleado> employees = FXCollections.observableArrayList(LoginController.getEmployees());
         employeesTable.setItems(employees);
     }
 
     private void deleteEmployee() {
         Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
         if(empleado != null){
-            ServicesLocator.getEmployee().deleteEmployee(empleado);
-            setNotificationData("Empleando eliminado del sistema con éxito", "Empleado eliminado");
-            notification.showAndDismiss(Duration.millis(5000));
-            notification.setAnimationType(AnimationType.POPUP);
-            populateTable();
+            dao.deleteEntity(empleado);
+            LoginController.getEmployees().remove(empleado);
+            employeesTable.getItems().remove(empleado);
         }
 
     }
 
     private void updateEmployee(Empleado employee) {
-        ServicesLocator.getEmployee().updateEmployee(employee);
-        setNotificationData("Información de empleado editada", "Cambios realizados con éxito");
+        dao.updateEntity(employee);
 
-        notification.showAndDismiss(Duration.millis(5000));
-        notification.setAnimationType(AnimationType.POPUP);
     }
 
     private void setNotificationData(String message,String title){
-        notification.setMessage(message);
-        notification.setTitle(title);
-        notification.setNotificationType(NotificationType.SUCCESS);
+
     }
 
     @FXML
@@ -205,24 +239,26 @@ public class EmployeesManagementController implements Initializable {
     }
 
     private void openModal(){
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/AddEmployeeDialog.fxml"));
-                Parent parent = fxmlLoader.load();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
+            Parent parent = fxmlLoader.load();
 
-                AddEmployeeDialogController dialogController = fxmlLoader.getController();
-                dialogController.setAppMainObservableList(employeesTable.getItems());
+            AddEmployeeDialogController dialogController = fxmlLoader.getController();
+            dialogController.setDao((EmpleadoDaoImpl) dao);
+            dialogController.setAppMainObservableList(employeesTable.getItems());
 
-                Scene scene = new Scene(parent);
-                Stage stage = new Stage();
-                scene.setFill(Color.TRANSPARENT);
-                stage.initStyle(StageStyle.TRANSPARENT);
-                stage.initModality(Modality.APPLICATION_MODAL);
-                //stage.setAlwaysOnTop(true);
-                stage.setScene(scene);
-                stage.show(); }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            scene.setFill(Color.TRANSPARENT);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            //stage.setAlwaysOnTop(true);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openInsertModal(KeyEvent keyEvent) {
@@ -288,6 +324,7 @@ public class EmployeesManagementController implements Initializable {
                 table.addCell(createCell(employee.getNombre_empresa()));
             }
             File file = new File(PDF_Directory);
+
 
             //first check if Desktop is supported by Platform or not
             Desktop desktop = Desktop.getDesktop();

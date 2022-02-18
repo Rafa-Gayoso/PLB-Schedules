@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="692.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeExcelTableController">
+   <children>
+      <TableView fx:id="excelTable" editable="true" layoutX="6.0" layoutY="2.0" prefHeight="640.0" prefWidth="581.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="2.0">
+         <columns>
+            <TableColumn fx:id="dayColumn" prefWidth="48.0" sortable="false" text="Día" />
+            <TableColumn fx:id="entryColumn" prefWidth="182.0" sortable="false" text="Hora Entrada" />
+            <TableColumn fx:id="exitColumn" prefWidth="174.0" sortable="false" text="Hora Salida" />
+            <TableColumn fx:id="journalColumn" editable="false" prefWidth="195.0" sortable="false" text="Total Jornada" />
+         </columns>
+         <contextMenu>
+            <ContextMenu fx:id="contextMenu">
+              <items>
+                <MenuItem fx:id="validateBtn" mnemonicParsing="false" text="Validar Hoja" />
+                  <MenuItem fx:id="unlockBtn" mnemonicParsing="false" text="Desbloquear hoja" />
+                  <MenuItem fx:id="warningBtn" mnemonicParsing="false" text="Advertir" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <JFXButton fx:id="saveButton" layoutX="261.0" layoutY="651.0" style="-fx-background-color: red;" text="Salvar" textFill="WHITE" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="651.0">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></JFXButton>
+      <Label fx:id="vacationsLabel" layoutX="14.0" layoutY="658.0" text="Vacaciones:" />
+   </children>
+</AnchorPane>

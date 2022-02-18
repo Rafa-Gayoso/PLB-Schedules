@@ -6,22 +6,16 @@ import java.sql.Connection;
 
 public class ServicesLocator {
 
-	private static EmpleadoServices empleado;
-	private static EmpresaServices empresa;
 
-	public static EmpleadoServices getEmployee(){
-		if (empleado == null){
-			empleado = new EmpleadoServices();
-		}
-		return empleado;
-	}
-	public static EmpresaServices getEnterprise(){
-		if (empresa == null){
-			empresa = new EmpresaServices();
-		}
-		return empresa;
-	}
+	private static UsuarioServices usuario;
 
+
+	public static UsuarioServices getUsuario(){
+		if (usuario == null){
+			usuario = new UsuarioServices();
+		}
+		return usuario;
+	}
 
 	public static Connection getConnection(){
 		DatabaseConnection connection = new DatabaseConnection();

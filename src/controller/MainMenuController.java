@@ -1,38 +1,46 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
-import eu.mihosoft.scaledfx.ScalableContentPane;
-import javafx.animation.*;
+import dao.implementation.EmpresaDaoImpl;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import main.Controller;
 import model.Empleado;
 import model.Empresa;
 import services.ServicesLocator;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.awt.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
+
 
 public class MainMenuController implements Initializable {
     private final String LEAP_YEAR = "config_files" + File.separator + "Schedule Model Leap Year.xlsx";
@@ -41,42 +49,103 @@ public class MainMenuController implements Initializable {
     private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
     private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
 
-    private TrayNotification notification;
-
-    @FXML
-    private JFXButton fileMenu;
-
     @FXML
     private Label resultLabel;
 
     @FXML
-    private JFXProgressBar progressBar;
+    private StackPane stackPane;
+
+    @FXML
+    private JFXButton fileMenu;
+
+
+    @FXML
+    private ProgressBar progressBar;
 
     @FXML
     private AnchorPane root;
 
+    @FXML
+    private Pane dropInstructions;
+
     private ArrayList<File> listFiles;
 
-    ImageView[] slides;
+    private ImageView[] slides;
+
 
     private File file;
 
+    @FXML
+    private JFXButton scheduleControllerBtn;
+
+    private InputStream calendarSheet, scheduleSheet;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //File button
-        fileMenu.requestFocus();
-
-        //file button
+        root.requestFocus();
         fileMenu.setOnAction(event -> generateSchedule());
+        makeTextAreaDragTarget(root);
 
-
-        notification = new TrayNotification();
         listFiles = new ArrayList<>();
         getSlides();
         createSlideShow();
         resultLabel.setText("");
 
         progressBar.setProgress(0);
+
+
+    }
+
+    private void makeTextAreaDragTarget(Node node) {
+        node.setOnDragOver(event -> event.acceptTransferModes(TransferMode.COPY));
+
+        node.setOnDragExited(event -> dropInstructions.setVisible(false));
+
+        node.setOnDragEntered(event -> dropInstructions.setVisible(true));
+
+        node.setOnDragDropped(event -> {
+            Dragboard db = event.getDragboard();
+
+            if(event.getDragboard().hasFiles()){
+                fileLoaderTask(db.getFiles().get(0)).run();
+            }
+
+            dropInstructions.setVisible(false);
+        });
+    }
+
+    private Task<String> fileLoaderTask(File fileToLoad){
+        //Create a task to load the file asynchronously
+        Task<String> loadFileTask = new Task() {
+            @Override
+            protected String call() {
+                System.out.println(fileToLoad.getName());
+                file = fileToLoad;
+                listFiles.add(fileToLoad);
+                if(fileToLoad.getName().contains("Mat")){
+                    mergeExcel(1, System.getProperty("user.home") + "/Desktop");
+                }else{
+                    mergeExcel(2, System.getProperty("user.home") + "/Desktop");
+                    mergeExcel(3, System.getProperty("user.home") + "/Desktop");
+                }
+
+                return fileToLoad.getAbsolutePath();
+            }
+        };
+
+        //If successful, update the text area, display a success message and store the loaded file reference
+        loadFileTask.setOnSucceeded(workerStateEvent -> {
+
+        });
+
+        //If unsuccessful, set text area with error message and status message to failed
+        loadFileTask.setOnFailed(workerStateEvent -> {
+            //textArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
+            System.out.println("No sé pudo cargar");
+        });
+
+        return loadFileTask;
     }
 
     private void createSlideShow() {
@@ -86,12 +155,13 @@ public class MainMenuController implements Initializable {
 
             SequentialTransition sequentialTransition = new SequentialTransition();
 
-            FadeTransition fadeIn = getFadeTransition(slide, 0.0, 1.0, 2000);
+            FadeTransition fadeIn = getFadeTransition(slide, 0.0, 1.0);
             PauseTransition stayOn = new PauseTransition(Duration.millis(2000));
-            FadeTransition fadeOut = getFadeTransition(slide, 1.0, 0.0, 2000);
+            FadeTransition fadeOut = getFadeTransition(slide, 1.0, 0.0);
 
             sequentialTransition.getChildren().addAll(fadeIn, stayOn, fadeOut);
             slide.setOpacity(0);
+            slide.setY(75);
             this.root.getChildren().add(slide);
             slideshow.getChildren().add(sequentialTransition);
 
@@ -99,13 +169,35 @@ public class MainMenuController implements Initializable {
 
         slideshow.play();
     }
-    
-    public FadeTransition getFadeTransition(ImageView imageView, double fromValue, double toValue, int durationInMilliseconds) {
 
-        FadeTransition ft = new FadeTransition(Duration.millis(durationInMilliseconds), imageView);
+    private FadeTransition getFadeTransition(ImageView imageView, double fromValue, double toValue) {
+
+        FadeTransition ft = new FadeTransition(Duration.millis(2000), imageView);
         ft.setFromValue(fromValue);
         ft.setToValue(toValue);
         return ft;
+    }
+
+    private void getSlides() {
+        try{
+            slides = new ImageView[100];
+
+            Image image1 = new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png"));
+            Image image2 = new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png"));
+
+            for (int i = 0; i < 100; i++) {
+                if (i % 2 == 0) {
+                    slides[i] = new ImageView(image1);
+                } else {
+                    slides[i] = new ImageView(image2);
+                }
+
+                slides[i].setFitHeight(200);
+                slides[i].setFitWidth(794);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -117,9 +209,7 @@ public class MainMenuController implements Initializable {
         file = fc.showOpenDialog(stage);
 
         if (file == null) {
-            notification.setMessage("Falló la importación del calendario");
-            notification.setTitle("Importación de calendario");
-            notification.setNotificationType(NotificationType.ERROR);
+
         }
         else{
             listFiles.add(file);
@@ -131,81 +221,56 @@ public class MainMenuController implements Initializable {
                 mergeExcel(3, System.getProperty("user.home") + "/Desktop");
             }
 
-            notification.setMessage("Se ha importado el calendario");
-            notification.setTitle("Importacion de calendario");
-            notification.setNotificationType(NotificationType.SUCCESS);
         }
-        notification.showAndDismiss(Duration.millis(5000));
-        notification.setAnimationType(AnimationType.POPUP);
-        listFiles = new ArrayList<>();
+
+
     }
 
     public void mergeExcel(int cod_empresa, String ruta) {
 
         try {
 
-            Empresa empresa = ServicesLocator.getEnterprise().getEmpresaByCod(cod_empresa);
-            ArrayList<Empleado> lista = ServicesLocator.getEmployee().listadoEmpleadosXEmpresa(empresa.getNombre());
-            System.out.println(lista.size());
+            Empresa empresa = new EmpresaDaoImpl().getEntityById(cod_empresa);
+            ArrayList<Empleado> lista = (ArrayList<Empleado>) LoginController.getEmployees().stream().filter(empleado -> empleado.getCod_empresa() == empresa.getCod_empresa()).collect(Collectors.toList());
 
             String [] nombre = this.file.getName().split(" ");
             int year = Integer.parseInt(nombre[0]);
+
             File file;
-            if(year%4 !=0 ){
-                file = new File(REGULAR);
-            }else{
-                file = new File(LEAP_YEAR);
-            }
+            if(year%4 !=0 ) file = new File(REGULAR);
+            else file = new File(LEAP_YEAR);
 
             listFiles.add(file);
-            /*if (listFiles.size() < 2) {
-                System.out.println("ERROR");
-            }*/
 
-            File foto1 = new File(PALOBIOFARMA);
+            /*File foto1 = new File(PALOBIOFARMA);
             listFiles.add(foto1);
 
             File foto2 = new File(MEDIBIOFARMA);
-            listFiles.add(foto2);
-
+            listFiles.add(foto2);*/
 
             Task<Void> longTask = new Task<Void>() {
                 @Override
                 protected Void call() {
-                    Controller controller = new Controller();
+                    AppController controller = new AppController();
                     controller.mergeExcelFiles(lista, empresa, listFiles, ruta);
                     return null;
                 }
             };
 
-            longTask.setOnSucceeded(event -> {
-                progressBar.setProgress(100);
-                notification.setMessage("Modelos de horarios creados");
-                notification.setTitle("Control de horario");
-                notification.setNotificationType(NotificationType.SUCCESS);
-                notification.showAndDismiss(Duration.millis(5000));
-                notification.setAnimationType(AnimationType.POPUP);
-
-            });
 
             longTask.setOnRunning(event -> {
                 resultLabel.setText("Generando horarios de los trabajadores");
                 progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS); //el progressbar este esta al berro
             });
 
-            /*longTask.setOnSucceeded(event -> {
+            longTask.setOnSucceeded(event -> {
                 progressBar.setProgress(100);
                 resultLabel.setText("Horarios generados satisfactoriamente");
-                notification.setMessage("Modelos de horarios creados");
-                notification.setTitle("Control de horario");
-                notification.setNotificationType(NotificationType.SUCCESS);
+                listFiles = new ArrayList<>();
 
-            });*/
+            });
 
             new Thread(longTask).start();
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -213,45 +278,20 @@ public class MainMenuController implements Initializable {
 
     }
 
-    private void getSlides() {
-        slides = new ImageView[100];
-        Image image1 = null;
-        Image image2 = null;
-        try{
-            image1 = new Image(new FileInputStream(PALOBIOFARMA));
-            image2 = new Image(new FileInputStream(MEDIBIOFARMA));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        for (int i = 0; i < 100; i++) {
-            if (i % 2 == 0) {
-                slides[i] = new ImageView(image1);
-            } else {
-                slides[i] = new ImageView(image2);
-            }
-
-            slides[i].setFitHeight(200);
-            slides[i].setFitWidth(794);
-        }
-    }
-
     @FXML
     void showEmployeesData() {
-        try {
-            ScalableContentPane scale = new ScalableContentPane();
+        try{
             FXMLLoader loader = new FXMLLoader();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/EmployesManagement.fxml"));
-            loader.setLocation(MainMenuController.class.getResource("/view/EmployesManagement.fxml"));
+
+            loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployesManagement.fxml"));
             AnchorPane page = loader.load();
-            scale.setContent(root);
+
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Gestionar Empleados");
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.setMinHeight(dialogStage.getMinHeight());
-            dialogStage.setMinWidth(dialogStage.getMinWidth());
-            //dialogStage.setResizable(false);
+
             dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-            //dialogStage.setAlwaysOnTop(true);
+
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
@@ -259,6 +299,7 @@ public class MainMenuController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
@@ -292,4 +333,6 @@ public class MainMenuController implements Initializable {
             showEmployeesData();
         }
     }
+
+
 }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Control-Horarios:jar" />
+      <artifact name="Control-Horarios2" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -28,13 +28,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/TestExcelTableController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Testmain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/TableExcelModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/TimeValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Schedule Model Regular Year.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Schedule Model Regular Year.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesScheduleManagerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/SelectEmployeeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeesScheduleManager.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesScheduleManagerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SelectEmployeeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeesScheduleManager.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/CustomCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CustomCell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +123,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -137,25 +162,21 @@
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Gestrans" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/Control_Horarios2" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\libs" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios2" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar3" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\libs\jpedalpdf" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="utils" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
@@ -164,8 +185,11 @@
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\database" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="utils" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Testmain">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -179,6 +203,19 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -190,20 +227,6 @@
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
-    </configuration>
-    <configuration name="Encryption" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.Encryption" />
-      <module name="Control-Horarios" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
@@ -221,63 +244,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SHAExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utils.SHAExample" />
-      <module name="Control-Horarios" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="database.TestConnection" />
-      <module name="Control-Horarios" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Testmain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.Testmain" />
-      <module name="Control-Horarios" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -292,8 +260,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Control-Horarios.jar (1)" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Control_Horarios_jar2/Control-Horarios.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Control-Horarios.jar (2)" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Control_Horarios_jar3/Control-Horarios.jar" />
+      <method v="2" />
+    </configuration>
     <configuration name="Control-Horarios.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Control_Horarios_jar/Control-Horarios.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Control_Horarios.jar (1)" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Control_Horarios.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Control_Horarios/Control_Horarios.jar" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="TestNG">
@@ -319,19 +303,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.TestConnection" />
-      <item itemvalue="Application.SHAExample" />
-      <item itemvalue="Application.Encryption" />
-      <item itemvalue="Application.Testmain" />
       <item itemvalue="JAR Application.Control-Horarios.jar" />
+      <item itemvalue="JAR Application.Control-Horarios.jar (1)" />
+      <item itemvalue="JAR Application.Control-Horarios.jar (2)" />
+      <item itemvalue="JAR Application.Control_Horarios.jar" />
+      <item itemvalue="JAR Application.Control_Horarios.jar (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Testmain" />
-        <item itemvalue="Application.Encryption" />
-        <item itemvalue="Application.SHAExample" />
+        <item itemvalue="JAR Application.Control_Horarios.jar (1)" />
         <item itemvalue="JAR Application.Control-Horarios.jar" />
-        <item itemvalue="Application.TestConnection" />
+        <item itemvalue="JAR Application.Control-Horarios.jar (2)" />
+        <item itemvalue="JAR Application.Control_Horarios.jar" />
+        <item itemvalue="JAR Application.Control-Horarios.jar (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -368,6 +352,7 @@
       <workItem from="1643206219937" duration="469000" />
       <workItem from="1643275490555" duration="1650000" />
       <workItem from="1643358600322" duration="4073000" />
+      <workItem from="1645175094747" duration="4741000" />
     </task>
     <servers />
   </component>
@@ -387,157 +372,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="361" y="98" key="#Getter_Template" timestamp="1643200677129">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="361" y="98" key="#Getter_Template/0.0.1536.832@0.0.1536.832" timestamp="1643200677129" />
-    <state x="395" y="95" key="#Inspections" timestamp="1642421515635">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="395" y="95" key="#Inspections/0.0.1536.832@0.0.1536.832" timestamp="1642421515635" />
-    <state x="361" y="75" width="814" height="728" key="#Intentions" timestamp="1642180052436">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="361" y="75" width="814" height="728" key="#Intentions/0.0.1536.832@0.0.1536.832" timestamp="1642180052436" />
-    <state x="206" y="258" key="#SQL_Dialects" timestamp="1642176493102">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="206" y="258" key="#SQL_Dialects/0.0.1536.832@0.0.1536.832" timestamp="1642176493102" />
-    <state x="256" y="272" key="#SQL_Resolution_Scopes" timestamp="1642180153016">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="256" y="272" key="#SQL_Resolution_Scopes/0.0.1536.832@0.0.1536.832" timestamp="1642180153016" />
-    <state x="361" y="75" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1642770227984">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="361" y="75" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.832@0.0.1536.832" timestamp="1642770227984" />
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1643201569752">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1643201569752" />
-    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1642771975413">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="499" y="207" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.832@0.0.1536.832" timestamp="1642771975413" />
-    <state x="518" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1642180448837">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="518" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.832@0.0.1536.832" timestamp="1642180448837" />
-    <state x="499" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1642179738878">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="499" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.832@0.0.1536.832" timestamp="1642179738878" />
-    <state x="407" y="220" key="#xdebugger.evaluate" timestamp="1643192663516">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="407" y="220" key="#xdebugger.evaluate/0.0.1536.832@0.0.1536.832" timestamp="1643192663516" />
-    <state x="516" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1642179473747">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="516" y="271" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.832@0.0.1536.832" timestamp="1642179473747" />
-    <state width="596" height="466" key="DebuggerActiveHint" timestamp="1643192341693">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="596" height="466" key="DebuggerActiveHint/0.0.1536.832@0.0.1536.832" timestamp="1643192341693" />
-    <state x="93" y="93" width="1350" height="646" key="DiffContextDialog" timestamp="1643110899994">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="93" y="93" width="1350" height="646" key="DiffContextDialog/0.0.1536.832@0.0.1536.832" timestamp="1643110899994" />
-    <state x="549" y="158" key="FileChooserDialogImpl" timestamp="1643104638647">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="549" y="158" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1643104638647" />
-    <state width="1493" height="262" key="GridCell.Tab.0.bottom" timestamp="1643362444074">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1643362444074" />
-    <state width="1493" height="262" key="GridCell.Tab.0.center" timestamp="1643362444073">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1643362444073" />
-    <state width="1493" height="262" key="GridCell.Tab.0.left" timestamp="1643362444073">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1643362444073" />
-    <state width="1493" height="262" key="GridCell.Tab.0.right" timestamp="1643362444074">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1643362444074" />
-    <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1643362444075">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1643362444075" />
-    <state width="1493" height="262" key="GridCell.Tab.1.center" timestamp="1643362444075">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1643362444075" />
-    <state width="1493" height="262" key="GridCell.Tab.1.left" timestamp="1643362444075">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1643362444075" />
-    <state width="1493" height="262" key="GridCell.Tab.1.right" timestamp="1643362444075">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="262" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1643362444075" />
-    <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1642179836806">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.832@0.0.1536.832" timestamp="1642179836806" />
-    <state x="349" y="151" key="IDE.errors.dialog" timestamp="1642671346388">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="349" y="151" key="IDE.errors.dialog/0.0.1536.832@0.0.1536.832" timestamp="1642671346388" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1643199402780">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1643199402780" />
-    <state width="334" height="441" key="SqlResolveConfigurable" timestamp="1642180150914">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="334" height="441" key="SqlResolveConfigurable/0.0.1536.832@0.0.1536.832" timestamp="1642180150914" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1642438702582">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1536.832@0.0.1536.832" timestamp="1642438702582" />
-    <state width="775" height="423" key="XDebugger.FullValuePopup" timestamp="1642157871967">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="775" height="423" key="XDebugger.FullValuePopup/0.0.1536.832@0.0.1536.832" timestamp="1642157871967" />
-    <state x="635" y="304" width="312" height="243" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1642436392723">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="635" y="304" width="312" height="243" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.832@0.0.1536.832" timestamp="1642436392723" />
-    <state x="349" y="71" key="com.intellij.database.dbimport.ImportDialog" timestamp="1642436382973">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="349" y="71" key="com.intellij.database.dbimport.ImportDialog/0.0.1536.832@0.0.1536.832" timestamp="1642436382973" />
-    <state x="634" y="154" width="515" height="453" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1642436813546">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="634" y="154" width="515" height="453" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.832@0.0.1536.832" timestamp="1642436813546" />
-    <state x="87" y="222" key="extract.method.dialog" timestamp="1642177384386">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="87" y="222" key="extract.method.dialog/0.0.1536.832@0.0.1536.832" timestamp="1642177384386" />
-    <state x="469" y="174" key="refactoring.ChangeSignatureDialog" timestamp="1642285587102">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="469" y="174" key="refactoring.ChangeSignatureDialog/0.0.1536.832@0.0.1536.832" timestamp="1642285587102" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1643200437586">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.832@0.0.1536.832" timestamp="1643200437586" />
-    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup" timestamp="1643361984887">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup/0.0.1536.832@0.0.1536.832" timestamp="1643361984887" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
