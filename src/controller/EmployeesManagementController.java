@@ -25,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,6 +33,9 @@ import javafx.stage.StageStyle;
 import javafx.util.converter.IntegerStringConverter;
 import model.Empleado;
 import services.ServicesLocator;
+import utils.FormatEmployeeName;
+import utils.Roles;
+import utils.SMBUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -77,6 +81,9 @@ public class EmployeesManagementController implements Initializable {
 
     @FXML
     private MenuItem deleteItem;
+
+    @FXML
+    private MenuItem scheduleBtn;
 
     private Dao dao;
 
@@ -167,7 +174,35 @@ public class EmployeesManagementController implements Initializable {
         employeesTable.getItems().stream().forEach(empleado -> System.out.println(empleado.getDireccionCronograma()));
 
         deleteItem.setOnAction(event -> deleteEmployee());
+        scheduleBtn.setOnAction(event -> showSchedule());
         insertBtn.setOnAction(event -> openModal());
+    }
+
+    private void showSchedule() {
+        try {
+            Empleado empleado = employeesTable.getSelectionModel().getSelectedItem();
+            if(empleado != null){
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/EmployeeSchedulePane.fxml"));
+                Parent parent = fxmlLoader.load();
+                EmployeeSchedulePaneController test  = fxmlLoader.getController();
+                String employeeFileName = FormatEmployeeName.getEmployeesFileName(empleado);
+                SMBUtils.downloadSmbFile(empleado.getNombre_empresa(),employeeFileName, empleado.getDireccionCronograma());
+                test.setData(empleado);
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
+                dialogStage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
+
+                Scene scene = new Scene(parent);
+                dialogStage.setScene(scene);
+                dialogStage.show();
+            }
+
+
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void populateTable() {

@@ -186,7 +186,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             ObservableList<TableExcelModel> excelModels = FXCollections.observableArrayList(models);
             excelTable.setItems(excelModels);
             excelTable.setEditable(true);
-            if(sheet.getProtect() || !employeeFileName.contains(LoginController.getEmpleado().getNombre())){
+            if(sheet.getProtect()){
                 excelTable.setEditable(false);
                 saveButton.setDisable(true);
             }
@@ -381,7 +381,5 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
 
     }
-
-
 
 }

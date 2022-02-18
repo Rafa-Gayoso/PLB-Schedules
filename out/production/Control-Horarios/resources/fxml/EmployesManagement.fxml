@@ -77,6 +77,15 @@
                             <contextMenu>
                                 <ContextMenu>
                                     <items>
+                              <MenuItem fx:id="scheduleBtn" mnemonicParsing="false" text="Ver Horario">
+                                 <graphic>
+                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/calendar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuItem>
                                         <MenuItem fx:id="exportEmployees" mnemonicParsing="false" onAction="#exportEmployees" text="Exportar datos de empleados">
                                             <graphic>
                                                 <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

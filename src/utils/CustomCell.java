@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import model.TableExcelModel;
@@ -17,9 +18,11 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
     private final String NATIONAL_COLOR = "#FF0000";
 
     TextField textField = new TextField();
+    TimeValidator validator;
     Text text = new Text();
 
     public CustomCell() {
+        validator = new TimeValidator();
         textField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 commitEdit(textField.getText());
@@ -33,6 +36,8 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
                 commitEdit(textField.getText());
             }
         });
+
+
     }
 
     @Override
@@ -69,7 +74,6 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
                 setStyle("-fx-background-color:" + WEEKEND_COLOR);
                 setEditable(false);
             } else if (item.equalsIgnoreCase("FESTIVO AUTONÓMICO")) {
-
                 setStyle("-fx-background-color:" + AUTONOMIC_COLOR);
                 setEditable(false);
             } else if (item.equalsIgnoreCase("FESTIVO LOCAL")) {
@@ -80,7 +84,8 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
                 setStyle("-fx-background-color:" + NATIONAL_COLOR);
                 setEditable(false);
             }
-            else {
+            else{
+                if(!validator.validate(item)) item = "";
                 setStyle("");
                 setEditable(true);
             }

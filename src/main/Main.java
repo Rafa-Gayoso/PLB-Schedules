@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import utils.SMBUtils;
 
 import java.io.File;
@@ -21,7 +22,7 @@ public class Main extends Application {
         root.requestFocus();
         primaryStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

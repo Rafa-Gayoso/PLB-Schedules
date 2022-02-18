@@ -5,6 +5,7 @@
       <options>
         <option name="appClass" value="main.Main" />
         <option name="description" value="" />
+        <option name="height" value="398" />
         <option name="htmlPlaceholderId" value="" />
         <option name="title" value="" />
         <option name="vendor" value="" />

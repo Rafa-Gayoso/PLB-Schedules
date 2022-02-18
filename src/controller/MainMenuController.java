@@ -331,29 +331,7 @@ public class MainMenuController implements Initializable {
         }
         else if(code == KeyCode.E){
             showEmployeesData();
-        }else if(code == KeyCode.H) {
-            openSchedules();
         }
-    }
-
-
-    @FXML
-    void openSchedules() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployeesScheduleManager.fxml"));
-        AnchorPane page = loader.load();
-
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Gestionar Horarios de Empleados");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-
-        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-
-        dialogStage.showAndWait();
     }
 
 
