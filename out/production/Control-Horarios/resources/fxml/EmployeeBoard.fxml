@@ -15,15 +15,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="923.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeBoardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="778.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeBoardController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="495.0" prefWidth="923.0" style="-fx-background-color: white;">
+                  <VBox prefHeight="495.0" prefWidth="923.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                      <children>
-                        <HBox prefHeight="98.0" prefWidth="923.0">
+                        <HBox prefHeight="98.0" prefWidth="923.0" VBox.vgrow="ALWAYS">
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -31,17 +31,33 @@
                                     <Label text="20" />
                                  </children>
                               </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="125.0" stylesheets="@../styles/Style.css">
+                                 <children>
+                                    <JFXButton fx:id="btnInsert1" buttonType="RAISED" ripplerFill="#b27070" style="-fx-background-color: green;" text="Insertar" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <effect>
+                                          <DropShadow height="36.55" radius="20.1075" width="45.88" />
+                                       </effect>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="251.0" prefWidth="923.0" VBox.vgrow="ALWAYS">
+                        <HBox prefHeight="454.0" prefWidth="923.0" VBox.vgrow="ALWAYS">
                            <children>
                               <ScrollPane fx:id="scroll" pannable="true" prefHeight="295.0" prefWidth="923.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                                  <content>
-                                    <GridPane fx:id="grid" prefHeight="389.0" prefWidth="919.0" style="-fx-background-color: white;">
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
+                                    <VBox prefHeight="420.0" prefWidth="772.0">
+                                       <children>
+                                          <GridPane fx:id="grid" prefHeight="420.0" prefWidth="781.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
                                  </content>
                               </ScrollPane>
                            </children>
@@ -56,18 +72,18 @@
                <children>
                   <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../images/medi.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <Pane prefHeight="102.0" prefWidth="163.0" HBox.hgrow="ALWAYS" />
-                  <Pane prefHeight="102.0" prefWidth="163.0" HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                  <Pane prefHeight="100.0" prefWidth="122.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="100.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="125.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <JFXButton buttonType="RAISED" ripplerFill="#b27070" style="-fx-background-color: green;" text="Insertar" textFill="WHITE">
+                        <JFXButton fx:id="btnInsert" buttonType="RAISED" ripplerFill="#b27070" style="-fx-background-color: green;" text="Insertar" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -77,11 +93,11 @@
                         </JFXButton>
                      </children>
                   </VBox>
-                  <Pane prefHeight="102.0" prefWidth="163.0" HBox.hgrow="ALWAYS" />
-                  <Pane prefHeight="102.0" prefWidth="163.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="100.0" prefWidth="112.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="100.0" prefWidth="128.0" HBox.hgrow="ALWAYS" />
                   <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../images/palo.png" />
                            </image>

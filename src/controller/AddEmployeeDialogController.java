@@ -16,30 +16,32 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Empleado;
 import model.Empresa;
 import model.Usuario;
 import services.ServicesLocator;
 import utils.AESCypher;
+import utils.MyListener;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class AddEmployeeDialogController /*implements Initializable*/ {
 
     private final String ADDRESS = "config_files" + File.separator + "Horarios" + File.separator;
-    private ObservableList<Empleado> appMainObservableList;
 
     private EmpresaDaoImpl empresaDao;
     private EmpleadoDaoImpl dao;
@@ -72,12 +74,19 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
     @FXML
     private JFXTextField email;
 
+    @FXML
+    private GridPane grid;
+
     private UserDaoImpl userDao;
 
+    private MyListener myListener;
 
-    /*@Override
-    public void initialize(URL location, ResourceBundle resources) {
 
+
+
+    public void setData(Empleado employee, GridPane grid){
+        this.grid = grid;
+        this.myListener = myListener;
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         userDao = new UserDaoImpl();
         empresaDao = new EmpresaDaoImpl();
@@ -85,45 +94,7 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
                 empresaDao.getEntities().stream().map(Empresa::getNombre).collect(Collectors.toList())
         );
         comboEmpresa.setItems(empresas);
-
-        horasLaborables.setText("8");
-        horasLaborables.setTextFormatter(new TextFormatter<>(change ->
-                (change.getControlNewText().matches("^[4-8]*$")) ? change : null));
-
-        setValidator(nombreTextField,requiredFieldValidator);
-
-        setValidator(primApellidoTextField,requiredFieldValidator);
-
-        setValidator(email,requiredFieldValidator);
-
-        setValidator(nifTextfield,requiredFieldValidator);
-
-        setValidator(numTextfield,requiredFieldValidator);
-
-        setValidator(comboEmpresa,requiredFieldValidator);
-        requiredFieldValidator.setMessage("Campo Requerido");
-
-
-        btnInsert.setOnAction(this::insertEmployee);
-
-        btnInsert.disableProperty().bind((
-                nombreTextField.textProperty().isNotEmpty()
-                        .and(primApellidoTextField.textProperty().isNotEmpty())
-                        .and(email.textProperty().isNotEmpty())
-                        .and(nifTextfield.textProperty().isNotEmpty())
-                        .and(numTextfield.textProperty().isNotEmpty())
-        ).not());
-
-    }*/
-
-    public void setData(Empleado employee){
-        RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
-        userDao = new UserDaoImpl();
-        empresaDao = new EmpresaDaoImpl();
-        ObservableList<String> empresas = FXCollections.observableArrayList(
-                empresaDao.getEntities().stream().map(Empresa::getNombre).collect(Collectors.toList())
-        );
-        comboEmpresa.setItems(empresas);
+        email.setText(null);
 
         horasLaborables.setText("8");
         horasLaborables.setTextFormatter(new TextFormatter<>(change ->
@@ -190,7 +161,6 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
         Empleado employee = dao.getExistEmployeeByNif(nifTextfield.getText());
         if (!validated) {
 
-
         } else if(!Objects.isNull(employee)){
 
         } else{
@@ -208,8 +178,21 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
                 dao.insertEntity(employee);
 
                 employee.setCod_empleado(dao.getExistEmployeeByNif(employee.getNif()).getCod_empleado());
-                appMainObservableList.add(employee);
+
                 LoginController.getEmployees().add(employee);
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/resources/fxml/Employee.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                EmployeeController itemController = fxmlLoader.getController();
+                itemController.setData(employee);
+
+                int row = getRowCount(grid)-1;
+                int column = getColumnCount(grid)-1;
+                if(column == 3) column = 0;
+                grid.add(anchorPane, column, row);
+                GridPane.setMargin(anchorPane, new Insets(20));
                 closeStage();
             }catch(Exception e){
 
@@ -254,12 +237,6 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
         return validated;
     }
 
-
-    public void setAppMainObservableList(ObservableList<Empleado> employeeObservableList) {
-        this.appMainObservableList = employeeObservableList;
-
-    }
-
     public void setDao(EmpleadoDaoImpl dao){
         this.dao = dao;
     }
@@ -278,5 +255,33 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
             stage.close();
         }
 
+    }
+
+    private int getRowCount(GridPane pane) {
+        int numRows = pane.getRowConstraints().size();
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            Node child = pane.getChildren().get(i);
+            if (child.isManaged()) {
+                Integer rowIndex = GridPane.getRowIndex(child);
+                if(rowIndex != null){
+                    numRows = Math.max(numRows,rowIndex+1);
+                }
+            }
+        }
+        return numRows;
+    }
+
+    private int getColumnCount(GridPane pane) {
+        int numRows = pane.getColumnConstraints().size();
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            Node child = pane.getChildren().get(i);
+            if (child.isManaged()) {
+                Integer rowIndex = GridPane.getColumnIndex(child);
+                if(rowIndex != null){
+                    numRows = Math.max(numRows,rowIndex+1);
+                }
+            }
+        }
+        return numRows;
     }
 }

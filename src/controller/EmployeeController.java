@@ -15,18 +15,16 @@ public class EmployeeController {
     @FXML
     private ImageView img;
 
-    @FXML
-    private void click(MouseEvent mouseEvent) {
-        myListener.onClickListener(empleado);
-    }
 
     private Empleado empleado;
-    private MyListener myListener;
 
-    public void setData(Empleado empleado, MyListener myListener) {
+
+    public void setData(Empleado empleado) {
         this.empleado = empleado;
-        this.myListener = myListener;
         nameLabel2.setText(empleado.getNombre());
+    }
 
+    public Empleado getEmpleado() {
+        return empleado;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" prefHeight="216.0" prefWidth="203.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
+<AnchorPane prefHeight="216.0" prefWidth="203.0" styleClass="shadow" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" styleClass="gradient" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="9.0" prefWidth="203.0" />
             <ImageView fx:id="img" fitHeight="156.0" fitWidth="156.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/christopher-campbell-rDEOVtE7vOs-unsplash.jpg" />
+                  <Image url="@../images/user.png" />
                </image>
             </ImageView>
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="203.0" styleClass="gradient" stylesheets="@../styles/Style.css">
@@ -35,8 +35,13 @@
          </children>
       </VBox>
    </children>
-   <styleClass>
-      <String fx:value="fruit-item" />
-      <String fx:value="shadow" />
-   </styleClass>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+
+   <!-- store controller as userData property -->
+   <userData>
+      <fx:reference source="controller" />
+   </userData>
+
 </AnchorPane>

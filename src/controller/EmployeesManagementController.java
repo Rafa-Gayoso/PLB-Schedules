@@ -261,7 +261,7 @@ public class EmployeesManagementController implements Initializable {
     }
 
     private void employeeDataManagement(Empleado employee) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
+       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
         Parent parent = fxmlLoader.load();
 
         AddEmployeeDialogController dialogController = fxmlLoader.getController();
@@ -276,7 +276,7 @@ public class EmployeesManagementController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         //stage.setAlwaysOnTop(true);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
     }
 
     public void openInsertModal(KeyEvent keyEvent) {
