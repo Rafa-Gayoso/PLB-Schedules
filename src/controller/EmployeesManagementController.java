@@ -201,8 +201,6 @@ public class EmployeesManagementController implements Initializable {
                 dialogStage.show();
             }
 
-
-
         }
         catch (IOException e) {
             e.printStackTrace();

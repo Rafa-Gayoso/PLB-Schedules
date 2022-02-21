@@ -7,20 +7,13 @@ import com.jfoenix.validation.RequiredFieldValidator;
 import dao.implementation.EmpleadoDaoImpl;
 import dao.implementation.EmpresaDaoImpl;
 import dao.implementation.UserDaoImpl;
-import dao.interfaces.Dao;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
@@ -31,9 +24,7 @@ import javafx.stage.Stage;
 import model.Empleado;
 import model.Empresa;
 import model.Usuario;
-import services.ServicesLocator;
 import utils.AESCypher;
-import utils.MyListener;
 
 import java.io.File;
 import java.util.Objects;
@@ -79,14 +70,11 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
 
     private UserDaoImpl userDao;
 
-    private MyListener myListener;
-
 
 
 
     public void setData(Empleado employee, GridPane grid){
         this.grid = grid;
-        this.myListener = myListener;
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         userDao = new UserDaoImpl();
         empresaDao = new EmpresaDaoImpl();

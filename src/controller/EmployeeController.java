@@ -3,9 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import model.Empleado;
-import utils.MyListener;
 
 public class EmployeeController {
 
