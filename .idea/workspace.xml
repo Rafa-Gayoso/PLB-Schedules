@@ -28,126 +28,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/BootstrapColumn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/BootstrapPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/BootstrapRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/Breakpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/MathUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/EmployeesBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/fxml/Employee.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/images/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios_jar2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/asn_one_0_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_net_3_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeBoard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/MyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control-Horarios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Control-Horarios.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/María Begoña Hernández.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/María Begoña Hernández.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/SMB/asn-one-0.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/SMB/bcprov-jdk15on-1.69.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/SMB/mbassador-1.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/SMB/slf4j-api-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/SMB/smbj-0.11.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/apache net/commons-net-3.8.0-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/apache net/commons-net-3.8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/apache net/commons-net-examples-3.8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/jcifs-1.3.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/poi_lib/log4j-1.2.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/Control_Horarios.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/Control_Horarios.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/Control_Horarios.jnlp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/SparseBitSet-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/TrayNotification.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/activation-1.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/asn-one-0.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/bcprov-jdk15on-1.69.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/commons-codec-1.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/commons-collections4-4.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/commons-compress-1.19.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/commons-math3-3.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/config_files/Control de horarios Palobiofarma S,L &amp; Medibiofarma.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/config_files/Schedule Model Leap Year.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/config_files/Schedule Model Regular Year.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/config_files/medibiofarma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/config_files/palobiofarma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/controlsfx-8.40.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/controlsfx-samples-8.40.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/curvesapi-1.06.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/fontawesomefx-8.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/itextpdf-5.5.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/jaxb-api-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/jaxb-core-2.3.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/jaxb-impl-2.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/jcifs-1.3.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/jfoenix-8.0.8.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/junit-4.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/log4j-1.2.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/mbassador-1.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/mysql-connector-java-8.0.28.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-examples-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-excelant-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-ooxml-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-ooxml-schemas-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/poi-scratchpad-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/scaledfx-0.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/slf4j-api-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/smbj-0.11.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/spring-core-5.3.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/spring-jcl-5.3.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios/xmlbeans-3.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/asn-one-0.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/bcprov-jdk15on-1.69.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/commons-net-3.8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/commons-net-examples-3.8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/log4j-1.2.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/mbassador-1.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/slf4j-api-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/smbj-0.11.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AppController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AppController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeSchedulePaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeSchedulePaneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/dao/implementation/EmpleadoDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/dao/implementation/EmpleadoDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesBoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/model/Empleado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/model/Empleado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/AddEmployeeDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/AddEmployeeDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeSchedulePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeSchedulePane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetEmpTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetEmpTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/SendMail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/TimeValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/implementation/EmpleadoDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/implementation/EmpleadoDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/Employee.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeesBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeesBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesBoardController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/AddEmployeeDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/AddEmployeeDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/GetEmpTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GetEmpTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CustomCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CustomCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SendMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/SendMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/TimeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/Employee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/Employee.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeesBoard.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +148,7 @@
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources/fxml" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -264,11 +158,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\fxml" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\controller" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios2" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar3" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
@@ -448,7 +342,8 @@
       <workItem from="1645186443515" duration="2164000" />
       <workItem from="1645351276359" duration="119000" />
       <workItem from="1645364529819" duration="47000" />
-      <workItem from="1645431273373" duration="12932000" />
+      <workItem from="1645431273373" duration="14852000" />
+      <workItem from="1645450933564" duration="2965000" />
     </task>
     <servers />
   </component>

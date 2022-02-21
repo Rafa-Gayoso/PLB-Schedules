@@ -6,18 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import utils.SMBUtils;
-
-import java.io.File;
-import java.util.Calendar;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         //ScalableContentPane scale = new ScalableContentPane();
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/EmployeesBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/EmployeeBoard.fxml"));
         //scale.setContent(root);
         root.requestFocus();
         primaryStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
