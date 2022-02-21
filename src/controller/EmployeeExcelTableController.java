@@ -78,8 +78,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
         Locale spanishLocale=new Locale("es", "ES");
         String month = Month.of(sheet).getDisplayName(TextStyle.FULL, spanishLocale);
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
-
-
+        vacations = employee.getVacations();
         validateBtn.setOnAction(event -> lockSheet(employee,employeeFileName,sheet));
         unlockBtn.setOnAction(event -> unlockSheet(employee,employeeFileName,sheet));
         warningBtn.setOnAction(event -> SendMail.sendWarningEmail(employee, month));
@@ -142,7 +141,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
             ZipSecureFile.setMinInflateRatio(0);
             XSSFWorkbook b = new XSSFWorkbook(inputStream1);
             XSSFSheet sheet = b.getSheetAt(0);
-            vacations = (int) sheet.getRow(34).getCell(25).getNumericCellValue();
 
             sheet = b.getSheetAt(sheetNumber);
 
@@ -183,6 +181,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
                     }
                 }
             }
+
             ObservableList<TableExcelModel> excelModels = FXCollections.observableArrayList(models);
             excelTable.setItems(excelModels);
             excelTable.setEditable(true);
@@ -191,7 +190,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
                 saveButton.setDisable(true);
             }
             b.close();
-           vacationsLabel.setText("Vacaciones: "+vacations);
+           vacationsLabel.setText("Vacaciones: " + vacations);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -301,7 +300,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             model.setEntryHour(value);
             if(value.equalsIgnoreCase("Vacaciones")){
                 vacations--;
-                vacationsLabel.setText("Vacaciones :"+vacations);
+
             }
         }
 

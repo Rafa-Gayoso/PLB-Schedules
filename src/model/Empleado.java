@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import services.ServicesLocator;
 
 import java.io.File;
+import java.util.Objects;
 
 public class Empleado {
     private SimpleIntegerProperty cod_empleado;
@@ -20,6 +21,7 @@ public class Empleado {
     private String direccionCronograma;
     private int codUsuario;
     private String email;
+    private int vacations;
 
     @SuppressWarnings("unused")
     public Empleado(String nombre, String primer_apellido, String segundo_apellido, String nif, String numero_afiliacion,
@@ -36,7 +38,8 @@ public class Empleado {
     }
 
     public Empleado(int cod_empleado, String nombre, String primer_apellido, String segundo_apellido, String nif,
-                    String numero_afiliacion, int horas_laborables, int cod_empresa, String direccionCronograma,int codUsuario, String email) {
+                    String numero_afiliacion, int horas_laborables, int cod_empresa, String direccionCronograma,
+                    int codUsuario, String email, int vacations) {
         this.cod_empleado = new SimpleIntegerProperty(cod_empleado);
         this.nombre = new SimpleStringProperty(nombre);
         this.primer_apellido = new SimpleStringProperty(primer_apellido);
@@ -49,6 +52,7 @@ public class Empleado {
         this.direccionCronograma = direccionCronograma;
         this.codUsuario = codUsuario;
         this.email = email;
+        this.vacations = vacations;
 
     }
 
@@ -65,6 +69,7 @@ public class Empleado {
         this.horas_laborables = new SimpleIntegerProperty();
         this.direccionCronograma = "";
         this.email = "";
+        this.vacations = 0;
     }
 
 
@@ -216,6 +221,39 @@ public class Empleado {
         this.email = email;
     }
 
+    public int getVacations() {
+        return vacations;
+    }
+
+    public void setVacations(int vacations) {
+        this.vacations = vacations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return codUsuario == empleado.codUsuario &&
+                vacations == empleado.vacations &&
+                cod_empleado.equals(empleado.cod_empleado) &&
+                nombre.equals(empleado.nombre) &&
+                primer_apellido.equals(empleado.primer_apellido) &&
+                segundo_apellido.equals(empleado.segundo_apellido) &&
+                nif.equals(empleado.nif) &&
+                numero_afiliacion.equals(empleado.numero_afiliacion) &&
+                cod_empresa.equals(empleado.cod_empresa) &&
+                nombre_empresa.equals(empleado.nombre_empresa) &&
+                horas_laborables.equals(empleado.horas_laborables) &&
+                direccionCronograma.equals(empleado.direccionCronograma) &&
+                email.equals(empleado.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cod_empleado, nombre, primer_apellido, segundo_apellido, nif, numero_afiliacion, cod_empresa, nombre_empresa, horas_laborables, direccionCronograma, codUsuario, email, vacations);
+    }
+
     @Override
     public String toString() {
         return "Empleado{" +
@@ -229,6 +267,9 @@ public class Empleado {
                 ", nombre_empresa=" + nombre_empresa +
                 ", horas_laborables=" + horas_laborables +
                 ", direccionCronograma='" + direccionCronograma + '\'' +
+                ", codUsuario=" + codUsuario +
+                ", email='" + email + '\'' +
+                ", vacations=" + vacations +
                 '}';
     }
 }

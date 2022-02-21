@@ -180,3 +180,12 @@
     -fx-border-width: 1px 1px 1px 1px;
     -fx-border-color: #4d1a4dff;
 }
+
+.border-bottom{
+    -fx-border-width:0 0 2 0;
+    -fx-border-color: linear-gradient(#226bbb,#fff6f6,#78BC61);
+}
+
+.gradient{
+    -fx-background-color: linear-gradient(to top, #676767, transparent);
+}

@@ -53,17 +53,23 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXComboBox fx:id="comboEmpresa" labelFloat="true" prefHeight="21.0" prefWidth="292.0" promptText="Empresa" stylesheets="@../styles/Style.css" GridPane.rowIndex="7">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXComboBox>
             <JFXTextField fx:id="horasLaborables" labelFloat="true" prefHeight="27.0" prefWidth="292.0" promptText="Horas laborables" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="44.0" prefWidth="202.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Añadir empleado" GridPane.rowIndex="8">
+            <JFXTextField fx:id="email" labelFloat="true" prefHeight="12.0" prefWidth="292.0" promptText="Email" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>>
+            </JFXTextField>
+            <JFXComboBox fx:id="comboEmpresa" labelFloat="true" prefHeight="21.0" prefWidth="292.0" promptText="Empresa" stylesheets="@../styles/Style.css" GridPane.rowIndex="7">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXComboBox>
+
+            <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="44.0" prefWidth="202.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Guardar Datos" GridPane.rowIndex="8">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -71,7 +77,7 @@
                   <Font name="Segoe UI" size="20.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="email" labelFloat="true" prefHeight="12.0" prefWidth="292.0" promptText="Email" GridPane.rowIndex="6" />
+
          </children>
       </GridPane>
    </children>

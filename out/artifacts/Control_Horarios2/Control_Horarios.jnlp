@@ -9,7 +9,7 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="AnimateFX-1.2.1.jar" size="94267" download="eager" />
-    <jar href="Control_Horarios.jar" size="1337220" download="eager" />
+    <jar href="Control_Horarios.jar" size="1340496" download="eager" />
     <jar href="SparseBitSet-1.2.jar" size="24510" download="eager" />
     <jar href="TrayNotification.jar" size="41019" download="eager" />
     <jar href="activation-1.1.1.jar" size="69409" download="eager" />

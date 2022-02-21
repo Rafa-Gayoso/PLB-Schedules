@@ -27,7 +27,7 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
                 Empleado employee = new Empleado(resultSet.getInt(1), resultSet.getString(2),
                         resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),
                         resultSet.getString(6),resultSet.getInt(7),resultSet.getInt(8),
-                        resultSet.getString(9), cod, resultSet.getString(11));
+                        resultSet.getString(9), cod, resultSet.getString(11), resultSet.getInt(12));
                 list.add(employee);
             }
         } catch (SQLException e) {
@@ -43,7 +43,8 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
 
         try(Connection connection = ServicesLocator.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO empleado(nombre_empleado,primer_apellido,segundo_apellido," +
-                    "nif,numero_afiliacion,horas_laborables,cod_empresa,direccion_cronograma,cod_usuario) VALUES(?,?,?,?,?,?,?,?,?)");
+                    "nif,numero_afiliacion,horas_laborables,cod_empresa,direccion_cronograma,cod_usuario, email, vacaciones) " +
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
             statement.setString(1,entity.getNombre());
             statement.setString(2,entity.getPrimer_apellido());
             statement.setString(3,entity.getSegundo_apellido());
@@ -51,8 +52,10 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
             statement.setString(5,entity.getNumero_afiliacion());
             statement.setInt(6,entity.getHoras_laborables());
             statement.setInt(7,entity.getCod_empresa());
-            statement.setString(8,"");
+            statement.setString(8,entity.getDireccionCronograma());
             statement.setInt(9,entity.getCodUsuario());
+            statement.setString(10, entity.getEmail());
+            statement.setInt(11, entity.getVacations());
             statement.execute();
 
 
@@ -66,8 +69,9 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
     @Override
     public void updateEntity(Empleado entity) {
         try(Connection connection = ServicesLocator.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update empleado set nombre_empleado = ?, primer_apellido = ?, segundo_apellido = ?, nif =?, " +
-                    "numero_afiliacion = ?, horas_laborables = ?, cod_empresa =?, cod_usuario = ? where cod_empleado = ?");
+            PreparedStatement statement = connection.prepareStatement("update empleado set nombre_empleado = ?, primer_apellido = ?, " +
+                    "segundo_apellido = ?, nif =?, numero_afiliacion = ?, horas_laborables = ?, cod_empresa =?, " +
+                    "cod_usuario = ? where cod_empleado = ?");
             statement.setString(1,entity.getNombre());
             statement.setString(2,entity.getPrimer_apellido());
             statement.setString(3,entity.getSegundo_apellido());
@@ -111,7 +115,7 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
                 employee = new Empleado(resultSet.getInt(1), resultSet.getString(2),
                         resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),
                         resultSet.getString(6),resultSet.getInt(7),resultSet.getInt(8),
-                        resultSet.getString(9),cod,resultSet.getString(11));
+                        resultSet.getString(9),cod,resultSet.getString(11),resultSet.getInt(12));
 
             }
         } catch (SQLException e) {
@@ -133,7 +137,8 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
                 employee = new Empleado(result.getInt(1), result.getString(2),
                         result.getString(3),result.getString(4),result.getString(5),
                         result.getString(6),result.getInt(7),result.getInt(8),
-                        result.getString(9),result.getInt(10),result.getString(11));
+                        result.getString(9),result.getInt(10),result.getString(11),
+                        result.getInt(12));
             }
         } catch (SQLException e) {
             e.printStackTrace();

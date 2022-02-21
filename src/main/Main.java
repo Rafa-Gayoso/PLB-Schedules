@@ -17,12 +17,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //ScalableContentPane scale = new ScalableContentPane();
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/EmployeesBoard.fxml"));
         //scale.setContent(root);
         root.requestFocus();
         primaryStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

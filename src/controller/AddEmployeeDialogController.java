@@ -30,14 +30,15 @@ import model.Usuario;
 import services.ServicesLocator;
 import utils.AESCypher;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class AddEmployeeDialogController implements Initializable {
+public class AddEmployeeDialogController /*implements Initializable*/ {
 
-
+    private final String ADDRESS = "config_files" + File.separator + "Horarios" + File.separator;
     private ObservableList<Empleado> appMainObservableList;
 
     private EmpresaDaoImpl empresaDao;
@@ -74,7 +75,7 @@ public class AddEmployeeDialogController implements Initializable {
     private UserDaoImpl userDao;
 
 
-    @Override
+    /*@Override
     public void initialize(URL location, ResourceBundle resources) {
 
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
@@ -113,6 +114,57 @@ public class AddEmployeeDialogController implements Initializable {
                         .and(numTextfield.textProperty().isNotEmpty())
         ).not());
 
+    }*/
+
+    public void setData(Empleado employee){
+        RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
+        userDao = new UserDaoImpl();
+        empresaDao = new EmpresaDaoImpl();
+        ObservableList<String> empresas = FXCollections.observableArrayList(
+                empresaDao.getEntities().stream().map(Empresa::getNombre).collect(Collectors.toList())
+        );
+        comboEmpresa.setItems(empresas);
+
+        horasLaborables.setText("8");
+        horasLaborables.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[4-8]*$")) ? change : null));
+
+        setValidator(nombreTextField,requiredFieldValidator);
+
+        setValidator(primApellidoTextField,requiredFieldValidator);
+
+        setValidator(email,requiredFieldValidator);
+
+        setValidator(nifTextfield,requiredFieldValidator);
+
+        setValidator(numTextfield,requiredFieldValidator);
+
+        setValidator(comboEmpresa,requiredFieldValidator);
+        requiredFieldValidator.setMessage("Campo Requerido");
+
+        btnInsert.setOnAction(this::insertEmployee);
+
+        btnInsert.disableProperty().bind((
+                nombreTextField.textProperty().isNotEmpty()
+                        .and(primApellidoTextField.textProperty().isNotEmpty())
+                        .and(email.textProperty().isNotEmpty())
+                        .and(nifTextfield.textProperty().isNotEmpty())
+                        .and(numTextfield.textProperty().isNotEmpty())
+        ).not());
+
+        if(!Objects.isNull(employee)){
+            nombreTextField.setText(employee.getNombre());
+            primApellidoTextField.setText(employee.getPrimer_apellido());
+            segApellidoTextfield.setText(employee.getSegundo_apellido());
+            email.setText(employee.getEmail());
+            nifTextfield.setText(employee.getNif());
+            numTextfield.setText(employee.getNumero_afiliacion());
+            horasLaborables.setText(String.valueOf(employee.getHoras_laborables()));
+            comboEmpresa.getSelectionModel().select(employee.getNombre_empresa());
+            btnInsert.setOnAction(event -> updateEmployee(employee));
+        }
+
+
     }
 
     private void setValidator(JFXTextField textField, RequiredFieldValidator validator){
@@ -139,7 +191,6 @@ public class AddEmployeeDialogController implements Initializable {
         if (!validated) {
 
 
-
         } else if(!Objects.isNull(employee)){
 
         } else{
@@ -156,17 +207,26 @@ public class AddEmployeeDialogController implements Initializable {
 
                 dao.insertEntity(employee);
 
-                 employee.setCod_empleado(dao.getExistEmployeeByNif(employee.getNif()).getCod_empleado());
+                employee.setCod_empleado(dao.getExistEmployeeByNif(employee.getNif()).getCod_empleado());
                 appMainObservableList.add(employee);
                 LoginController.getEmployees().add(employee);
-                closeStage(event);
+                closeStage();
             }catch(Exception e){
 
             }
-
         }
+    }
 
+    private void updateEmployee(Empleado employee) {
+        boolean validated = validateData();
 
+        if (!validated) {
+
+        }  else{
+                setEmployeeData(employee);
+                dao.updateEntity(employee);
+                closeStage();
+        }
     }
 
     private void setEmployeeData(Empleado empleado) {
@@ -179,6 +239,11 @@ public class AddEmployeeDialogController implements Initializable {
         empleado.setCod_empresa(cod_empresa);
         empleado.setNombre_empresa(comboEmpresa.getSelectionModel().getSelectedItem());
         empleado.setHoras_laborables(Integer.parseInt(horasLaborables.getText()));
+        empleado.setEmail(email.getText());
+        empleado.setDireccionCronograma(ADDRESS + empleado.getNombre_empresa());
+
+        empleado.setVacations(LoginController.getEmployees().stream().filter(e ->
+                e.getNombre_empresa().equals(empleado.getNombre_empresa())).findFirst().get().getVacations());
     }
 
     private boolean validateData() {
@@ -199,9 +264,9 @@ public class AddEmployeeDialogController implements Initializable {
         this.dao = dao;
     }
 
-    private void closeStage(ActionEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+    private void closeStage() {
+
+        Stage stage  = (Stage) btnInsert.getScene().getWindow();
         stage.close();
     }
 

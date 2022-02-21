@@ -18,11 +18,11 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
     private final String NATIONAL_COLOR = "#FF0000";
 
     TextField textField = new TextField();
-    TimeValidator validator;
+
     Text text = new Text();
 
     public CustomCell() {
-        validator = new TimeValidator();
+
         textField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 commitEdit(textField.getText());
@@ -85,7 +85,6 @@ public class CustomCell<T> extends TableCell<TableExcelModel, String> {
                 setEditable(false);
             }
             else{
-                if(!validator.validate(item)) item = "";
                 setStyle("");
                 setEditable(true);
             }

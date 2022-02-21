@@ -1,6 +1,7 @@
 package controller;
 
 
+import dao.implementation.EmpleadoDaoImpl;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -185,6 +186,7 @@ public class AppController {
 
     }
     public void mergeExcelFiles(ArrayList<Empleado> listaEmpleados, Empresa empresa, ArrayList<File> files, String ruta) {
+        EmpleadoDaoImpl empleadoDao = new EmpleadoDaoImpl();
         ArrayList<String> cell_formulas = generateCellToFormula();
 
         try {
@@ -268,10 +270,15 @@ public class AppController {
                         }
                     }
                 }
+                FormulaEvaluator formulaEval = book.getCreationHelper().createFormulaEvaluator();
                 setDataWorkerInScheduleModel(book, empresa, empleado);
                 if(empleado.getHoras_laborables() == 4){
                     fixEmployeeMidDay(book);
                 }
+                CellValue c=formulaEval.evaluate(book.getSheetAt(0).getRow(34).getCell(25));
+                int vacations = (int) c.getNumberValue();
+                empleado.setVacations(vacations);
+                empleadoDao.updateEntity(empleado);
                 passWeekendToSheets(book, calendar_year);
                 writeFile(book, file);
                 SMBUtils.uploadFile(empresa.getNombre(), employeeFullName+".xlsx",dir.getAbsolutePath());

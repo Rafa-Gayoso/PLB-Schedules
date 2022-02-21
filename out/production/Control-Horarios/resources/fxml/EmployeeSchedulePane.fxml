@@ -2,11 +2,12 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" prefHeight="740.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeSchedulePaneController">
+<AnchorPane fx:id="pane" prefHeight="729.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeSchedulePaneController">
     <children>
-        <TabPane fx:id="tabPane" prefHeight="740.0" prefWidth="632.0" stylesheets="@../styles/Style.css">
+        <TabPane fx:id="tabPane" layoutX="6.0" prefHeight="753.0" prefWidth="632.0" stylesheets="@../styles/Style.css">
             <tabs>
                 <Tab text="Enero" />
                 <Tab text="Febrero" />
@@ -21,6 +22,9 @@
                 <Tab text="Noviembre" />
                 <Tab text="Diciembre" />
             </tabs>
+         <tooltip>
+            <Tooltip fx:id="tooltip" text="Empty Tooltip" />
+         </tooltip>
         </TabPane>
     </children>
 </AnchorPane>

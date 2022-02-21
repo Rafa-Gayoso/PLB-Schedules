@@ -16,12 +16,16 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 
+    private static final String EMAIL = "rgayoso@medibiofarma.com";
+    private static final String PASSWORD = "fcbarcelona1899.";
+
+
     public static void sendCompilationEmail(String name, String month){
         ArrayList<String> recipients = new ArrayList<>();
         // Mention the Recipient's email address
-        recipients.add("iamalfi@medibiofarma.com");
-        recipients.add("jrojo@aplobiofarma.com");
-
+        //recipients.add("iamalfi@medibiofarma.com");
+        //recipients.add("jrojo@aplobiofarma.com");
+        recipients.add(EMAIL);
         // Mention the Sender's email address
         String from = "rgayoso@medibiofarma.com";
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
@@ -36,7 +40,7 @@ public class SendMail {
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("rgayoso@medibiofarma.com", "Rafa1997.");
+                return new PasswordAuthentication(EMAIL, PASSWORD);
             }
         });
         // Used to debug SMTP issues
@@ -46,13 +50,13 @@ public class SendMail {
                 // Create a default MimeMessage object.
                 MimeMessage message = new MimeMessage(session);
                 // Set From: header field of the header.
-                message.setFrom(new InternetAddress(from));
+                message.setFrom(new InternetAddress(EMAIL));
                 // Set To: header field of the header.
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 // Set Subject: header field
                 message.setSubject("Control Horario de "+name+" para el mes de "+month);
                 // Now set the actual message
-                message.setText(name+ "ha rellanado su horario laboral correspondiente al mes de "+month+".");
+                message.setText(name+ " ha rellenado su horario laboral correspondiente al mes de "+month+".");
                 System.out.println("sending...");
                 // Send message
                 Transport.send(message);
@@ -66,7 +70,6 @@ public class SendMail {
     public static void sendWarningEmail(Empleado employee, String month){
         String to = employee.getEmail();
         // Mention the Sender's email address
-        String from = "rgayoso@medibiofarma.com";
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
         String host = "smtp.office365.com";
         // Get system properties
@@ -79,17 +82,16 @@ public class SendMail {
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("rgayoso@medibiofarma.com", "Rafa1997.");
+                return new PasswordAuthentication(EMAIL, PASSWORD);
             }
         });
         // Used to debug SMTP issues
         session.setDebug(true);
         try {
-
                 // Create a default MimeMessage object.
                 MimeMessage message = new MimeMessage(session);
                 // Set From: header field of the header.
-                message.setFrom(new InternetAddress(from));
+                message.setFrom(new InternetAddress(EMAIL));
                 // Set To: header field of the header.
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 // Set Subject: header field
