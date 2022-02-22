@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
@@ -68,13 +69,18 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
     @FXML
     private GridPane grid;
 
+
+    @FXML
+    private Label lblEmployeeCount;
+
     private UserDaoImpl userDao;
 
 
 
 
-    public void setData(Empleado employee, GridPane grid){
+    public void setData(Empleado employee, GridPane grid, Label lblEmployeeCount){
         this.grid = grid;
+        this.lblEmployeeCount = lblEmployeeCount;
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         userDao = new UserDaoImpl();
         empresaDao = new EmpresaDaoImpl();
@@ -181,6 +187,8 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
                 if(column == 3) column = 0;
                 grid.add(anchorPane, column, row);
                 GridPane.setMargin(anchorPane, new Insets(20));
+                int count = Integer.parseInt(lblEmployeeCount.getText()) + 1;
+                lblEmployeeCount.setText(String.valueOf(count));
                 closeStage();
             }catch(Exception e){
 

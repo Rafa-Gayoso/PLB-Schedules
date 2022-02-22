@@ -145,42 +145,6 @@
     -fx-background-radius: 5px;
 }
 
-/* Modificar el color de fondo del área del Panel de TabPane */
-.tab-pane {
-    -fx-background-color: rgba(255, 255, 255, 0);
-}
-/* Modificar el color de fondo de la pestaña */
-.tab {
-    -fx-background-color: #fff6f6;
-}
-/* Modificar el color de fondo de la barra superior */
-/*.tab-pane>*.tab-header-area>*.tab-header-background
-{
-    -fx-background-color: -fx-outer-border, -fx-text-box-border, rgba(85, 152, 184, 0);
-}*/
-/* Modificar el color del texto en la pestaña */
-.tab-label {
-    -fx-text-fill: #000000;
-    -fx-font-size: 15px;
-
-}
-/* Selector secundario, seleccione su etiqueta de elemento secundario cuando se selecciona Tabulador */
-.tab:selected .tab-label {
-    -fx-text-fill: #ffffff;
-}
-/* Establecer el color de fondo cuando se selecciona la pestaña */
-.tab:selected {
-    -fx-background-color: #5598b8;
-    -fx-text-fill: #ffffff;
-}
-
-/* Cuando se selecciona Tab, seleccione su borde y modifique el estilo */
-.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
-    -fx-border-radius: 0px;
-    -fx-border-width: 1px 1px 1px 1px;
-    -fx-border-color: #4d1a4dff;
-}
-
 .border-bottom{
     -fx-border-width:0 0 2 0;
     -fx-border-color: linear-gradient(#226bbb,#fff6f6,#78BC61);
@@ -200,3 +164,7 @@
     -fx-content-display: LEFT;
 }
 
+
+#scheduleBtn, #vacationsBtn{
+    -fx-border: 1px solid #40b2d5;
+}

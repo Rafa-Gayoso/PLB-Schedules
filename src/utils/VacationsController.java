@@ -59,8 +59,6 @@ public class VacationsController {
 
     public static ArrayList<Map<String, ArrayList<String>>> getVacationsDaysEmployees(ArrayList<Empleado> employees){
         ArrayList<Map<String, ArrayList<String>>> vacations = new ArrayList<>();
-        int progress =0;
-        int totalProgress = employees.size();
 
         for(Empleado employee : employees){
             Map<String, ArrayList<String>> vacationsMap = VacationsController.getVacationsDays(employee);

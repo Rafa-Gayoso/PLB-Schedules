@@ -28,43 +28,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/GetVacationsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/GetVacationsTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/VacationsReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/VacationsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/batik_transcoder_1_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/EmployeeManagementBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeManagementBoard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/images/blogging.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/images/blogging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/images/blogging.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/images/meditation.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Alba Velle.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Alba Velle.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Amaia Iturmendi.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Amaia Iturmendi.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Horacio Moreno.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Horacio Moreno.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Irene Velila.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Irene Velila.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Laura González.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Laura González.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Richard Roberts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Richard Roberts.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Rodolfo Rodríguez.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Rodolfo Rodríguez.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Boris A. Rodríguez.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Boris A. Rodríguez.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/David Ramos.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/David Ramos.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Ivette Amalfi.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Ivette Amalfi.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Jenniesley Rojo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Jenniesley Rojo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Julio C. Castro.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Julio C. Castro.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Miriam Soler.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Miriam Soler.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Nahomi Castro.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Nahomi Castro.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Saul Saldaña.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Saul Saldaña.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Abdelaziz El Maatougui.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Abdelaziz El Maatougui.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Alely Gessa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Alely Gessa.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Francisco J. García.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Francisco J. García.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Juan A. Camacho.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Juan A. Camacho.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Nerea Castrillo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Nerea Castrillo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Tamara Cordero.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Tamara Cordero.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control-Horarios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Control-Horarios.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeSchedulePaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeSchedulePaneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/MyListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeSchedulePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeSchedulePane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetVacationsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetVacationsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetVacationsTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetVacationsTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/VacationsReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/services/VacationsReport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/VacationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/VacationsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GetVacationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GetVacationsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GetVacationsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GetVacationsTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/VacationsReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/VacationsReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/VacationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/VacationsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +165,7 @@
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dashboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -182,16 +176,16 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\libs" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\fxml" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\controller" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios2" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\main" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\schedule_models" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\database" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -370,7 +364,7 @@
       <workItem from="1645454236331" duration="7282000" />
       <workItem from="1645469113416" duration="2392000" />
       <workItem from="1645474404486" duration="1712000" />
-      <workItem from="1645518287626" duration="10752000" />
+      <workItem from="1645518287626" duration="18705000" />
     </task>
     <servers />
   </component>
@@ -411,12 +405,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/services/VacationsReport.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/services/VacationsReport.java</url>
-          <line>89</line>
+          <line>95</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>

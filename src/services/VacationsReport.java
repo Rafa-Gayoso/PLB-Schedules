@@ -16,14 +16,20 @@ public class VacationsReport {
 
     private static final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
     private static final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
-    private static final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator +
-            "Reporte de Vacaciones.pdf";
+    private static final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator;
     private static ArrayList<String> months;
 
     public static void exportEmployees(ArrayList<Map<String, ArrayList<String>>> vacations, ArrayList<Empleado> employees) {
         Document document = new Document();
         try{
-            PdfWriter.getInstance(document, new FileOutputStream(PDF_Directory));
+            String fileName = "Reporte de Vacaciones.pdf";
+            if(employees.size() == 1){
+                fileName = "Reporte de Vacaciones de "
+                        +employees.get(0).getNombre()+".pdf";
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(PDF_Directory+fileName);
+
+            PdfWriter.getInstance(document, fileOutputStream);
 
             document.open();
             Locale spanishLocale=new Locale("es", "ES");
@@ -49,7 +55,7 @@ public class VacationsReport {
             document.add(table2);
             document.close();
 
-            File file = new File(PDF_Directory);
+            File file = new File(PDF_Directory+fileName);
 
 
             //first check if Desktop is supported by Platform or not

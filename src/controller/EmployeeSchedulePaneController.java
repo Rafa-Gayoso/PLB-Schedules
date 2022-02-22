@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -16,7 +17,7 @@ public class EmployeeSchedulePaneController{
 
 
     @FXML
-    private TabPane tabPane;
+    private JFXTabPane tabPane;
 
 
     private int vacations;
