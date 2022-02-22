@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<?import com.jfoenix.controls.JFXTabPane?>
 <AnchorPane fx:id="pane" prefHeight="729.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeSchedulePaneController">
     <children>
-        <JFXTabPane fx:id="tabPane" layoutX="6.0" prefHeight="753.0" prefWidth="632.0" stylesheets="@../styles/Style.css">
-            <tabs>
-                <Tab text="Enero" />
-                <Tab text="Febrero" />
-                <Tab text="Marzo" />
-                <Tab text="Abril" />
-                <Tab text="Mayo" />
-                <Tab text="Junio" />
-                <Tab text="Julio" />
-                <Tab text="Agosto" />
-                <Tab text="Septiembre" />
-                <Tab text="Octubre" />
-                <Tab text="Noviembre" />
-                <Tab text="Diciembre" />
-            </tabs>
-         <tooltip>
-            <Tooltip fx:id="tooltip" text="Empty Tooltip" />
-         </tooltip>
-        </JFXTabPane>
+      <VBox prefHeight="729.0" prefWidth="638.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="735.0" prefWidth="638.0" VBox.vgrow="ALWAYS">
+               <children>
+                    <JFXTabPane fx:id="tabPane" prefHeight="753.0" prefWidth="632.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                        <tabs>
+                            <Tab text="Enero" />
+                            <Tab text="Febrero" />
+                            <Tab text="Marzo" />
+                            <Tab text="Abril" />
+                            <Tab text="Mayo" />
+                            <Tab text="Junio" />
+                            <Tab text="Julio" />
+                            <Tab text="Agosto" />
+                            <Tab text="Septiembre" />
+                            <Tab text="Octubre" />
+                            <Tab text="Noviembre" />
+                            <Tab text="Diciembre" />
+                        </tabs>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip" text="Empty Tooltip" />
+                     </tooltip>
+                    </JFXTabPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

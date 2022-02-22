@@ -39,9 +39,4 @@
       <Cursor fx:constant="HAND" />
    </cursor>
 
-   <!-- store controller as userData property -->
-   <userData>
-      <fx:reference source="controller" />
-   </userData>
-
 </AnchorPane>

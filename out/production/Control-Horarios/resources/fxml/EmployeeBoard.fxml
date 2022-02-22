@@ -67,7 +67,7 @@
                         <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="369.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton fx:id="scheduleBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="344.0" prefWidth="418.0" ripplerFill="#64e471" style="-fx-background-color: white;" text="Horario Laboral" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <JFXButton fx:id="scheduleBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="336.0" prefWidth="418.0" ripplerFill="#64e471" style="-fx-background-color: white;" text="Horario Laboral" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="482.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
                                  <viewport>

@@ -163,8 +163,3 @@
     -fx-alignment: CENTER;
     -fx-content-display: LEFT;
 }
-
-
-#scheduleBtn, #vacationsBtn{
-    -fx-border: 1px solid #40b2d5;
-}

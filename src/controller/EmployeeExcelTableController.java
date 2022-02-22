@@ -39,7 +39,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private final String NATIONAL_COLOR = "FFFF0000";
     private final String REGULAR_COLOR = "FFFFFFFF";
     private DateFormat inFormat;
-    private int vacations;
 
     @FXML
     private JFXButton saveButton;
@@ -71,14 +70,12 @@ public class EmployeeExcelTableController /*implements Initializable */{
     @FXML
     private MenuItem warningBtn;
 
-    @FXML
-    private Label vacationsLabel;
 
     public void setData(Empleado employee, int sheet){
         Locale spanishLocale=new Locale("es", "ES");
         String month = Month.of(sheet).getDisplayName(TextStyle.FULL, spanishLocale);
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
-        vacations = employee.getVacations();
+
         validateBtn.setOnAction(event -> lockSheet(employee,employeeFileName,sheet));
         unlockBtn.setOnAction(event -> unlockSheet(employee,employeeFileName,sheet));
         warningBtn.setOnAction(event -> SendMail.sendWarningEmail(employee, month));
@@ -163,9 +160,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
                             models.add(new TableExcelModel(Integer.toString(day), cellEntryHour.getStringCellValue(),
                                     cellExitHour.getStringCellValue(),cellJournalTime.getStringCellValue()));
-                            if( cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
-                                vacations--;
-                            }
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
 
                             String entryTime = combineHoursAndMinutes(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
@@ -190,7 +184,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
                 saveButton.setDisable(true);
             }
             b.close();
-           vacationsLabel.setText("Vacaciones: " + vacations);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -298,10 +291,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
             model.setJournalTime(value);
             model.setExitHour(value);
             model.setEntryHour(value);
-            if(value.equalsIgnoreCase("Vacaciones")){
-                vacations--;
-
-            }
         }
 
     }
