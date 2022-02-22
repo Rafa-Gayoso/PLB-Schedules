@@ -1,7 +1,15 @@
 package controller;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import dao.implementation.EmpleadoDaoImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -17,29 +26,33 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Empleado;
-import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import services.GetVacationsService;
+import services.VacationsReport;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
+import utils.VacationsController;
 
+import java.awt.*;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Month;
-import java.time.format.TextStyle;
 import java.util.*;
+import java.util.List;
 
 
 public class EmployeeBoardController implements Initializable {
 
+    private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
+    private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
+    private final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator +
+            "Empleados de Palobiofarma y Medibiofarma.pdf";
+
     @FXML
     private JFXButton btnInsert;
 
+    @FXML
+    private JFXButton vacationsBtn;
 
     @FXML
     private GridPane grid;
@@ -49,6 +62,7 @@ public class EmployeeBoardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         employeeDao = new EmpleadoDaoImpl();
         employees.addAll(LoginController.getEmployees());
         btnInsert.setOnAction(event -> employeeDataManagement(null,grid));
@@ -132,10 +146,26 @@ public class EmployeeBoardController implements Initializable {
         delete.setOnAction(e-> deleteEmployee(employee));
         schedule.setOnAction(e-> showSchedule(employee));
         vacations.setOnAction(e-> {
-            Map<String, ArrayList<String>> vacationsMap =  getVacationsDays(employee);
-            for (Map.Entry<String, ArrayList<String>> entry : vacationsMap.entrySet()) {
-                System.out.println(entry.getKey() + " = " + entry.getValue());
-            }
+            ArrayList<Empleado> employees = new ArrayList<>();
+            employees.add(employee);
+
+            VacationsReport.exportEmployees(null, null);
+            GetVacationsService task = new GetVacationsService(employees);
+            task.start();
+
+            task.setOnRunning(ex-> System.out.println("CALCULANDO VACACIONES"));
+            task.setOnSucceeded(ex -> {
+                ArrayList<Map<String, ArrayList<String>>> employeesVacations= task.getValue();
+                System.out.println(employeesVacations);
+                for (Map<String, ArrayList<String>> employeeMap : employeesVacations) {
+                    for (Map.Entry<String, ArrayList<String>> entry : employeeMap.entrySet()) {
+                        System.out.println(entry.getKey() + " = " + entry.getValue());
+                    }
+                }
+
+            });
+
+            task.setOnFailed(ex-> System.out.println("Fallo"));
         });
 
         items.add(schedule);
@@ -146,42 +176,7 @@ public class EmployeeBoardController implements Initializable {
         return items;
     }
 
-    private Map<String, ArrayList<String>> getVacationsDays(Empleado employee){
-        Map<String, ArrayList<String>> vacations = new HashMap<>();
-        try {
-            String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
-            SMBUtils.downloadSmbFile(employee.getNombre_empresa(),employeeFileName, employee.getDireccionCronograma());
-            File file = new File(employee.getDireccionCronograma() + File.separator + employeeFileName);
-            FileInputStream inputStream1 = new FileInputStream(file);
-            ZipSecureFile.setMinInflateRatio(0);
-            XSSFWorkbook b = new XSSFWorkbook(inputStream1);
-            for(int i =1; i < b.getNumberOfSheets(); i++){
-                ArrayList<String> days = new ArrayList<>();
-                XSSFSheet sheet = b.getSheetAt(i);
-                for(int j =15; j < 46; j++){
-                    XSSFRow row =sheet.getRow(j);
-                    if(row != null){
-                        XSSFCell cell = row.getCell(1);
-                        XSSFCell cellEntryHour = row.getCell(2);
-                        if(cell != null){
-                            int day = (int)cell.getNumericCellValue();
-                            if(cellEntryHour.getCellType() == CellType.STRING){
-                                if(cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
-                                    days.add(String.valueOf(day));
-                                }
-                            }
-                        }
-                    }
-                }
-                Locale spanishLocale=new Locale("es", "ES");
-                String month = Month.of(i).getDisplayName(TextStyle.FULL, spanishLocale);
-                vacations.put(month,days);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return vacations;
-    }
+
 
     private void showSchedule(Empleado employee){
         try {
@@ -204,4 +199,95 @@ public class EmployeeBoardController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void exportEmployees() {
+        Document document = new Document();
+        try
+        {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(PDF_Directory));
+            document.open();
+            document.addAuthor("Palobiofarma S.L");
+            document.addCreationDate();
+            document.addTitle("Listado de empleados Palobiofarma y Medibiofarma");
+            //document.addSubject("An example to show how attributes can be added to pdf files.");
+            PdfPTable table = new PdfPTable(6); // 6 columns.
+            table.setWidthPercentage(100); //Width 100%
+            table.setSpacingBefore(10f); //Space before table
+            table.setSpacingAfter(10f); //Space after table
+
+            //Add Image
+            Image image1 = Image.getInstance(PALOBIOFARMA);
+
+            //Fixed Positioning
+            image1.setAbsolutePosition(35f, 780f);
+
+            //Scale to new height and new width of image
+            image1.scaleAbsolute(100, 55);
+
+            //Add to document
+            document.add(image1);
+
+            Image image2 = Image.getInstance(MEDIBIOFARMA);
+            image2.setAbsolutePosition(415f, 780f);
+
+            //Scale to new height and new width of image
+            image2.scaleAbsolute(150, 55);
+
+            //Add to document
+            document.add(image2);
+            document.add(new Paragraph(" "));
+            //Set Column widths
+            float[] columnWidths = {1.5f, 2.1f, 1.3f, 1.8f, 0.5f, 1.7f};
+            table.setWidths(columnWidths);
+
+            table.addCell(createCell("Nombre"));
+            table.addCell(createCell("Apellidos"));
+            table.addCell(createCell("NIF/NIE"));
+            table.addCell(createCell("Número de Afiliación"));
+            table.addCell(createCell("H"));
+            table.addCell(createCell("Empresa"));
+
+            for(Empleado employee: LoginController.getEmployees()){
+                table.addCell(createCell(employee.getNombre()));
+                table.addCell(createCell(employee.getPrimer_apellido() + " "+ employee.getSegundo_apellido()));
+                table.addCell(createCell(employee.getNif()));
+                table.addCell(createCell(employee.getNumero_afiliacion()));
+                table.addCell(createCell(Integer.toString(employee.getHoras_laborables())));
+                table.addCell(createCell(employee.getNombre_empresa()));
+            }
+            File file = new File(PDF_Directory);
+
+
+            //first check if Desktop is supported by Platform or not
+            Desktop desktop = Desktop.getDesktop();
+
+            if(file.exists()) {
+                desktop.open(file);
+            }
+            document.add(table);
+            document.close();
+            writer.close();
+
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private PdfPCell createCell(String text){
+        PdfPCell cell = new PdfPCell(new Paragraph(text));
+        cell.setPaddingLeft(7);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setUseBorderPadding(true);
+        return cell;
+    }
+
+    @FXML
+    void vacationsReport(ActionEvent event) {
+        VacationsController.getVacationsDaysEmployees(LoginController.getEmployees());
+    }
+
 }
