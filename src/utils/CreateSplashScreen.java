@@ -37,26 +37,4 @@ public class CreateSplashScreen {
         }
         return stage;
     }
-
-    public static Stage createEmployeeSplashScreen(GetEmployeeScheduleService services){
-        Stage stage = new Stage();
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(CreateSplashScreen.class.getResource("/resources/fxml/SchedulesGenerator.fxml"));
-            Parent parent = fxmlLoader.load();
-
-            SchedulesGeneratorController schedulesGenerator = fxmlLoader.getController();
-            schedulesGenerator.setData(services);
-
-
-            Scene scene = new Scene(parent);
-            scene.setFill(Color.TRANSPARENT);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            //stage.setAlwaysOnTop(true);
-            stage.setScene(scene);
-        }catch(Exception e){
-
-        }
-        return stage;
-    }
 }

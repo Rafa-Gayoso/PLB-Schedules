@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="216.0" prefWidth="203.0" styleClass="shadow" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
+<AnchorPane prefHeight="216.0" prefWidth="203.0" styleClass="border-pane" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" styleClass="gradient" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="9.0" prefWidth="203.0" />
-            <ImageView fx:id="img" fitHeight="156.0" fitWidth="156.0" pickOnBounds="true">
+            <ImageView fx:id="img" fitHeight="158.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/profile.png" />
                </image>
             </ImageView>
-            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="203.0" styleClass="gradient" stylesheets="@../styles/Style.css">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="203.0" stylesheets="@../styles/Style.css">
                <children>
-                  <HBox alignment="CENTER" prefHeight="183.0" prefWidth="200.0" styleClass="gradient" stylesheets="@../styles/Style.css">
+                  <HBox alignment="CENTER" prefHeight="183.0" prefWidth="200.0" stylesheets="@../styles/Style.css">
                      <children>
                         <Label fx:id="nameLabel2" alignment="TOP_CENTER" text="Label">
                            <font>

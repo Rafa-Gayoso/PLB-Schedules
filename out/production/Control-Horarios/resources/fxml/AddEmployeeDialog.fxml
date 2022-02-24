@@ -88,10 +88,22 @@
             </GridPane>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="5.0" layoutY="335.0" prefHeight="54.0" prefWidth="510.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="330.0">
+      <HBox alignment="CENTER" layoutX="19.0" layoutY="388.0" prefHeight="54.0" prefWidth="510.0">
+         <children>
+            <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="0.0" prefWidth="200.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Guardar Datos" HBox.hgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="23.0" layoutY="338.0" prefHeight="54.0" prefWidth="510.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="338.0">
          <children>
 
-                  <JFXButton fx:id="btnInsert" buttonType="RAISED" contentDisplay="CENTER" prefHeight="0.0" prefWidth="200.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Guardar Datos">
+                  <JFXButton fx:id="btnPhoto" buttonType="RAISED" contentDisplay="CENTER" prefHeight="0.0" prefWidth="200.0" ripplerFill="#3855f8" styleClass="insertBtn" stylesheets="@../styles/Style.css" text="Foto" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

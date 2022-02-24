@@ -20,11 +20,16 @@ import utils.CreateSplashScreen;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class EmployeeBoardController implements Initializable {
+
+    private final String PIC_DIR = "config_files" + File.separator + "Employees";
 
     @FXML
     private ImageView profilePic;
@@ -39,6 +44,20 @@ public class EmployeeBoardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Empleado employee = LoginController.getEmpleado();
+        try {
+            SMBUtils.downloadSmbPhoto(employee.getNombre()+".png",PIC_DIR);
+            File file = new File(PIC_DIR+File.separator+employee.getNombre()+".png");
+            if(!file.exists()){
+                file = new File(PIC_DIR+File.separator+"profile.png");
+            }
+            Image image = null;
+
+            image = new Image(new FileInputStream(file));
+            profilePic.setImage(image);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         vacationsBtn.setOnAction(action -> {
             try {

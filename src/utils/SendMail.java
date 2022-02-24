@@ -23,9 +23,9 @@ public class SendMail {
     public static void sendCompilationEmail(String name, String month){
         ArrayList<String> recipients = new ArrayList<>();
         // Mention the Recipient's email address
-        //recipients.add("iamalfi@medibiofarma.com");
-        //recipients.add("jrojo@aplobiofarma.com");
-        recipients.add(EMAIL);
+        recipients.add("iamalfi@medibiofarma.com");
+        recipients.add("jrojo@aplobiofarma.com");
+        //recipients.add(EMAIL);
         // Mention the Sender's email address
         String from = "rgayoso@medibiofarma.com";
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email

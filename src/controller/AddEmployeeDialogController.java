@@ -21,11 +21,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Empleado;
 import model.Empresa;
 import model.Usuario;
 import utils.AESCypher;
+import utils.SMBUtils;
 
 import java.io.File;
 import java.util.Objects;
@@ -34,12 +36,19 @@ import java.util.stream.Collectors;
 public class AddEmployeeDialogController /*implements Initializable*/ {
 
     private final String ADDRESS = "config_files" + File.separator + "Horarios" + File.separator;
+    private final String PIC_DIR = "config_files" + File.separator + "Employees";
 
     private EmpresaDaoImpl empresaDao;
     private EmpleadoDaoImpl dao;
 
+    private File file;
+
     @FXML
     private JFXTextField nombreTextField;
+
+    @FXML
+    private JFXButton btnPhoto;
+
 
     @FXML
     private JFXTextField primApellidoTextField;
@@ -122,6 +131,18 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
             btnInsert.setOnAction(event -> updateEmployee(employee));
         }
 
+        btnPhoto.setOnAction(event ->{
+            Stage stage = new Stage();
+            FileChooser fc = new FileChooser();
+
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Documento Excel", "*xlsx"));
+            file = fc.showOpenDialog(stage);
+
+            if (file == null) {
+                file = new File("/resources/images/profile.png");
+            }
+        });
+
 
     }
 
@@ -146,15 +167,20 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
     private void insertEmployee(ActionEvent event) {
         boolean validated = validateData();
         Empleado employee = dao.getExistEmployeeByNif(nifTextfield.getText());
+        if (file == null){
+            file = new File("/resources/images/profile.png");
+        }
         if (!validated) {
 
         } else if(!Objects.isNull(employee)){
 
         } else{
             try{
+
+
                 employee = new Empleado();
                 setEmployeeData(employee);
-
+                SMBUtils.uploadPhoto(employee.getNombre()+".png",file.getAbsolutePath());
                 AESCypher aesCypher = new AESCypher();
 
                 String encryptedPassword = aesCypher.encrypt(employee.getNif());

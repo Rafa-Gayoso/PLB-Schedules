@@ -35,7 +35,7 @@
                      <children>
                         <ImageView fx:id="profilePic" fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
-                              <Image url="@../images/user.png" />
+                              <Image url="@../images/profile.png" />
                            </image>
                         </ImageView>
                      </children>

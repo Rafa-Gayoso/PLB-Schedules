@@ -156,6 +156,7 @@ public class EmployeeManagementBoardController implements Initializable {
             task.setOnRunning(event -> {
                 stage.show();
             });
+
             task.setOnSucceeded(event -> {
                 stage.close();
             });
@@ -280,16 +281,21 @@ public class EmployeeManagementBoardController implements Initializable {
 
     @FXML
     void vacationsReport(ActionEvent event) {
-        GetVacationsService services = new GetVacationsService(LoginController.getEmployees());
-        services.start();
+        GetVacationsService task = new GetVacationsService(LoginController.getEmployees());
+        task.start();
 
-        Stage stage = CreateSplashScreen.createPDFSplashScreen(services);
+        Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
 
 
-        services.setOnRunning(e -> {
+        task.setOnRunning(e -> {
             stage.show();
         });
-        services.setOnSucceeded(e -> {
+
+        task.setOnSucceeded(e -> {
+            stage.close();
+        });
+
+        task.setOnFailed(e -> {
             stage.close();
         });
     }
