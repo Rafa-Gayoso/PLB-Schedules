@@ -18,10 +18,10 @@
                <children>
                   <TableView fx:id="excelTable" editable="true" prefHeight="640.0" prefWidth="581.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
                      <columns>
-                        <TableColumn fx:id="dayColumn" prefWidth="48.0" sortable="false" text="Día" />
-                        <TableColumn fx:id="entryColumn" prefWidth="182.0" sortable="false" text="Hora Entrada" />
-                        <TableColumn fx:id="exitColumn" prefWidth="174.0" sortable="false" text="Hora Salida" />
-                        <TableColumn fx:id="journalColumn" editable="false" prefWidth="195.0" sortable="false" text="Total Jornada" />
+                        <TableColumn fx:id="dayColumn" editable="false" prefWidth="72.0" sortable="false" text="Día" />
+                        <TableColumn fx:id="entryColumn" prefWidth="162.0" sortable="false" text="Hora Entrada" />
+                        <TableColumn fx:id="exitColumn" prefWidth="194.0" sortable="false" text="Hora Salida" />
+                        <TableColumn fx:id="journalColumn" editable="false" prefWidth="164.0" sortable="false" text="Total Jornada" />
                      </columns>
                      <contextMenu>
                         <ContextMenu fx:id="contextMenu">

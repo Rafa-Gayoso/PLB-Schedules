@@ -7,10 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Empleado;
 import services.GetVacationsService;
+import utils.FillProgressIndicator;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
@@ -23,8 +26,6 @@ public class EmployeeBoardController implements Initializable {
     @FXML
     private ImageView profilePic;
 
-    @FXML
-    private ProgressIndicator remainingVacation;
 
     @FXML
     private JFXButton vacationsBtn;
@@ -41,6 +42,19 @@ public class EmployeeBoardController implements Initializable {
             employees.add(employee);
             GetVacationsService services = new GetVacationsService(employees);
             services.start();
+
+            FillProgressIndicator indicator = new FillProgressIndicator();
+            Slider slider = new Slider(0, 100, 50);
+
+            slider.valueProperty().addListener((o, oldVal, newVal) -> indicator.setProgress(newVal.intValue()));
+            VBox main = new VBox(1, indicator, slider);
+            indicator.setProgress(Double.valueOf(slider.getValue()).intValue());
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(main);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Test fill progress");
+            primaryStage.show();
+
         });
 
         scheduleBtn.setOnAction(action->{
