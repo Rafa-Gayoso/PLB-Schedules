@@ -28,42 +28,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/PdfGeneratorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/SchedulesGeneratorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/fxml/PdfGenerator.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/fxml/SchedulesGenerator.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/images/spinning-schedule.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/GetEmployeeScheduleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/GetEmployeeScheduleTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/CreateSplashScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/AddEmployeeDialogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeManagementBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeManagementBoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeManagementBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeeManagementBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/circleprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/fillprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/styles/ringprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetTabsTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/GetTabsTaskService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeManagementBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeManagementBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeManagementBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeManagementBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/84315-document.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeSchedulePaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeExcelTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeExcelTable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeSchedulePane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/styles/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/styles/circleprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/styles/fillprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/styles/ringprogress.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/GetTabsTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/GetTabsTaskService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GetEmployeeScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GetEmployeeScheduleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GetEmployeeScheduleTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GetEmployeeScheduleTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,7 +348,8 @@
       <workItem from="1645518287626" duration="18912000" />
       <workItem from="1645541744145" duration="1326000" />
       <workItem from="1645639651594" duration="1069000" />
-      <workItem from="1645690414721" duration="8941000" />
+      <workItem from="1645690414721" duration="9047000" />
+      <workItem from="1645699620902" duration="4724000" />
     </task>
     <servers />
   </component>

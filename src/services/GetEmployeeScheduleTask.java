@@ -12,7 +12,7 @@ import utils.SMBUtils;
 
 import java.util.ArrayList;
 
-public class GetEmployeeScheduleTask extends Task<Void> {
+public class GetEmployeeScheduleTask extends Task<Stage> {
     private Empleado employee;
 
     public GetEmployeeScheduleTask(Empleado employee){
@@ -20,7 +20,7 @@ public class GetEmployeeScheduleTask extends Task<Void> {
 
     }
     @Override
-    protected Void call() throws Exception {
+    protected Stage call() throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/EmployeeSchedulePane.fxml"));
         Parent parent = fxmlLoader.load();
         EmployeeSchedulePaneController test  = fxmlLoader.getController();
@@ -33,7 +33,6 @@ public class GetEmployeeScheduleTask extends Task<Void> {
 
         Scene scene = new Scene(parent);
         dialogStage.setScene(scene);
-        dialogStage.show();
-        return null;
+        return dialogStage;
     }
 }

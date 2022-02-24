@@ -40,8 +40,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private final String REGULAR_COLOR = "FFFFFFFF";
     private DateFormat inFormat;
 
-    @FXML
-    private JFXButton saveButton;
 
     @FXML
     private TableView<TableExcelModel> excelTable;
@@ -70,6 +68,11 @@ public class EmployeeExcelTableController /*implements Initializable */{
     @FXML
     private MenuItem warningBtn;
 
+    @FXML
+    private MenuItem saveSchedule;
+
+    @FXML
+    private Tooltip tooltip;
 
     public void setData(Empleado employee, int sheet){
         Locale spanishLocale=new Locale("es", "ES");
@@ -81,8 +84,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
         warningBtn.setOnAction(event -> SendMail.sendWarningEmail(employee, month));
 
         inFormat = new SimpleDateFormat( "hh:mm");
-
-        saveButton.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
 
         dayColumn.setCellValueFactory(cellData -> cellData.getValue().dayProperty());
 
@@ -121,10 +122,17 @@ public class EmployeeExcelTableController /*implements Initializable */{
             return row;
         });
 
+        if(LoginController.getUsu().getRol() == Roles.EMPLEADO.getCode()){
+           contextMenu.getItems().clear();
+        }
+        saveSchedule = new MenuItem("Guardar Horario de Trabajo");
+        saveSchedule.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
+        contextMenu.getItems().add(saveSchedule);
+
         populateTable(employee.getDireccionCronograma(), employeeFileName, sheet);
 
         if(LoginController.getUsu().getRol() == Roles.EMPLEADO.getCode()){
-           contextMenu.getItems().clear();
+           tooltip.setText("Tabla de Horario");
         }
 
     }
@@ -137,9 +145,19 @@ public class EmployeeExcelTableController /*implements Initializable */{
             FileInputStream inputStream1 = new FileInputStream(file);
             ZipSecureFile.setMinInflateRatio(0);
             XSSFWorkbook b = new XSSFWorkbook(inputStream1);
-            XSSFSheet sheet = b.getSheetAt(0);
+            XSSFSheet sheet = b.getSheetAt(sheetNumber);
 
-            sheet = b.getSheetAt(sheetNumber);
+            XSSFCell totalMonthCell = sheet.getRow(48).getCell(6);
+            XSSFCell currentWorkingMonthCell = sheet.getRow(46).getCell(6);
+
+            FormulaEvaluator formulaEval = b.getCreationHelper().createFormulaEvaluator();
+            CellValue monthHourValue=formulaEval.evaluate(totalMonthCell);
+
+            int monthValue = (int) monthHourValue.getNumberValue();
+
+            CellValue monthCurrentHourValue=formulaEval.evaluate(currentWorkingMonthCell);
+            int monthCurrentValue =0;
+
 
             for(int i =15; i < 46; i++){
                 XSSFRow row =sheet.getRow(i);
@@ -171,6 +189,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             String resultHour = subtractHour(entryDate, exitDate);
                             models.add(new TableExcelModel(Integer.toString(day), entryTime,
                                     exitTime,resultHour.substring(1)));
+                            monthCurrentValue += Integer.parseInt(resultHour.substring(1, 2));
                         }
                     }
                 }
@@ -181,8 +200,9 @@ public class EmployeeExcelTableController /*implements Initializable */{
             excelTable.setEditable(true);
             if(sheet.getProtect()){
                 excelTable.setEditable(false);
-                saveButton.setDisable(true);
+                contextMenu.getItems().remove(contextMenu.getItems().size() - 1);
             }
+            tooltip.setText("Horas "+monthCurrentValue+"/"+monthValue);
             b.close();
 
         }catch (Exception e){
@@ -342,6 +362,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             out.close();
             inputStream1.close();
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
+            contextMenu.getItems().remove(contextMenu.getItems().size() - 1);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -363,11 +384,10 @@ public class EmployeeExcelTableController /*implements Initializable */{
             out.close();
             inputStream1.close();
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
+            contextMenu.getItems().add(saveSchedule);
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
 }

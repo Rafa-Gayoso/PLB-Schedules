@@ -168,3 +168,12 @@
     -fx-border-color: black;
     -fx-border-width:3px;
 }
+
+
+.tab:disabled .tab-label {
+    -fx-text-fill: #ffffff;
+}
+
+.tab:disabled {
+    -fx-background-color: #595757;
+}

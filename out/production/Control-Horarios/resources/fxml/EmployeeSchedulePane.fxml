@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -28,9 +27,6 @@
                             <Tab text="Noviembre" />
                             <Tab text="Diciembre" />
                         </tabs>
-                     <tooltip>
-                        <Tooltip fx:id="tooltip" text="Empty Tooltip" />
-                     </tooltip>
                     </JFXTabPane>
                </children>
             </HBox>

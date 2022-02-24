@@ -3,11 +3,9 @@ package controller;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import model.Empleado;
 
 import java.time.LocalDateTime;
@@ -46,9 +44,6 @@ public class EmployeeSchedulePaneController{
         } catch (Exception E) {
             E.printStackTrace();
         }
-
     }
-
-
 
 }
