@@ -16,7 +16,7 @@
             <HBox prefHeight="9.0" prefWidth="203.0" />
             <ImageView fx:id="img" fitHeight="156.0" fitWidth="156.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/user.png" />
+                  <Image url="@../images/profile.png" />
                </image>
             </ImageView>
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="203.0" styleClass="gradient" stylesheets="@../styles/Style.css">
