@@ -28,31 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/batik_transcoder_1_14.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itextpdf_5_5_9.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Control-Horarios.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Control-Horarios.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeBoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/services/VacationsReport.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/services/VacationsReport.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/FillProgressIndicator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/FillProgressIndicatorSkin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/ProgressCircleIndicator$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/ProgressCircleIndicator$StyleableProperties$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/ProgressCircleIndicator$StyleableProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/ProgressCircleIndicator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/RingProgressIndicator$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/RingProgressIndicator$StyleableProperties$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/RingProgressIndicator$StyleableProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/RingProgressIndicator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/RingProgressIndicatorSkin.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/VacationsReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/VacationsReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/FillProgressIndicator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/FillProgressIndicatorSkin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ProgressCircleIndicator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/RingProgressIndicator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/RingProgressIndicatorSkin.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +339,7 @@
       <workItem from="1645518287626" duration="18912000" />
       <workItem from="1645541744145" duration="1326000" />
       <workItem from="1645639651594" duration="1069000" />
-      <workItem from="1645690414721" duration="4253000" />
+      <workItem from="1645690414721" duration="4966000" />
     </task>
     <servers />
   </component>

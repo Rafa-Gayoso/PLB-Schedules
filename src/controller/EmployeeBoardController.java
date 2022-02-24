@@ -1,12 +1,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Empleado;
 import services.GetVacationsService;
@@ -38,6 +41,21 @@ public class EmployeeBoardController implements Initializable {
             employees.add(employee);
             GetVacationsService services = new GetVacationsService(employees);
             services.start();
+            JFXProgressBar indicator = new JFXProgressBar();
+            VBox main = new VBox(1, indicator);
+            ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/84315-document.gif")));
+            Scene scene = new Scene(main);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Test fill progress");
+
+            services.setOnRunning(event -> {
+                primaryStage.showAndWait();
+                indicator.setProgress(services.getProgress());
+            });
+            services.setOnSucceeded(event -> {
+                primaryStage.close();
+            });
         });
 
         scheduleBtn.setOnAction(action->{
