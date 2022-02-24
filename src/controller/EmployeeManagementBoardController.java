@@ -18,7 +18,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -28,6 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Empleado;
 import services.GetVacationsService;
+import utils.CreateSplashScreen;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
@@ -54,9 +54,6 @@ public class EmployeeManagementBoardController implements Initializable {
     private JFXButton vacationsBtn;
 
     @FXML
-    private Label lblEmployeeCount;
-
-    @FXML
     private GridPane grid;
 
     private List<Empleado> employees = new ArrayList<>();
@@ -67,8 +64,7 @@ public class EmployeeManagementBoardController implements Initializable {
 
         employeeDao = new EmpleadoDaoImpl();
         employees.addAll(LoginController.getEmployees());
-        lblEmployeeCount.setText(String.valueOf(employees.size()));
-        btnInsert.setOnAction(event -> employeeDataManagement(null,grid,lblEmployeeCount));
+        btnInsert.setOnAction(event -> employeeDataManagement(null,grid));
         int column = 0;
         int row = 1;
         try {
@@ -116,13 +112,13 @@ public class EmployeeManagementBoardController implements Initializable {
         }
     }
 
-    private void employeeDataManagement(Empleado employee, GridPane grid, Label lblEmployeeCount) {
+    private void employeeDataManagement(Empleado employee, GridPane grid) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
             Parent parent = fxmlLoader.load();
 
             AddEmployeeDialogController dialogController = fxmlLoader.getController();
-            dialogController.setData(employee, grid, lblEmployeeCount);
+            dialogController.setData(employee, grid);
             dialogController.setDao(employeeDao);
 
             Scene scene = new Scene(parent);
@@ -145,7 +141,7 @@ public class EmployeeManagementBoardController implements Initializable {
         MenuItem schedule = new MenuItem("Ver Horario");
         MenuItem vacations = new MenuItem("Ver Vacaciones");
 
-        update.setOnAction(e-> employeeDataManagement(employee, grid, lblEmployeeCount));
+        update.setOnAction(e-> employeeDataManagement(employee, grid));
         delete.setOnAction(e-> deleteEmployee(employee));
         schedule.setOnAction(e-> showSchedule(employee));
         vacations.setOnAction(e-> {
@@ -153,6 +149,16 @@ public class EmployeeManagementBoardController implements Initializable {
             employees.add(employee);
             GetVacationsService task = new GetVacationsService(employees);
             task.start();
+
+            Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
+
+
+            task.setOnRunning(event -> {
+                stage.show();
+            });
+            task.setOnSucceeded(event -> {
+                stage.close();
+            });
         });
 
         items.add(schedule);
@@ -276,6 +282,17 @@ public class EmployeeManagementBoardController implements Initializable {
     void vacationsReport(ActionEvent event) {
         GetVacationsService services = new GetVacationsService(LoginController.getEmployees());
         services.start();
+
+        Stage stage = CreateSplashScreen.createPDFSplashScreen(services);
+
+
+        services.setOnRunning(e -> {
+            stage.show();
+        });
+        services.setOnSucceeded(e -> {
+            stage.close();
+        });
     }
+
 
 }

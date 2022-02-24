@@ -143,7 +143,7 @@ public class LoginController implements Initializable {
                     empleado = employees.stream().parallel()
                             .filter(e -> e.getCodUsuario() == usu.getUsarioId()).findAny().get();
                     if(usu.getRol() == Roles.ADMIN.getCode()){
-                        pane = setLocation("/resources/fxml/EmployeeManagementBoard.fxml", loader);
+                        pane = setLocation("/resources/fxml/MainMenu.fxml", loader);
                     }else {
                         pane = setLocation("/resources/fxml/EmployeeBoard.fxml", loader);
                         /*EmployeeSchedulePaneController test  = loader.getController();

@@ -69,18 +69,11 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
     @FXML
     private GridPane grid;
 
-
-    @FXML
-    private Label lblEmployeeCount;
-
     private UserDaoImpl userDao;
 
 
-
-
-    public void setData(Empleado employee, GridPane grid, Label lblEmployeeCount){
+    public void setData(Empleado employee, GridPane grid){
         this.grid = grid;
-        this.lblEmployeeCount = lblEmployeeCount;
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         userDao = new UserDaoImpl();
         empresaDao = new EmpresaDaoImpl();
@@ -187,8 +180,7 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
                 if(column == 3) column = 0;
                 grid.add(anchorPane, column, row);
                 GridPane.setMargin(anchorPane, new Insets(20));
-                int count = Integer.parseInt(lblEmployeeCount.getText()) + 1;
-                lblEmployeeCount.setText(String.valueOf(count));
+
                 closeStage();
             }catch(Exception e){
 

@@ -1,7 +1,8 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,10 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Empleado;
+import services.GetEmployeeScheduleService;
+import services.GetEmployeeScheduleTask;
 import services.GetVacationsService;
+import utils.CreateSplashScreen;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
@@ -37,29 +40,45 @@ public class EmployeeBoardController implements Initializable {
         Empleado employee = LoginController.getEmpleado();
 
         vacationsBtn.setOnAction(action->{
-            ArrayList<Empleado> employees = new ArrayList<Empleado>();
-            employees.add(employee);
-            GetVacationsService services = new GetVacationsService(employees);
-            services.start();
-            JFXProgressBar indicator = new JFXProgressBar();
-            VBox main = new VBox(1, indicator);
-            ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/resources/images/84315-document.gif")));
-            Scene scene = new Scene(main);
-            Stage primaryStage = new Stage();
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Test fill progress");
+            try{
+                ArrayList<Empleado> employees = new ArrayList<Empleado>();
+                employees.add(employee);
+                GetVacationsService services = new GetVacationsService(employees);
+                services.start();
 
-            services.setOnRunning(event -> {
-                primaryStage.showAndWait();
-                indicator.setProgress(services.getProgress());
-            });
-            services.setOnSucceeded(event -> {
-                primaryStage.close();
-            });
+                Stage stage = CreateSplashScreen.createPDFSplashScreen(services);
+
+
+                services.setOnRunning(event -> {
+                    stage.show();
+                });
+                services.setOnSucceeded(event -> {
+                    stage.close();
+                });
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+
         });
 
+
         scheduleBtn.setOnAction(action->{
-            try {
+
+            GetEmployeeScheduleService services = new GetEmployeeScheduleService(employee);
+            services.start();
+
+            Stage stage = CreateSplashScreen.createEmployeeSplashScreen(services);
+
+
+            services.setOnRunning(event -> {
+                stage.show();
+            });
+            services.setOnSucceeded(event -> {
+                stage.close();
+            });
+            /*try{
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/EmployeeSchedulePane.fxml"));
                 Parent parent = fxmlLoader.load();
                 EmployeeSchedulePaneController test  = fxmlLoader.getController();
@@ -68,18 +87,33 @@ public class EmployeeBoardController implements Initializable {
                 test.setData(employee);
                 Stage dialogStage = new Stage();
                 dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
-                dialogStage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
+                dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
 
                 Scene scene = new Scene(parent);
                 dialogStage.setScene(scene);
                 dialogStage.show();
+            }catch(Exception e){
 
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+            }*/
+
+
+            /*services.start();
+
+            Stage stage = CreateSplashScreen.createEmployeeSplashScreen(services);
+
+
+            services.setOnRunning(event -> {
+                System.out.println("Corriendo");
+                stage.show();
+            });
+            services.setOnSucceeded(event -> {
+                System.out.println("TERMINADO");
+                stage.close();
+            });
+            services.setOnFailed(event -> System.out.println("Error"));*/
+
+
         });
-
 
     }
 

@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="398.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane prefHeight="398.0" prefWidth="600.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <StackPane prefHeight="398.0" prefWidth="600.0">
          <children>
-            <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="397.0" prefWidth="600.0" style="-fx-background-color: white;">
+            <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="397.0" prefWidth="600.0" style="-fx-background-color: white;" styleClass="border-pane" stylesheets="@../styles/Style.css">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="319.0" layoutX="163.0" layoutY="40.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +57,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="splashPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <AnchorPane fx:id="splashPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="border-pane">
                <children>
                   <ImageView fx:id="clock" fitHeight="189.0" fitWidth="195.0" layoutX="187.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>

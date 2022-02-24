@@ -163,3 +163,8 @@
     -fx-alignment: CENTER;
     -fx-content-display: LEFT;
 }
+
+.border-pane{
+    -fx-border-color: black;
+    -fx-border-width:3px;
+}
