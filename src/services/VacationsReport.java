@@ -1,6 +1,7 @@
 package services;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -18,6 +19,7 @@ public class VacationsReport {
     private static final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
     private static final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator;
     private static ArrayList<String> months;
+    private static int usedVacationsDays =0;
 
     public static void exportEmployees(ArrayList<Map<String, ArrayList<String>>> vacations, ArrayList<Empleado> employees) {
         Document document = new Document();
@@ -32,6 +34,11 @@ public class VacationsReport {
             PdfWriter.getInstance(document, fileOutputStream);
 
             document.open();
+
+            Paragraph header = new Paragraph("Reporte de Vacaciones");
+            header.setAlignment(Element.ALIGN_CENTER);
+            document.add(header);
+
             Locale spanishLocale=new Locale("es", "ES");
             months = new ArrayList<>();
 
@@ -51,8 +58,14 @@ public class VacationsReport {
 
 
             document.add(table);
-            document.newPage();
+            if(employees.size()>1) document.newPage();
             document.add(table2);
+            if(employees.size() == 1){
+                document.add(new Paragraph("Días de vacaciones totales "
+                        +employees.get(0).getVacations()));
+                document.add(new Paragraph("Días de vacaciones restantes "
+                    +(employees.get(0).getVacations()-usedVacationsDays)));
+            }
             document.close();
 
             File file = new File(PDF_Directory+fileName);
@@ -102,6 +115,9 @@ public class VacationsReport {
                 total += days.size();
             }
             table.addCell(String.valueOf(total));
+            if(employees.size() == 1){
+                usedVacationsDays += total;
+            }
         }
     }
 
