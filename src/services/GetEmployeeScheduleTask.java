@@ -10,9 +10,13 @@ import model.Empleado;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class GetEmployeeScheduleTask extends Task<Stage> {
+
+    private final String PIC_DIR = "config_files" + File.separator + "Employees";
+
     private Empleado employee;
 
     public GetEmployeeScheduleTask(Empleado employee){
@@ -26,6 +30,7 @@ public class GetEmployeeScheduleTask extends Task<Stage> {
         EmployeeSchedulePaneController test  = fxmlLoader.getController();
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
         SMBUtils.downloadSmbFile(employee.getNombre_empresa(),employeeFileName, employee.getDireccionCronograma());
+        SMBUtils.downloadSmbPhoto(employee.getNombre()+".png",PIC_DIR);
         test.setData(employee);
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");

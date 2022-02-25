@@ -26,6 +26,7 @@
         <element id="library" level="project" name="AnimateFX-1.2.1" />
         <element id="library" level="project" name="javax.mail" />
         <element id="library" level="project" name="commons-io-2.11.0" />
+        <element id="library" level="project" name="itextpdf-5.5.9" />
       </element>
     </root>
   </artifact>

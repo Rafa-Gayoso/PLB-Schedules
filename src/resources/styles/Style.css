@@ -175,5 +175,12 @@
 }
 
 .tab:disabled {
-    -fx-background-color: #595757;
+    -fx-background-color: #457894;
 }
+
+.tab-header-background {
+    -fx-background-color: #5598b8;
+
+}
+
+

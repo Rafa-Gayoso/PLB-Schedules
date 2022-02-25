@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -58,15 +59,17 @@ public class EmployeeManagementBoardController implements Initializable {
 
     private List<Empleado> employees = new ArrayList<>();
     private EmpleadoDaoImpl employeeDao;
+    private int row, column;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        column = 0;
+        row = 1;
         employeeDao = new EmpleadoDaoImpl();
         employees.addAll(LoginController.getEmployees());
-        btnInsert.setOnAction(event -> employeeDataManagement(null,grid));
-        int column = 0;
-        int row = 1;
+
+
         try {
             for (Empleado employee : employees) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -95,6 +98,7 @@ public class EmployeeManagementBoardController implements Initializable {
 
                 GridPane.setMargin(anchorPane, new Insets(20));
             }
+            btnInsert.setOnAction(event -> employeeDataManagement(null,grid));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,6 +111,11 @@ public class EmployeeManagementBoardController implements Initializable {
                 employeeDao.deleteEntity(employee);
                 LoginController.getEmployees().remove(employee);
                 grid.getChildren().remove(pane);
+                column--;
+                if(column <= 0){
+                    row--;
+                    column = 3;
+                }
                 break;
             }
         }

@@ -133,9 +133,10 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
 
         btnPhoto.setOnAction(event ->{
             Stage stage = new Stage();
+
             FileChooser fc = new FileChooser();
 
-            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Documento Excel", "*xlsx"));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Foto del empleado", "*.PNG"));
             file = fc.showOpenDialog(stage);
 
             if (file == null) {
@@ -167,8 +168,9 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
     private void insertEmployee(ActionEvent event) {
         boolean validated = validateData();
         Empleado employee = dao.getExistEmployeeByNif(nifTextfield.getText());
-        if (file == null){
-            file = new File("/resources/images/profile.png");
+        String address = PIC_DIR+File.separator+"profile.png";
+        if (file != null){
+           address = file.getAbsolutePath();
         }
         if (!validated) {
 
@@ -180,7 +182,8 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
 
                 employee = new Empleado();
                 setEmployeeData(employee);
-                SMBUtils.uploadPhoto(employee.getNombre()+".png",file.getAbsolutePath());
+                SMBUtils.uploadPhoto(employee.getNombre()+".png",address);
+                SMBUtils.downloadSmbPhoto(employee.getNombre()+".png", PIC_DIR);
                 AESCypher aesCypher = new AESCypher();
 
                 String encryptedPassword = aesCypher.encrypt(employee.getNif());
