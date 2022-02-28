@@ -174,7 +174,7 @@
       <recent name="utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.Control_Horarios.jar (1)">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -367,7 +367,7 @@
       <workItem from="1645800967506" duration="3565000" />
       <workItem from="1646043735626" duration="1179000" />
       <workItem from="1646046629473" duration="677000" />
-      <workItem from="1646050106165" duration="6930000" />
+      <workItem from="1646050106165" duration="7656000" />
     </task>
     <servers />
   </component>

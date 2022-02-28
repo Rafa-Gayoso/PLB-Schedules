@@ -27,10 +27,10 @@ public class SMBUtils {
             NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication("",SHARE_USER, SHARE_PASSWORD);
             SmbFile smbfile = new SmbFile(PATH + "Trabajadores" + File.separator +fileName,auth);
             File localFile = new File(localDir + File.separator + fileName);
-            /*if(!smbfile.exists()){
+            if(!smbfile.exists()){
                 smbfile = new SmbFile(PATH + "Trabajadores" + File.separator +"profile.png",auth);
                 localFile = new File(localDir + File.separator + "profile.png");
-            }*/
+            }
 
             in = new BufferedInputStream(new SmbFileInputStream(smbfile));
             out = new BufferedOutputStream(new FileOutputStream(localFile));
