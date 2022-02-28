@@ -7,10 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import utils.SMBUtils;
-
-import java.io.File;
-import java.util.Calendar;
 
 public class Main extends Application {
 

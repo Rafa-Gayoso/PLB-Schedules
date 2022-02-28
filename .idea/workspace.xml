@@ -28,35 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/TimeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Control_Horarios2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Control_Horarios2/Control_Horarios.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeeExcelTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/EmployeesScheduleManagerController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/controller/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/controller/SelectEmployeeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployeesScheduleManager.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/EmployesManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/resources/fxml/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Control-Horarios/utils/CustomCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeesManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/EmployeesScheduleManagerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SelectEmployeeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeesScheduleManager.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployesManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CustomCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CustomCell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +84,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -122,6 +97,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -162,34 +145,35 @@
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/Control_Horarios2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios2" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar3" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\out\artifacts\Control_Horarios_jar" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files\Employees" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\fxml" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\config_files" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\main" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\schedule_models" />
-      <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\database" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controller" />
       <recent name="utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JAR Application.Control_Horarios.jar (1)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -352,7 +336,25 @@
       <workItem from="1643206219937" duration="469000" />
       <workItem from="1643275490555" duration="1650000" />
       <workItem from="1643358600322" duration="4073000" />
-      <workItem from="1645175094747" duration="4741000" />
+      <workItem from="1645175094747" duration="9887000" />
+      <workItem from="1645186443515" duration="2164000" />
+      <workItem from="1645351276359" duration="119000" />
+      <workItem from="1645364529819" duration="47000" />
+      <workItem from="1645431273373" duration="14852000" />
+      <workItem from="1645450933564" duration="3150000" />
+      <workItem from="1645454236331" duration="7282000" />
+      <workItem from="1645469113416" duration="2392000" />
+      <workItem from="1645474404486" duration="1712000" />
+      <workItem from="1645518287626" duration="18912000" />
+      <workItem from="1645541744145" duration="1326000" />
+      <workItem from="1645639651594" duration="1069000" />
+      <workItem from="1645690414721" duration="9047000" />
+      <workItem from="1645699620902" duration="5945000" />
+      <workItem from="1645709814005" duration="6545000" />
+      <workItem from="1645779555404" duration="9875000" />
+      <workItem from="1645797647956" duration="1991000" />
+      <workItem from="1645800967506" duration="3565000" />
+      <workItem from="1646043735626" duration="1179000" />
     </task>
     <servers />
   </component>
@@ -378,11 +380,30 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="nombre.equals(&quot;Rafa&quot;)" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/model/Empleado.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/AddEmployeeDialogController.java</url>
+          <line>204</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression=" cell.getCellStyle().getFillBackgroundColorColor().getARGBHex()" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PLB_Schedules$Main.ic" NAME="Main Coverage Results" MODIFIED="1642508646686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

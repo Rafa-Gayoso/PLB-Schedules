@@ -283,7 +283,7 @@ public class MainMenuController implements Initializable {
         try{
             FXMLLoader loader = new FXMLLoader();
 
-            loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployesManagement.fxml"));
+            loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployeeManagementBoard.fxml"));
             AnchorPane page = loader.load();
 
             Stage dialogStage = new Stage();

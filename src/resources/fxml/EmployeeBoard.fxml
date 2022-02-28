@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="593.0" maxWidth="940.0" minHeight="300.0" minWidth="742.0" prefHeight="476.0" prefWidth="940.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeBoardController">
+   <children>
+      <BorderPane layoutX="6.0" prefHeight="300.0" prefWidth="742.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="91.0" prefWidth="742.0" styleClass="border-bottom" stylesheets="@../styles/Style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/medi.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="100.0" prefWidth="122.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="100.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                  <HBox prefHeight="102.0" prefWidth="89.0">
+                     <children>
+                        <ImageView fx:id="profilePic" fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/profile.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="100.0" prefWidth="112.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="100.0" prefWidth="128.0" HBox.hgrow="ALWAYS" />
+                  <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/palo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="6.0" prefWidth="742.0" />
+                  <GridPane alignment="CENTER" prefHeight="380.0" prefWidth="940.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="519.0" minWidth="10.0" prefWidth="469.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="519.0" minWidth="10.0" prefWidth="469.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="369.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="scheduleBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="336.0" prefWidth="418.0" ripplerFill="#64e471" style="-fx-background-color: white;" text="Horario Laboral" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="482.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/blogging.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="vacationsBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="344.0" prefWidth="418.0" ripplerFill="#3994da" style="-fx-background-color: white;" text="Vacaciones">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="482.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <image>
+                                    <Image url="@../images/meditation.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

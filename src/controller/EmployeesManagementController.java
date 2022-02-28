@@ -83,6 +83,9 @@ public class EmployeesManagementController implements Initializable {
     private MenuItem deleteItem;
 
     @FXML
+    private MenuItem updateItem;
+
+    @FXML
     private MenuItem scheduleBtn;
 
     private Dao dao;
@@ -176,6 +179,7 @@ public class EmployeesManagementController implements Initializable {
         deleteItem.setOnAction(event -> deleteEmployee());
         scheduleBtn.setOnAction(event -> showSchedule());
         insertBtn.setOnAction(event -> openModal());
+        updateItem.setOnAction(event -> updateEmployeeModal());
     }
 
     private void showSchedule() {
@@ -196,8 +200,6 @@ public class EmployeesManagementController implements Initializable {
                 dialogStage.setScene(scene);
                 dialogStage.show();
             }
-
-
 
         }
         catch (IOException e) {
@@ -240,25 +242,39 @@ public class EmployeesManagementController implements Initializable {
 
     private void openModal(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
-            Parent parent = fxmlLoader.load();
-
-            AddEmployeeDialogController dialogController = fxmlLoader.getController();
-            dialogController.setDao((EmpleadoDaoImpl) dao);
-            dialogController.setAppMainObservableList(employeesTable.getItems());
-
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            scene.setFill(Color.TRANSPARENT);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            //stage.setAlwaysOnTop(true);
-            stage.setScene(scene);
-            stage.show();
+            employeeDataManagement(null);
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void updateEmployeeModal(){
+        try {
+            employeeDataManagement(employeesTable.getSelectionModel().getSelectedItem());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void employeeDataManagement(Empleado employee) throws IOException {
+       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/AddEmployeeDialog.fxml"));
+        Parent parent = fxmlLoader.load();
+
+        AddEmployeeDialogController dialogController = fxmlLoader.getController();
+        dialogController.setData(employee);
+        dialogController.setDao((EmpleadoDaoImpl) dao);
+        dialogController.setAppMainObservableList(employeesTable.getItems());
+
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        //stage.setAlwaysOnTop(true);
+        stage.setScene(scene);
+        stage.show();*/
     }
 
     public void openInsertModal(KeyEvent keyEvent) {

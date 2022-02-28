@@ -140,17 +140,16 @@ public class LoginController implements Initializable {
                     FXMLLoader loader = new FXMLLoader();
                     AnchorPane pane;
 
-
                     empleado = employees.stream().parallel()
                             .filter(e -> e.getCodUsuario() == usu.getUsarioId()).findAny().get();
                     if(usu.getRol() == Roles.ADMIN.getCode()){
                         pane = setLocation("/resources/fxml/MainMenu.fxml", loader);
                     }else {
-                        pane = setLocation("/resources/fxml/EmployeeSchedulePane.fxml", loader);
-                        EmployeeSchedulePaneController test  = loader.getController();
+                        pane = setLocation("/resources/fxml/EmployeeBoard.fxml", loader);
+                        /*EmployeeSchedulePaneController test  = loader.getController();
                         String employeeFileName = FormatEmployeeName.getEmployeesFileName(empleado);
                         SMBUtils.downloadSmbFile(empleado.getNombre_empresa(),employeeFileName, empleado.getDireccionCronograma());
-                        test.setData(empleado);
+                        test.setData(empleado);*/
 
                     }
 
@@ -160,8 +159,8 @@ public class LoginController implements Initializable {
 
                     Scene scene = new Scene(pane);
                     dialogStage.setScene(scene);
+                    dialogStage.setResizable(false);
                     dialogStage.show();
-
 
                     Stage stage  = (Stage) loginBtn.getScene().getWindow();
                     stage.close();

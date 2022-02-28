@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="593.0" maxWidth="778.0" minHeight="593.0" minWidth="742.0" prefHeight="593.0" prefWidth="742.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeManagementBoardController">
+   <children>
+      <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="495.0" prefWidth="923.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="454.0" prefWidth="923.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <ScrollPane fx:id="scroll" pannable="true" prefHeight="295.0" prefWidth="923.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                                 <content>
+                                    <GridPane fx:id="grid" prefHeight="489.0" prefWidth="734.0" style="-fx-background-color: white;">
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <HBox prefHeight="102.0" prefWidth="600.0" styleClass="border-bottom" stylesheets="@../styles/Style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/medi.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="btnInsert" buttonType="RAISED" ripplerFill="#b27070" style="-fx-background-color: green;" text="Añadir Empleado" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="36.55" radius="20.1075" width="45.88" />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="exportBtn" buttonType="RAISED" onAction="#exportEmployees" ripplerFill="#b27070" style="-fx-background-color: green;" text="Exportar empleados" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="36.55" radius="20.1075" width="45.88" />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="68.0" prefWidth="0.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="vacationsBtn" buttonType="RAISED" onAction="#vacationsReport" prefHeight="31.0" prefWidth="175.0" ripplerFill="#b27070" style="-fx-background-color: green;" text="Reporte de Vacaciones" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="36.55" radius="20.1075" width="45.88" />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/palo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

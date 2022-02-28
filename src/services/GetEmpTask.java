@@ -20,11 +20,11 @@ public class GetEmpTask extends Task<ArrayList<Empleado>> {
     @Override
     protected ArrayList<Empleado> call(){
         ArrayList<Empleado> empData = new ArrayList<>();
-          int progress =0;
+        int progress =1;
 
         int totalProgress = new EmpleadoDaoImpl().getEmployeesCount();
         updateProgress(progress, totalProgress);
-        updateMessage("Cargando datos de trabajadores ("+(progress+1)+"/"+totalProgress+")");
+        updateMessage("Cargando datos de trabajadores ("+(progress)+"/"+totalProgress+")");
         try(Connection connection = ServicesLocator.getConnection()) {
             PreparedStatement prepare = connection.prepareStatement("Select empleado.* from empleado");
             prepare.execute();
@@ -37,14 +37,14 @@ public class GetEmpTask extends Task<ArrayList<Empleado>> {
                 Empleado employee = new Empleado(result.getInt(1), result.getString(2),
                         result.getString(3),result.getString(4),result.getString(5),
                         result.getString(6),result.getInt(7),result.getInt(8),
-                        result.getString(9),cod, result.getString(11));
+                        result.getString(9),cod, result.getString(11), result.getInt(12));
                 empData.add(employee);
                 progress++;
                 updateProgress(progress,totalProgress);
-                updateMessage("Cargando datos de trabajadores ("+(progress+1)+"/"+totalProgress+")");
+                updateMessage("Cargando datos de trabajadores ("+(progress)+"/"+totalProgress+")");
             }
             updateProgress(progress,totalProgress);
-            updateMessage("Cargando datos de trabajadores ("+(progress+1)+"/"+totalProgress+")");
+            updateMessage("Cargando datos de trabajadores ("+(progress)+"/"+totalProgress+")");
         } catch (SQLException e) {
             e.printStackTrace();
         }

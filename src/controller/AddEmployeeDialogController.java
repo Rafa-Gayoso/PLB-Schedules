@@ -7,44 +7,48 @@ import com.jfoenix.validation.RequiredFieldValidator;
 import dao.implementation.EmpleadoDaoImpl;
 import dao.implementation.EmpresaDaoImpl;
 import dao.implementation.UserDaoImpl;
-import dao.interfaces.Dao;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Empleado;
 import model.Empresa;
 import model.Usuario;
-import services.ServicesLocator;
 import utils.AESCypher;
+import utils.SMBUtils;
 
-import java.net.URL;
+import java.io.File;
 import java.util.Objects;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class AddEmployeeDialogController implements Initializable {
+public class AddEmployeeDialogController /*implements Initializable*/ {
 
-
-    private ObservableList<Empleado> appMainObservableList;
+    private final String ADDRESS = "config_files" + File.separator + "Horarios" + File.separator;
+    private final String PIC_DIR = "config_files" + File.separator + "Employees";
 
     private EmpresaDaoImpl empresaDao;
     private EmpleadoDaoImpl dao;
 
+    private File file;
+
     @FXML
     private JFXTextField nombreTextField;
+
+    @FXML
+    private JFXButton btnPhoto;
+
 
     @FXML
     private JFXTextField primApellidoTextField;
@@ -71,12 +75,14 @@ public class AddEmployeeDialogController implements Initializable {
     @FXML
     private JFXTextField email;
 
+    @FXML
+    private GridPane grid;
+
     private UserDaoImpl userDao;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void setData(Empleado employee, GridPane grid){
+        this.grid = grid;
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         userDao = new UserDaoImpl();
         empresaDao = new EmpresaDaoImpl();
@@ -84,6 +90,7 @@ public class AddEmployeeDialogController implements Initializable {
                 empresaDao.getEntities().stream().map(Empresa::getNombre).collect(Collectors.toList())
         );
         comboEmpresa.setItems(empresas);
+        email.setText(null);
 
         horasLaborables.setText("8");
         horasLaborables.setTextFormatter(new TextFormatter<>(change ->
@@ -102,7 +109,6 @@ public class AddEmployeeDialogController implements Initializable {
         setValidator(comboEmpresa,requiredFieldValidator);
         requiredFieldValidator.setMessage("Campo Requerido");
 
-
         btnInsert.setOnAction(this::insertEmployee);
 
         btnInsert.disableProperty().bind((
@@ -112,6 +118,32 @@ public class AddEmployeeDialogController implements Initializable {
                         .and(nifTextfield.textProperty().isNotEmpty())
                         .and(numTextfield.textProperty().isNotEmpty())
         ).not());
+
+        if(!Objects.isNull(employee)){
+            nombreTextField.setText(employee.getNombre());
+            primApellidoTextField.setText(employee.getPrimer_apellido());
+            segApellidoTextfield.setText(employee.getSegundo_apellido());
+            email.setText(employee.getEmail());
+            nifTextfield.setText(employee.getNif());
+            numTextfield.setText(employee.getNumero_afiliacion());
+            horasLaborables.setText(String.valueOf(employee.getHoras_laborables()));
+            comboEmpresa.getSelectionModel().select(employee.getNombre_empresa());
+            btnInsert.setOnAction(event -> updateEmployee(employee));
+        }
+
+        btnPhoto.setOnAction(event ->{
+            Stage stage = new Stage();
+
+            FileChooser fc = new FileChooser();
+
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Foto del empleado", "*.PNG"));
+            file = fc.showOpenDialog(stage);
+
+            if (file == null) {
+                file = new File("/resources/images/profile.png");
+            }
+        });
+
 
     }
 
@@ -136,17 +168,22 @@ public class AddEmployeeDialogController implements Initializable {
     private void insertEmployee(ActionEvent event) {
         boolean validated = validateData();
         Empleado employee = dao.getExistEmployeeByNif(nifTextfield.getText());
+        String address = PIC_DIR+File.separator+"profile.png";
+        if (file != null){
+           address = file.getAbsolutePath();
+        }
         if (!validated) {
-
-
 
         } else if(!Objects.isNull(employee)){
 
         } else{
             try{
+
+
                 employee = new Empleado();
                 setEmployeeData(employee);
-
+                SMBUtils.uploadPhoto(employee.getNombre()+".png",address);
+                SMBUtils.downloadSmbPhoto(employee.getNombre()+".png", PIC_DIR);
                 AESCypher aesCypher = new AESCypher();
 
                 String encryptedPassword = aesCypher.encrypt(employee.getNif());
@@ -156,17 +193,43 @@ public class AddEmployeeDialogController implements Initializable {
 
                 dao.insertEntity(employee);
 
-                 employee.setCod_empleado(dao.getExistEmployeeByNif(employee.getNif()).getCod_empleado());
-                appMainObservableList.add(employee);
+                employee.setCod_empleado(dao.getExistEmployeeByNif(employee.getNif()).getCod_empleado());
+
                 LoginController.getEmployees().add(employee);
-                closeStage(event);
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/resources/fxml/Employee.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                EmployeeController itemController = fxmlLoader.getController();
+                itemController.setData(employee);
+
+                //int row =;
+                //int column = ;
+                if(EmployeeManagementBoardController.column == 3) {
+                    EmployeeManagementBoardController.column = 0;
+                    EmployeeManagementBoardController.row++;
+                }
+                grid.add(anchorPane, EmployeeManagementBoardController.column++,  EmployeeManagementBoardController.row);
+                GridPane.setMargin(anchorPane, new Insets(20));
+
+                closeStage();
             }catch(Exception e){
 
             }
-
         }
+    }
 
+    private void updateEmployee(Empleado employee) {
+        boolean validated = validateData();
 
+        if (!validated) {
+
+        }  else{
+                setEmployeeData(employee);
+                dao.updateEntity(employee);
+                closeStage();
+        }
     }
 
     private void setEmployeeData(Empleado empleado) {
@@ -179,6 +242,11 @@ public class AddEmployeeDialogController implements Initializable {
         empleado.setCod_empresa(cod_empresa);
         empleado.setNombre_empresa(comboEmpresa.getSelectionModel().getSelectedItem());
         empleado.setHoras_laborables(Integer.parseInt(horasLaborables.getText()));
+        empleado.setEmail(email.getText());
+        empleado.setDireccionCronograma(ADDRESS + empleado.getNombre_empresa());
+
+        empleado.setVacations(LoginController.getEmployees().stream().filter(e ->
+                e.getNombre_empresa().equals(empleado.getNombre_empresa())).findFirst().get().getVacations());
     }
 
     private boolean validateData() {
@@ -189,19 +257,13 @@ public class AddEmployeeDialogController implements Initializable {
         return validated;
     }
 
-
-    public void setAppMainObservableList(ObservableList<Empleado> employeeObservableList) {
-        this.appMainObservableList = employeeObservableList;
-
-    }
-
     public void setDao(EmpleadoDaoImpl dao){
         this.dao = dao;
     }
 
-    private void closeStage(ActionEvent event) {
-        Node source = (Node)  event.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+    private void closeStage() {
+
+        Stage stage  = (Stage) btnInsert.getScene().getWindow();
         stage.close();
     }
 
@@ -213,5 +275,33 @@ public class AddEmployeeDialogController implements Initializable {
             stage.close();
         }
 
+    }
+
+    private int getRowCount(GridPane pane) {
+        int numRows = pane.getRowConstraints().size();
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            Node child = pane.getChildren().get(i);
+            if (child.isManaged()) {
+                Integer rowIndex = GridPane.getRowIndex(child);
+                if(rowIndex != null){
+                    numRows = Math.max(numRows,rowIndex+1);
+                }
+            }
+        }
+        return numRows;
+    }
+
+    private int getColumnCount(GridPane pane) {
+        int numRows = pane.getColumnConstraints().size();
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            Node child = pane.getChildren().get(i);
+            if (child.isManaged()) {
+                Integer rowIndex = GridPane.getColumnIndex(child);
+                if(rowIndex != null){
+                    numRows = Math.max(numRows,rowIndex+1);
+                }
+            }
+        }
+        return numRows;
     }
 }

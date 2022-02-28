@@ -1,29 +1,29 @@
 package controller;
 
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import model.Empleado;
 
 import java.time.LocalDateTime;
 
+
 public class EmployeeSchedulePaneController{
 
-    @FXML
-    private static Label label;
-
-    private static int vacations;
 
     @FXML
-    private TabPane tabPane;
+    private JFXTabPane tabPane;
+
+
+    private int vacations;
 
 
     public void setData(Empleado employee) {
-        vacations = 0;
-        label = new Label();
+        vacations = employee.getVacations();
+
         try {
             LocalDateTime dateTime = LocalDateTime.now();
             int month = dateTime.getMonth().getValue();
@@ -40,23 +40,10 @@ public class EmployeeSchedulePaneController{
                 if (i > month) tab.setDisable(true);
                 i++;
             }
+
         } catch (Exception E) {
             E.printStackTrace();
         }
-
     }
-
-    public static Label getLabel(){
-        return label;
-    }
-
-    public static int getVacations(){
-        return  vacations;
-    }
-
-    public static void setVacations(int vacationsDay){
-        vacations = vacationsDay;
-    }
-
 
 }

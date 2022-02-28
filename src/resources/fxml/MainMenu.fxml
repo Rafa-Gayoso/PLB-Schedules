@@ -19,9 +19,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <children>
-      <VBox layoutY="-1.0" onKeyPressed="#executeKeyboardShortcuts" prefHeight="442.0" prefWidth="804.0">
+      <VBox layoutY="-1.0" onKeyPressed="#executeKeyboardShortcuts" prefHeight="442.0" prefWidth="804.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
                <children>
                   <GridPane prefHeight="49.0" prefWidth="459.0">
                      <columnConstraints>
@@ -61,11 +61,11 @@
                   </GridPane>
                </children>
             </HBox>
-            <StackPane fx:id="stackPane" prefHeight="395.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+            <StackPane fx:id="stackPane" prefHeight="395.0" prefWidth="804.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <AnchorPane fx:id="root" prefHeight="411.0" prefWidth="794.0" style="-fx-background-color: white;" stylesheets="@../styles/Style.css">
+                  <AnchorPane fx:id="root" prefHeight="411.0" prefWidth="794.0" style="-fx-background-color: white;" stylesheets="@../styles/Style.css" StackPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="94.0" prefHeight="53.0" prefWidth="645.0" text="Control de Horarios Palobiofarma S.L &amp; Medibiofarma">
+                        <Label layoutX="94.0" prefHeight="53.0" prefWidth="645.0" text="Control de Horarios Palobiofarma S.L &amp; Medibiofarma" AnchorPane.bottomAnchor="341.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="Microsoft JhengHei" size="24.0" />
                            </font>
@@ -78,7 +78,7 @@
                         <ProgressBar fx:id="progressBar" layoutX="226.0" layoutY="322.0" prefWidth="331.0" stylesheets="@../styles/Style.css" />
                      </children>
                   </AnchorPane>
-                  <Pane fx:id="dropInstructions" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false">
+                  <Pane fx:id="dropInstructions" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false" StackPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="95.0" fitWidth="115.0" layoutX="330.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                            <image>

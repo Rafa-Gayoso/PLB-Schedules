@@ -39,10 +39,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private final String NATIONAL_COLOR = "FFFF0000";
     private final String REGULAR_COLOR = "FFFFFFFF";
     private DateFormat inFormat;
-    private int vacations;
 
-    @FXML
-    private JFXButton saveButton;
 
     @FXML
     private TableView<TableExcelModel> excelTable;
@@ -72,21 +69,21 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private MenuItem warningBtn;
 
     @FXML
-    private Label vacationsLabel;
+    private MenuItem saveSchedule;
+
+    @FXML
+    private Tooltip tooltip;
 
     public void setData(Empleado employee, int sheet){
         Locale spanishLocale=new Locale("es", "ES");
         String month = Month.of(sheet).getDisplayName(TextStyle.FULL, spanishLocale);
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
 
-
         validateBtn.setOnAction(event -> lockSheet(employee,employeeFileName,sheet));
         unlockBtn.setOnAction(event -> unlockSheet(employee,employeeFileName,sheet));
         warningBtn.setOnAction(event -> SendMail.sendWarningEmail(employee, month));
 
         inFormat = new SimpleDateFormat( "hh:mm");
-
-        saveButton.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
 
         dayColumn.setCellValueFactory(cellData -> cellData.getValue().dayProperty());
 
@@ -125,10 +122,17 @@ public class EmployeeExcelTableController /*implements Initializable */{
             return row;
         });
 
+        if(LoginController.getUsu().getRol() == Roles.EMPLEADO.getCode()){
+           contextMenu.getItems().clear();
+        }
+        saveSchedule = new MenuItem("Guardar Horario de Trabajo");
+        saveSchedule.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
+        contextMenu.getItems().add(saveSchedule);
+
         populateTable(employee.getDireccionCronograma(), employeeFileName, sheet);
 
         if(LoginController.getUsu().getRol() == Roles.EMPLEADO.getCode()){
-           contextMenu.getItems().clear();
+           tooltip.setText("Tabla de Horario");
         }
 
     }
@@ -141,10 +145,19 @@ public class EmployeeExcelTableController /*implements Initializable */{
             FileInputStream inputStream1 = new FileInputStream(file);
             ZipSecureFile.setMinInflateRatio(0);
             XSSFWorkbook b = new XSSFWorkbook(inputStream1);
-            XSSFSheet sheet = b.getSheetAt(0);
-            vacations = (int) sheet.getRow(34).getCell(25).getNumericCellValue();
+            XSSFSheet sheet = b.getSheetAt(sheetNumber);
 
-            sheet = b.getSheetAt(sheetNumber);
+            XSSFCell totalMonthCell = sheet.getRow(48).getCell(6);
+            XSSFCell currentWorkingMonthCell = sheet.getRow(46).getCell(6);
+
+            FormulaEvaluator formulaEval = b.getCreationHelper().createFormulaEvaluator();
+            CellValue monthHourValue=formulaEval.evaluate(totalMonthCell);
+
+            int monthValue = (int) monthHourValue.getNumberValue();
+
+            CellValue monthCurrentHourValue=formulaEval.evaluate(currentWorkingMonthCell);
+            int monthCurrentValue =0;
+
 
             for(int i =15; i < 46; i++){
                 XSSFRow row =sheet.getRow(i);
@@ -165,9 +178,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
                             models.add(new TableExcelModel(Integer.toString(day), cellEntryHour.getStringCellValue(),
                                     cellExitHour.getStringCellValue(),cellJournalTime.getStringCellValue()));
-                            if( cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
-                                vacations--;
-                            }
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
 
                             String entryTime = combineHoursAndMinutes(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
@@ -179,19 +189,21 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             String resultHour = subtractHour(entryDate, exitDate);
                             models.add(new TableExcelModel(Integer.toString(day), entryTime,
                                     exitTime,resultHour.substring(1)));
+                            monthCurrentValue += Integer.parseInt(resultHour.substring(1, 2));
                         }
                     }
                 }
             }
+
             ObservableList<TableExcelModel> excelModels = FXCollections.observableArrayList(models);
             excelTable.setItems(excelModels);
             excelTable.setEditable(true);
             if(sheet.getProtect()){
                 excelTable.setEditable(false);
-                saveButton.setDisable(true);
+                contextMenu.getItems().remove(contextMenu.getItems().size() - 1);
             }
+            tooltip.setText("Horas "+monthCurrentValue+"/"+monthValue);
             b.close();
-           vacationsLabel.setText("Vacaciones: "+vacations);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -299,10 +311,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
             model.setJournalTime(value);
             model.setExitHour(value);
             model.setEntryHour(value);
-            if(value.equalsIgnoreCase("Vacaciones")){
-                vacations--;
-                vacationsLabel.setText("Vacaciones :"+vacations);
-            }
         }
 
     }
@@ -354,6 +362,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             out.close();
             inputStream1.close();
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
+            contextMenu.getItems().remove(contextMenu.getItems().size() - 1);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -375,11 +384,10 @@ public class EmployeeExcelTableController /*implements Initializable */{
             out.close();
             inputStream1.close();
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
+            contextMenu.getItems().add(saveSchedule);
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
 }
