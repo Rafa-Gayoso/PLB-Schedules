@@ -23,8 +23,8 @@ public class SendMail {
     public static void sendCompilationEmail(String name, String month){
         ArrayList<String> recipients = new ArrayList<>();
         // Mention the Recipient's email address
-        recipients.add("iamalfi@medibiofarma.com");
-        recipients.add("jrojo@aplobiofarma.com");
+        recipients.add("iamalfi@palobiofarma.com");
+        recipients.add("jrojo@palobiofarma.com");
         //recipients.add(EMAIL);
         // Mention the Sender's email address
         String from = "rgayoso@medibiofarma.com";
