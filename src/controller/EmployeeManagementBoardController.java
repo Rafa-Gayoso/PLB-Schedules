@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
+import utils.VacationsController;
 
 
 public class EmployeeManagementBoardController implements Initializable {
@@ -288,7 +289,8 @@ public class EmployeeManagementBoardController implements Initializable {
 
     @FXML
     void vacationsReport(ActionEvent event) {
-        GetVacationsService task = new GetVacationsService(LoginController.getEmployees());
+        VacationsController.getVacationsDaysEmployees(LoginController.getEmployees());
+        /*GetVacationsService task = new GetVacationsService(LoginController.getEmployees());
         task.start();
 
         Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
@@ -305,6 +307,10 @@ public class EmployeeManagementBoardController implements Initializable {
         task.setOnFailed(e -> {
             stage.close();
         });
+
+        task.setOnCancelled(e -> {
+            stage.close();
+        });*/
     }
 
 
