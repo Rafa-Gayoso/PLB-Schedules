@@ -204,10 +204,13 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
                 EmployeeController itemController = fxmlLoader.getController();
                 itemController.setData(employee);
 
-                int row = getRowCount(grid)-1;
-                int column = getColumnCount(grid)-1;
-                if(column == 3) column = 0;
-                grid.add(anchorPane, column, row);
+                //int row =;
+                //int column = ;
+                if(EmployeeManagementBoardController.column == 3) {
+                    EmployeeManagementBoardController.column = 0;
+                    EmployeeManagementBoardController.row++;
+                }
+                grid.add(anchorPane, EmployeeManagementBoardController.column++,  EmployeeManagementBoardController.row);
                 GridPane.setMargin(anchorPane, new Insets(20));
 
                 closeStage();

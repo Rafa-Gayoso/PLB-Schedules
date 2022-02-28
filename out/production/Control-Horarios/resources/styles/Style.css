@@ -169,6 +169,20 @@
     -fx-border-width:3px;
 }
 
+.employee-border-pane{
+    /*webkit-box-shadow: 0px 0px 12px -1px #000000;*/
+
+    /*-fx-box-shadow: 0px 0px 12px -1px #000000;*/
+    -fx-border-color: #cccccc;
+    -fx-border-width:0px 0px 3px 0px;
+}
+
+.employee-border-pane:hover {
+    -fx-border-color: #000000;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
 
 .tab:disabled .tab-label {
     -fx-text-fill: #ffffff;

@@ -44,7 +44,7 @@
       <Cursor fx:constant="HAND" />
    </cursor>
    <styleClass>
-      <String fx:value="border-pane" />
+      <String fx:value="employee-border-pane" />
       <String fx:value="employee-photo-pane" />
    </styleClass>
 

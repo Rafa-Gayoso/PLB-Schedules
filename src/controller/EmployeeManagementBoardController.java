@@ -59,7 +59,7 @@ public class EmployeeManagementBoardController implements Initializable {
 
     private List<Empleado> employees = new ArrayList<>();
     private EmpleadoDaoImpl employeeDao;
-    private int row, column;
+    public static int row, column;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -178,8 +178,6 @@ public class EmployeeManagementBoardController implements Initializable {
 
         return items;
     }
-
-
 
     private void showSchedule(Empleado employee){
         try {
