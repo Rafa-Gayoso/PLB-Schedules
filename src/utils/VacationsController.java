@@ -38,10 +38,11 @@ public class VacationsController {
                         XSSFCell cellEntryHour = row.getCell(2);
                         if(cell != null){
                             int day = (int)cell.getNumericCellValue();
-                            if(cellEntryHour.getCellType() == CellType.STRING){
-                                if(cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
+                            if(cellEntryHour.getCellType() == CellType.STRING &&
+                                cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
+
                                     days.add(String.valueOf(day));
-                                }
+
                             }
                         }
                     }
@@ -52,6 +53,9 @@ public class VacationsController {
             }
         }catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            inputStream1.close();
         }
         return vacations;
     }

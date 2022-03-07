@@ -225,19 +225,19 @@ public class AppController {
                 //to control the sheet where paste the picture
                 String calendar_year = "";
                 String location = "";
-                int total_sheets = 0;
+                int totalSheets = 0;
                 for (InputStream fin : list) {
                     XSSFWorkbook b = new XSSFWorkbook(fin);
                     for (int i = 0; i < b.getNumberOfSheets(); i++) {
                         sheet = book.createSheet(b.getSheetName(i));
                         copySheets(book, sheet, b.getSheetAt(i));
-                        total_sheets++;
+                        totalSheets++;
                         if (book.getNumberOfSheets() == 1) {
                             calendar_year = book.getSheetAt(0).getRow(0).getCell(1).getStringCellValue();
                             calendar_year = calendar_year.split(" ")[1];
                             location = book.getSheetAt(0).getRow(0).getCell(6).getStringCellValue();
                         }
-                        if (total_sheets > 1) {
+                        if (totalSheets > 1) {
                             addEnterpriseLogoToSheet(book, sheet, pictureIdx);
                             //Push date
                             Cell cell = sheet.getRow(53).getCell(6);
@@ -256,15 +256,15 @@ public class AppController {
                             if (cell != null) {
                                 //-2 para qiue coincida el numero de la lista con el numero de la hoja
                                 cell.setCellFormula("('" + book.getSheetAt(0).getSheetName() + "'" + "" +
-                                        cell_formulas.get(total_sheets - 2) + "*" + empleado.getHoras_laborables() + ")/8");
+                                        cell_formulas.get(totalSheets - 2) + "*" + empleado.getHoras_laborables() + ")/8");
                             }
 
                             cell = sheet.getRow(14).getCell(8);
-                            if (total_sheets == 2 && cell != null) {
+                            if (totalSheets == 2 && cell != null) {
                                 cell.setCellFormula("'" + book.getSheetAt(0).getSheetName() + "'!Z35-" + "(" +
                                         cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
-                            } else if (total_sheets > 2) {
-                                cell.setCellFormula("'" + book.getSheetAt(total_sheets - 2).getSheetName() + "'!I15-" + "(" +
+                            } else if (totalSheets > 2 && cell != null) {
+                                cell.setCellFormula("'" + book.getSheetAt(totalSheets - 2).getSheetName() + "'!I15-" + "(" +
                                         cell.getCellFormula() + ")/"+empleado.getHoras_laborables());
                             }
                         }
@@ -375,12 +375,4 @@ public class AppController {
         pict.resize(3, 3);
     }
 
-    private FileInputStream createInputStream(File file){
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
