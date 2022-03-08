@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import utils.VacationsController;
 
 public class EmployeeBoardController implements Initializable {
 
@@ -63,7 +64,8 @@ public class EmployeeBoardController implements Initializable {
             try {
                 ArrayList<Empleado> employees = new ArrayList<Empleado>();
                 employees.add(employee);
-                GetVacationsService services = new GetVacationsService(employees);
+                VacationsController.getVacationsDaysEmployees(employees);
+                /*GetVacationsService services = new GetVacationsService(employees);
                 services.start();
 
                 Stage stage = CreateSplashScreen.createPDFSplashScreen(services);
@@ -74,7 +76,7 @@ public class EmployeeBoardController implements Initializable {
                 });
                 services.setOnSucceeded(event -> {
                     stage.close();
-                });
+                });*/
 
             } catch (Exception e) {
                 e.printStackTrace();

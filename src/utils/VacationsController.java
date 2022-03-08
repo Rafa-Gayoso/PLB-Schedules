@@ -38,10 +38,11 @@ public class VacationsController {
                         XSSFCell cellEntryHour = row.getCell(2);
                         if(cell != null){
                             int day = (int)cell.getNumericCellValue();
-                            if(cellEntryHour.getCellType() == CellType.STRING){
-                                if(cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
+                            if(cellEntryHour.getCellType() == CellType.STRING &&
+                                cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
+
                                     days.add(String.valueOf(day));
-                                }
+
                             }
                         }
                     }
@@ -49,6 +50,7 @@ public class VacationsController {
                 Locale spanishLocale=new Locale("es", "ES");
                 String month = Month.of(i).getDisplayName(TextStyle.FULL, spanishLocale);
                 vacations.put(month,days);
+                inputStream1.close();
             }
         }catch (Exception e){
             e.printStackTrace();

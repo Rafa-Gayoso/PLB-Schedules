@@ -21,7 +21,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,7 +45,7 @@ public class EmployeeManagementBoardController implements Initializable {
 
     private final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
     private final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
-    private final String PDF_Directory = System.getProperty("user.home") + "/Desktop" + File.separator +
+    private final String PDFDirectory = System.getProperty("user.home") + "/Desktop" + File.separator +
             "Empleados de Palobiofarma y Medibiofarma.pdf";
 
     @FXML
@@ -136,7 +135,6 @@ public class EmployeeManagementBoardController implements Initializable {
             scene.setFill(Color.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.initModality(Modality.APPLICATION_MODAL);
-            //stage.setAlwaysOnTop(true);
             stage.setScene(scene);
             stage.show();
         }catch(Exception e){
@@ -145,7 +143,7 @@ public class EmployeeManagementBoardController implements Initializable {
     }
 
     private List<MenuItem> createMenuItems(Empleado employee){
-        List<MenuItem> items = new ArrayList<MenuItem>();
+        List<MenuItem> items = new ArrayList<>();
         MenuItem update = new MenuItem("Modificar Datos");
         MenuItem delete = new MenuItem("Eliminar empleado");
         MenuItem schedule = new MenuItem("Ver Horario");
@@ -155,21 +153,21 @@ public class EmployeeManagementBoardController implements Initializable {
         delete.setOnAction(e-> deleteEmployee(employee));
         schedule.setOnAction(e-> showSchedule(employee));
         vacations.setOnAction(e-> {
-            ArrayList<Empleado> employees = new ArrayList<>();
-            employees.add(employee);
-            GetVacationsService task = new GetVacationsService(employees);
+            ArrayList<Empleado> employeesList = new ArrayList<>();
+            employeesList.add(employee);
+            VacationsController.getVacationsDaysEmployees(employeesList);
+            /*GetVacationsService task = new GetVacationsService(employeesList);
             task.start();
 
             Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
 
 
-            task.setOnRunning(event -> {
-                stage.show();
-            });
+            task.setOnRunning(event -> stage.show());
 
-            task.setOnSucceeded(event -> {
-                stage.close();
-            });
+
+            task.setOnSucceeded(event -> stage.close());
+
+            task.setOnFailed(event -> stage.close());*/
         });
 
         items.add(schedule);
@@ -207,12 +205,12 @@ public class EmployeeManagementBoardController implements Initializable {
         Document document = new Document();
         try
         {
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(PDF_Directory));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(PDFDirectory));
             document.open();
             document.addAuthor("Palobiofarma S.L");
             document.addCreationDate();
             document.addTitle("Listado de empleados Palobiofarma y Medibiofarma");
-            //document.addSubject("An example to show how attributes can be added to pdf files.");
+
             PdfPTable table = new PdfPTable(6); // 6 columns.
             table.setWidthPercentage(100); //Width 100%
             table.setSpacingBefore(10f); //Space before table
@@ -258,7 +256,7 @@ public class EmployeeManagementBoardController implements Initializable {
                 table.addCell(createCell(Integer.toString(employee.getHoras_laborables())));
                 table.addCell(createCell(employee.getNombre_empresa()));
             }
-            File file = new File(PDF_Directory);
+            File file = new File(PDFDirectory);
 
 
             //first check if Desktop is supported by Platform or not
@@ -290,27 +288,6 @@ public class EmployeeManagementBoardController implements Initializable {
     @FXML
     void vacationsReport(ActionEvent event) {
         VacationsController.getVacationsDaysEmployees(LoginController.getEmployees());
-        /*GetVacationsService task = new GetVacationsService(LoginController.getEmployees());
-        task.start();
-
-        Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
-
-
-        task.setOnRunning(e -> {
-            stage.show();
-        });
-
-        task.setOnSucceeded(e -> {
-            stage.close();
-        });
-
-        task.setOnFailed(e -> {
-            stage.close();
-        });
-
-        task.setOnCancelled(e -> {
-            stage.close();
-        });*/
     }
 
 
