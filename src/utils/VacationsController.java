@@ -50,12 +50,10 @@ public class VacationsController {
                 Locale spanishLocale=new Locale("es", "ES");
                 String month = Month.of(i).getDisplayName(TextStyle.FULL, spanishLocale);
                 vacations.put(month,days);
+                inputStream1.close();
             }
         }catch (Exception e){
             e.printStackTrace();
-        }
-        finally {
-            inputStream1.close();
         }
         return vacations;
     }

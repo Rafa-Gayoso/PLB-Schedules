@@ -155,7 +155,8 @@ public class EmployeeManagementBoardController implements Initializable {
         vacations.setOnAction(e-> {
             ArrayList<Empleado> employeesList = new ArrayList<>();
             employeesList.add(employee);
-            GetVacationsService task = new GetVacationsService(employeesList);
+            VacationsController.getVacationsDaysEmployees(employeesList);
+            /*GetVacationsService task = new GetVacationsService(employeesList);
             task.start();
 
             Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
@@ -165,6 +166,8 @@ public class EmployeeManagementBoardController implements Initializable {
 
 
             task.setOnSucceeded(event -> stage.close());
+
+            task.setOnFailed(event -> stage.close());*/
         });
 
         items.add(schedule);
