@@ -20,33 +20,21 @@
          <top>
             <HBox prefHeight="91.0" prefWidth="742.0" styleClass="border-bottom" stylesheets="@../styles/Style.css" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                           <image>
-                              <Image url="@../images/medi.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="enterprisePic" fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <Pane prefHeight="100.0" prefWidth="122.0" HBox.hgrow="ALWAYS" />
                   <Pane prefHeight="100.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                  <HBox prefHeight="102.0" prefWidth="89.0">
-                     <children>
-                        <ImageView fx:id="profilePic" fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                           <image>
-                              <Image url="@../images/profile.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="102.0" prefWidth="89.0" />
                   <Pane prefHeight="100.0" prefWidth="112.0" HBox.hgrow="ALWAYS" />
                   <Pane prefHeight="100.0" prefWidth="128.0" HBox.hgrow="ALWAYS" />
                   <HBox prefHeight="102.0" prefWidth="89.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                        <ImageView fx:id="profilePic" fitHeight="95.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
-                              <Image url="@../images/palo.png" />
+                              <Image url="@../images/profile.png" />
                            </image>
                         </ImageView>
                      </children>

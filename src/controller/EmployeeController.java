@@ -37,7 +37,7 @@ public class EmployeeController {
     public void setData(Empleado empleado) {
         try{
             this.empleado = empleado;
-
+            SMBUtils.downloadSmbPhoto(empleado.getNombre()+".png", PIC_DIR);
             File file = new File(PIC_DIR+File.separator+empleado.getNombre()+".png");
             if(!file.exists()){
                 file = new File(PIC_DIR+File.separator+"profile.png");

@@ -42,8 +42,10 @@ public class EmpleadoDaoImpl implements Dao<Empleado> {
 
 
         try(Connection connection = ServicesLocator.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO empleado(nombre_empleado,primer_apellido,segundo_apellido," +
-                    "nif,numero_afiliacion,horas_laborables,cod_empresa,direccion_cronograma,cod_usuario, email, vacaciones) " +
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO "
+                + "empleado(nombre_empleado,primer_apellido,segundo_apellido," +
+                    "nif,numero_afiliacion,horas_laborables,cod_empresa,direccion_cronograma,"
+                + "cod_usuario, email, vacaciones) " +
                     "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
             statement.setString(1,entity.getNombre());
             statement.setString(2,entity.getPrimer_apellido());

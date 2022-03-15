@@ -16,8 +16,9 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 
-    private static final String EMAIL = "rgayoso@medibiofarma.com";
-    private static final String PASSWORD = "fcbarcelona1899.";
+    private static final String EMAIL = "plbschedules@gmail.com";
+    private static final String PASSWORD = "ucqwqydaihdynpqm";
+    private static final String HOST = "smtp.gmail.com";
 
 
     public static void sendCompilationEmail(String name, String month){
@@ -25,17 +26,18 @@ public class SendMail {
         // Mention the Recipient's email address
         recipients.add("iamalfi@palobiofarma.com");
         recipients.add("jrojo@palobiofarma.com");
+        //recipients.add("gayoso0597@gmail.com");
         //recipients.add(EMAIL);
         // Mention the Sender's email address
         String from = "rgayoso@medibiofarma.com";
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
-        String host = "smtp.office365.com";
+
         // Get system properties
         Properties properties = System.getProperties();
         // Setup mail server
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", HOST);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
@@ -71,11 +73,11 @@ public class SendMail {
         String to = employee.getEmail();
         // Mention the Sender's email address
         // Mention the SMTP server address. Below Gmail's SMTP server is being used to send email
-        String host = "smtp.office365.com";
+
         // Get system properties
         Properties properties = System.getProperties();
         // Setup mail server
-        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.host", HOST);
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.auth", "true");

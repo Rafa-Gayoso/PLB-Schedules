@@ -1,0 +1,13 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ê³¶áıÿÿÿÿ
+P	java:S125!"<This block of commented-out lines of code should be removed.(çÇÜ
+>	java:S108#")Either remove or fill this block of code.(”ı¾
+_
+java:S1128"DRemove this unused import 'controller.SchedulesGeneratorController'.(…ôÊ¿şÿÿÿÿ
+L
+java:S1128"6Remove this unused import 'javafx.concurrent.Service'.(‚°Ññ
+N
+java:S1128"3Remove this unused import 'services.GetEmpService'.(¶¯òêşÿÿÿÿ
+[
+java:S1128"@Remove this unused import 'services.GetEmployeeScheduleService'.(ˆ´¿óşÿÿÿÿ

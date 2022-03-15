@@ -1,0 +1,16 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(©­ä†ÿÿÿÿÿ
+S
+java:S1854 "8Remove this useless assignment to local variable "from".(¨õÙ½øÿÿÿÿ
+X	java:S125"<This block of commented-out lines of code should be removed.(ìé²Š8¸®Ñìø/
+D
+java:S1481 ")Remove this unused "from" local variable.(¨õÙ½øÿÿÿÿ
+P
+java:S1161,":Add the "@Override" annotation above this method signature(‡èú×
+S	java:S106>"9Replace this use of System.out or System.err by a logger.(ù´‡Ìÿÿÿÿÿ
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(ûèÜ—úÿÿÿÿ
+P
+java:S1161V":Add the "@Override" annotation above this method signature(‡èú×
+S	java:S106i"9Replace this use of System.out or System.err by a logger.(ù´‡Ìÿÿÿÿÿ
+S	java:S106l"9Replace this use of System.out or System.err by a logger.(ûèÜ—úÿÿÿÿ

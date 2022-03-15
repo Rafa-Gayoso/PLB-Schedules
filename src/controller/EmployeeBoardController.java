@@ -1,29 +1,16 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.stage.Stage;
 import model.Empleado;
-import services.GetEmployeeScheduleService;
-import services.GetEmployeeScheduleTask;
-import services.GetVacationsService;
-import utils.CreateSplashScreen;
 import utils.FormatEmployeeName;
 import utils.SMBUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 import utils.VacationsController;
@@ -35,6 +22,8 @@ public class EmployeeBoardController implements Initializable {
     @FXML
     private ImageView profilePic;
 
+    @FXML
+    private ImageView enterprisePic;
 
     @FXML
     private JFXButton vacationsBtn;
@@ -54,6 +43,13 @@ public class EmployeeBoardController implements Initializable {
             Image image = null;
 
             image = new Image(new FileInputStream(file));
+            InputStream inputStream;
+            if (employee.getNombre_empresa().contains("Palobiofarma")) {
+                inputStream =  getClass().getResourceAsStream("/resources/images/palo.png");
+            } else {
+                inputStream = getClass().getResourceAsStream("/resources/images/medi.png");
+            }
+            enterprisePic.setImage(new Image(inputStream));
             profilePic.setImage(image);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -65,19 +61,6 @@ public class EmployeeBoardController implements Initializable {
                 ArrayList<Empleado> employees = new ArrayList<Empleado>();
                 employees.add(employee);
                 VacationsController.getVacationsDaysEmployees(employees);
-                /*GetVacationsService services = new GetVacationsService(employees);
-                services.start();
-
-                Stage stage = CreateSplashScreen.createPDFSplashScreen(services);
-
-
-                services.setOnRunning(event -> {
-                    stage.show();
-                });
-                services.setOnSucceeded(event -> {
-                    stage.close();
-                });*/
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
