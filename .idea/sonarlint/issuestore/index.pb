@@ -33,3 +33,23 @@ N
 src/model/TableExcelModel.java,8\6\865d14a6718990858b63537994ff0fb7ed6d8a3e
 G
 src/utils/SendMail.java,3\3\3376337bc799970e59521845be33d2a1ba2597a7
+G
+src/utils/SMBUtils.java,2\3\2399974b72ff1a29880675d1b6ad9d5021be4869
+U
+%src/resources/fxml/EmployeeBoard.fxml,0\9\09ee59b113b57a28075dc3a84f875ca55a40a7db
+a
+1src/controller/EmployeesManagementController.java,c\d\cda4158c5cf9c79caae42968ced8e380f4b18d73
+b
+2src/controller/EmployeeSchedulePaneController.java,4\5\4539518a905aed8efb3414ecbb7736292870dd89
+e
+5src/controller/EmployeeManagementBoardController.java,4\b\4b820145ba974b778f144ff1569af9583e3cae39
+V
+&src/controller/EmployeeController.java,4\3\43dfe91d4e3902525420598b45e7a445afa999cf
+[
++src/controller/EmployeeBoardController.java,1\5\151ea074b27b1366ca61c6742413064d4a7cfd57
+Q
+!src/controller/AppController.java,4\d\4d349dae95976209494da9b79de4959a363300dc
+V
+&src/controller/MainMenuController.java,2\7\27d5b4b5c7e3a45f50a973e1a57df9d42b8858b8
+_
+/src/controller/AddEmployeeDialogController.java,e\6\e6ee68bf7e65480b2efd8d6cee074f5820893ad6

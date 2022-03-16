@@ -121,11 +121,11 @@ public class LoginController implements Initializable {
       if (pass.isVisible()) {
         pass.setVisible(false);
         passwordTextField.setVisible(true);
-        inputStream = getClass().getResourceAsStream("/resources/images/eye.png");
+        inputStream = getClass().getResourceAsStream("/resources/images/hidden.png");
       } else {
         pass.setVisible(true);
         passwordTextField.setVisible(false);
-        inputStream = getClass().getResourceAsStream("/resources/images/hidden.png");
+        inputStream = getClass().getResourceAsStream("/resources/images/eye.png");
       }
       imagePass.setImage(new Image(inputStream));
     });

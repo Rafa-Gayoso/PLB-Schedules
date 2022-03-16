@@ -74,6 +74,9 @@ public class EmployeeExcelTableController /*implements Initializable */{
     @FXML
     private Tooltip tooltip;
 
+    @FXML
+    private JFXButton saveBtn;
+
     public void setData(Empleado employee, int sheet){
         Locale spanishLocale=new Locale("es", "ES");
         String month = Month.of(sheet).getDisplayName(TextStyle.FULL, spanishLocale);
@@ -128,6 +131,8 @@ public class EmployeeExcelTableController /*implements Initializable */{
         saveSchedule = new MenuItem("Guardar Horario de Trabajo");
         saveSchedule.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
         contextMenu.getItems().add(saveSchedule);
+
+        saveBtn.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
 
         populateTable(employee.getDireccionCronograma(), employeeFileName, sheet);
 

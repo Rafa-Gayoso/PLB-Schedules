@@ -1,0 +1,16 @@
+
+l	java:S116"RRename this field "PIC_DIR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿÅòûÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(äÿÅòûÿÿÿÿ
+Q	java:S1254"<This block of commented-out lines of code should be removed.(À€²¢
+>	java:S1089")Either remove or fill this block of code.(”ı¾
+V	java:S125E"<This block of commented-out lines of code should be removed.(ã›ÁÆùÿÿÿÿ
+V	java:S125J"<This block of commented-out lines of code should be removed.(ÄÁÑ·ûÿÿÿÿ
+R
+java:S1128"0Remove this unused import 'animatefx.animation'.(¨†ŒÈşÿÿÿÿ8úşÀğø/
+[
+java:S1128">Remove this unused import 'javafx.beans.value.ChangeListener'.(¸÷Í8úşÀğø/
+K
+java:S1128".Remove this unused import 'javafx.scene.Node'.(ÑÖ¬ï8ûşÀğø/
+M
+java:S1128"0Remove this unused import 'java.io.InputStream'.(¹»º8ûşÀğø/

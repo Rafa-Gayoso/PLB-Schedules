@@ -1,0 +1,36 @@
+
+J
+java:S3740["/Provide the parametrized type for this generic.(ýü¶§úÿÿÿÿ
+q	java:S1160"WRename this field "PALOBIOFARMA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ›Òõüÿÿÿÿ
+q	java:S1161"WRename this field "MEDIBIOFARMA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÕŒ³ÿÿÿÿÿ
+r	java:S1162"XRename this field "PDF_Directory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ƒÒÚúÿÿÿÿ
+<
+java:S11700"!Make this final field static too.(ˆ›Òõüÿÿÿÿ
+<
+java:S11701"!Make this final field static too.(àÕŒ³ÿÿÿÿÿ
+
+java:S1186æ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ôý°ûÿÿÿÿ
+T	java:S106±"9Replace this use of System.out or System.err by a logger.(Ã™Ÿøÿÿÿÿ
+U
+java:S1172æ"9Remove these unused method parameters "message", "title".(ôý°ûÿÿÿÿ
+ˆ
+java:S1130…"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ßµ»ÿÿÿÿÿ
+K
+java:S1172…"/Remove this unused method parameter "employee".(ßµ»ÿÿÿÿÿ
+W	java:S125†"<This block of commented-out lines of code should be removed.(ÝƒÂñÿÿÿÿÿ
+R	java:S125¨"<This block of commented-out lines of code should be removed.(ò”ç™
+Q
+java:S1128";Remove this unused import 'javafx.scene.layout.AnchorPane'.(Ø µ
+K
+java:S1128"5Remove this unused import 'javafx.scene.paint.Color'.(Ïî£à
+M
+java:S1128"2Remove this unused import 'javafx.stage.Modality'.(£†üÐüÿÿÿÿ
+I
+java:S1128 "4Remove this unused import 'javafx.stage.StageStyle'.(¶©2
+K
+java:S1128#"5Remove this unused import 'services.ServicesLocator'.(ü´šê
+C
+java:S1128%"(Remove this unused import 'utils.Roles'.(Ô«ã«øÿÿÿÿ
+T
+java:S1144æ"8Remove this unused private "setNotificationData" method.(ôý°ûÿÿÿÿ
+l	java:S117ž"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ñ¬ãûÿÿÿÿ

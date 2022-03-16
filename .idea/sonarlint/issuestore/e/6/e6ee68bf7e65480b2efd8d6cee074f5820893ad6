@@ -1,0 +1,35 @@
+
+E
+java:S3740Ÿ"/Provide the parametrized type for this generic.(ƒ€ÁT
+g	java:S116&"RRename this field "ADDRESS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÓ“þ
+l	java:S116'"RRename this field "PIC_DIR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿÅòûÿÿÿÿ
+7
+java:S1170&"!Make this final field static too.(ƒÓ“þ
+<
+java:S1170'"!Make this final field static too.(äÿÅòûÿÿÿÿ
+X
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(øÉ‰Ã
+D	java:S108¯")Either remove or fill this block of code.(¾²‰Ÿûÿÿÿÿ
+D	java:S108±")Either remove or fill this block of code.(œòŽ¡øÿÿÿÿ
+W	java:S125Ï"<This block of commented-out lines of code should be removed.(æèž€ûÿÿÿÿ
+R
+java:S2696Ò"6Make the enclosing method "static" or remove this set.(Þ£Øýøÿÿÿÿ
+R
+java:S2696Ó"6Make the enclosing method "static" or remove this set.(ê›‘ïüÿÿÿÿ
+R
+java:S2696Õ"6Make the enclosing method "static" or remove this set.(¶•‚˜øÿÿÿÿ
+?	java:S108Ù")Either remove or fill this block of code.(”ý¾
+D	java:S108â")Either remove or fill this block of code.(¾²‰Ÿûÿÿÿÿ
+R
+java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­žÿÿÿÿÿ
+L
+java:S1144˜"0Remove this unused private "getRowCount" method.(ˆ”…Ôøÿÿÿÿ
+I
+java:S1144¦"3Remove this unused private "getColumnCount" method.(Ôººe
+g	java:S117ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡¨ˆÉ
+A
+java:S5411™"*Use the primitive boolean expression here.(øÖ“Ù
+A
+java:S5411¢"*Use the primitive boolean expression here.(øÖ“Ù
+N
+java:S3655ø"7Call "Optional#isPresent()" before accessing the value.(ÃÎ„³

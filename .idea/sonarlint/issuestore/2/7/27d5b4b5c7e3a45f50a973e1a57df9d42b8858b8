@@ -1,0 +1,51 @@
+
+E
+java:S3740x"/Provide the parametrized type for this generic.(Áý÷°
+n	java:S116."TRename this field "LEAP_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×µ„•úÿÿÿÿ
+l	java:S116/"RRename this field "REGULAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òãÂþýÿÿÿÿ
+c	java:S1160"ORename this field "HELP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï±ÚO
+q	java:S1161"WRename this field "PALOBIOFARMA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ›Òõüÿÿÿÿ
+q	java:S1162"WRename this field "MEDIBIOFARMA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÕŒ³ÿÿÿÿÿ
+<
+java:S1170."!Make this final field static too.(×µ„•úÿÿÿÿ
+<
+java:S1170/"!Make this final field static too.(òãÂþýÿÿÿÿ
+6
+java:S11700"!Make this final field static too.(Ï±ÚO
+<
+java:S11701"!Make this final field static too.(ˆ›Òõüÿÿÿÿ
+<
+java:S11702"!Make this final field static too.(àÕŒ³ÿÿÿÿÿ
+F
+java:S1659Q"+Declare "scheduleSheet" on a separate line.(‚¬çÿÿÿÿÿ
+S	java:S106{"9Replace this use of System.out or System.err by a logger.(á×°¯ùÿÿÿÿ
+H
+java:S1602",Remove useless curly braces around statement(°¿¦àýÿÿÿÿ
+O	java:S106‘"9Replace this use of System.out or System.err by a logger.(óÿÎç
+W	java:S125"<This block of commented-out lines of code should be removed.(ÂÔžêýÿÿÿÿ
+?	java:S108Ó")Either remove or fill this block of code.(éôö£
+O
+java:S1117ï"8Rename "file" which hides the field declared at line 76.(ÀÊ÷Ë
+Q	java:S125õ"<This block of commented-out lines of code should be removed.(ÈÊ§G
+O
+java:S1117³"8Rename "file" which hides the field declared at line 76.(ÌÒô¯
+T	java:S106·"9Replace this use of System.out or System.err by a logger.(´Ñ´êûÿÿÿÿ
+K
+java:S1128 "5Remove this unused import 'services.ServicesLocator'.(ü´šê
+K
+java:S10681"0Remove this unused "PALOBIOFARMA" private field.(ˆ›Òõüÿÿÿÿ
+K
+java:S10682"0Remove this unused "MEDIBIOFARMA" private field.(àÕŒ³ÿÿÿÿÿ
+L
+java:S1068Q"1Remove this unused "calendarSheet" private field.(‚¬çÿÿÿÿÿ
+L
+java:S1068Q"1Remove this unused "scheduleSheet" private field.(‚¬çÿÿÿÿÿ
+e
+java:S1192"JDefine a constant instead of duplicating this literal "user.home" 6 times.(þž•Ïýÿÿÿÿ
+
+java:S1192¹"cDefine a constant instead of duplicating this literal "/resources/images/palobiofarma.png" 3 times.(âÃëƒÿÿÿÿÿ
+h
+java:S1192."MDefine a constant instead of duplicating this literal "config_files" 5 times.(×µ„•úÿÿÿÿ
+d
+java:S1192"IDefine a constant instead of duplicating this literal "/Desktop" 6 times.(þž•Ïýÿÿÿÿ
+l	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø•³Êüÿÿÿÿ
