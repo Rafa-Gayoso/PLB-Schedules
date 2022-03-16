@@ -1,6 +1,8 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -163,7 +165,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
             CellValue monthCurrentHourValue=formulaEval.evaluate(currentWorkingMonthCell);
             int monthCurrentValue =0;
 
-
             for(int i =15; i < 46; i++){
                 XSSFRow row =sheet.getRow(i);
                 if(row != null){
@@ -184,17 +185,13 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             models.add(new TableExcelModel(Integer.toString(day), cellEntryHour.getStringCellValue(),
                                     cellExitHour.getStringCellValue(),cellJournalTime.getStringCellValue()));
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
+                            LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
+                            LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());
 
-                            String entryTime = combineHoursAndMinutes(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
-                            String exitTime = combineHoursAndMinutes(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());
-
-                            Date entryDate = inFormat.parse(entryTime);
-                            Date exitDate = inFormat.parse(exitTime);
-
-                            String resultHour = subtractHour(entryDate, exitDate);
-                            models.add(new TableExcelModel(Integer.toString(day), entryTime,
-                                    exitTime,resultHour.substring(1)));
-                            monthCurrentValue += Integer.parseInt(resultHour.substring(1, 2));
+                            String resultHour = subtractHours(entry, exit);
+                            models.add(new TableExcelModel(Integer.toString(day), entry.toString(),
+                                exit.toString(),resultHour));
+                            monthCurrentValue += Integer.parseInt(resultHour.substring(0, 1));
                         }
                     }
                 }
@@ -279,20 +276,15 @@ public class EmployeeExcelTableController /*implements Initializable */{
         }
     }
 
-    private String formatDouble(double time){
-        String value = Double.toString(time);
-        String correctedValue = value.replace(".",":");
-        if(correctedValue.length() == 3){
-            return correctedValue + "0";
-        }
-        return correctedValue;
-    }
 
     private boolean validateHour(String hour){
         return hour.contains(":");
     }
 
     private void setDataToModel(String value, TableExcelModel model, boolean entry) throws ParseException {
+        if(value.length() == 4 && value.charAt(0) != '0'){
+            value = "0"+value;
+        }
         if(entry){
             model.setEntryHour(value);
         }else{
@@ -300,19 +292,19 @@ public class EmployeeExcelTableController /*implements Initializable */{
         }
 
         if(validateHour(value)){
-            double hour;
+            String hour;
+            LocalTime localTime = LocalTime.parse(value);
             if(model.getIntegerJournalTime() == 0.0){
-                hour = calculateHourOnEntryOrExit(entry, model);
+                hour = "17:00";
             }
-            else{
-                Date entryDate = inFormat.parse(model.getEntryHour());
-                Date exitDate = inFormat.parse(model.getExitHour());
-                String resultHour = subtractHour(entryDate, exitDate);
-
-                hour = Double.parseDouble(resultHour.replace(":","."));
+            else {
+                LocalTime entyTrime = LocalTime.parse(model.getEntryHour());
+                LocalTime exitTime = localTime.parse(model.getExitHour());
+                hour = subtractHours(entyTrime, exitTime);
             }
-            model.setJournalTime(formatDouble(hour));
+            model.setJournalTime(hour);
         }else{
+
             model.setJournalTime(value);
             model.setExitHour(value);
             model.setEntryHour(value);
@@ -320,36 +312,15 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
     }
 
-    private double calculateHourOnEntryOrExit(boolean entry, TableExcelModel model) throws ParseException {
-        Date defaultDate = inFormat.parse("16:00");
-        Date date;
-        String resultHour;
-        if (!entry) {
-            date = inFormat.parse(model.getExitHour());
-            resultHour = subtractHour(date,defaultDate);
+    private String subtractHours(LocalTime entyTrime, LocalTime exitTime) {
+        String hour;
+        Duration duration = Duration.between(entyTrime, exitTime);
+        hour = formatDuration(duration);
+        if(Integer.parseInt(String.valueOf(hour.charAt(0)))>4){
+            duration = duration.minusHours(1);
+            hour = formatDuration(duration);
         }
-        else{
-            date = inFormat.parse(model.getEntryHour());
-            resultHour = subtractHour(defaultDate,date);
-        }
-        return Double.parseDouble(resultHour.replace(":","."));
-
-    }
-
-    private String combineHoursAndMinutes(double hours, double minutes){
-        int integerHours = (int) hours;
-        int integerMinutes = (int) minutes;
-        String minutesString = Integer.toString(integerMinutes).length() == 1 ? integerMinutes + "0": Integer.toString(integerMinutes);
-        return integerHours+":"+minutesString;
-    }
-
-    private String subtractHour(Date entryDate, Date exitDate){
-        LocalTime localExitTime = LocalTime.of(exitDate.getHours(), exitDate.getMinutes());
-
-        LocalTime updatedTime = localExitTime.minusHours(entryDate.getHours() + 1).
-                minusMinutes(entryDate.getMinutes());
-
-        return updatedTime.toString();
+        return hour;
     }
 
     private void lockSheet(Empleado employee, String employeeFileName, int sheet){
@@ -393,6 +364,17 @@ public class EmployeeExcelTableController /*implements Initializable */{
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private String formatDuration(Duration duration){
+        StringBuilder sb = new StringBuilder();
+        sb.append(duration.toString().substring(2,3));
+        if(duration.toString().length() == 4){
+            sb.append(":00");
+        }
+        else
+            sb.append(":"+duration.toString().substring(4,duration.toString().length()-1));
+        return sb.toString();
     }
 
 }

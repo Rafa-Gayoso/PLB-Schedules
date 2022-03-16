@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="335.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeExcelTableController">
    <children>
@@ -18,30 +22,52 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="335.0" prefWidth="601.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TableView fx:id="excelTable" editable="true" prefHeight="640.0" prefWidth="581.0" stylesheets="@../styles/Style.css">
-                           <columns>
-                              <TableColumn fx:id="dayColumn" editable="false" prefWidth="72.0" sortable="false" text="Día" />
-                              <TableColumn fx:id="entryColumn" prefWidth="162.0" sortable="false" text="Hora Entrada" />
-                              <TableColumn fx:id="exitColumn" prefWidth="194.0" sortable="false" text="Hora Salida" />
-                              <TableColumn fx:id="journalColumn" editable="false" prefWidth="164.0" sortable="false" text="Total Jornada" />
-                           </columns>
-                           <contextMenu>
-                              <ContextMenu fx:id="contextMenu">
-                                <items>
-                                  <MenuItem fx:id="validateBtn" mnemonicParsing="false" text="Validar Hoja" />
-                                    <MenuItem fx:id="unlockBtn" mnemonicParsing="false" text="Desbloquear hoja" />
-                                    <MenuItem fx:id="warningBtn" mnemonicParsing="false" text="Advertir" />
-                                </items>
-                              </ContextMenu>
-                           </contextMenu>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <tooltip>
-                              <Tooltip fx:id="tooltip" text="Empty Tooltip" />
-                           </tooltip>
-                        </TableView>
-                        <JFXButton fx:id="saveBtn" text="Salvar" />
+                        <HBox alignment="CENTER" prefHeight="392.0" prefWidth="594.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="excelTable" editable="true" prefHeight="304.0" prefWidth="608.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="dayColumn" editable="false" prefWidth="72.0" sortable="false" text="Día" />
+                                    <TableColumn fx:id="entryColumn" prefWidth="162.0" sortable="false" text="Hora Entrada" />
+                                    <TableColumn fx:id="exitColumn" prefWidth="194.0" sortable="false" text="Hora Salida" />
+                                    <TableColumn fx:id="journalColumn" editable="false" prefWidth="164.0" sortable="false" text="Total Jornada" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu fx:id="contextMenu">
+                                      <items>
+                                        <MenuItem fx:id="validateBtn" mnemonicParsing="false" text="Validar Hoja" />
+                                          <MenuItem fx:id="unlockBtn" mnemonicParsing="false" text="Desbloquear hoja" />
+                                          <MenuItem fx:id="warningBtn" mnemonicParsing="false" text="Advertir" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <tooltip>
+                                    <Tooltip fx:id="tooltip" text="Empty Tooltip" />
+                                 </tooltip>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="saveBtn" buttonType="RAISED" contentDisplay="RIGHT" prefHeight="55.0" prefWidth="299.0" text="Guardar Horario Laboral">
+                                 <graphic>
+                                    <ImageView fitHeight="49.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/diskette.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>

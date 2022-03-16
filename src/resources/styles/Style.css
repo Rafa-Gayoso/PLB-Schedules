@@ -46,7 +46,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 15px;
+    -fx-font-size: 22px;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
     -fx-alignment: center;
@@ -59,7 +59,7 @@
 
 .table-cell {
     -fx-border-color: -fx-box-border -fx-box-border transparent transparent;
-    -fx-font: 12px "Segoe UI Symbol";
+    -fx-font: 18px "Segoe UI Symbol";
     -fx-text-fill: #2f2484;
 }
 
