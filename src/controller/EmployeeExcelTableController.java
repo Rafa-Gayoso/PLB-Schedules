@@ -78,9 +78,11 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
     @FXML
     private JFXButton saveBtn;
+    private int totalJournal;
 
     public void setData(Empleado employee, int sheet){
         Locale spanishLocale=new Locale("es", "ES");
+        this.totalJournal = employee.getHoras_laborables();
         String month = Month.of(sheet).getDisplayName(TextStyle.FULL, spanishLocale);
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
 
@@ -181,9 +183,13 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             freeDay = returnFreeDay(color);
                             models.add(new TableExcelModel(Integer.toString(day), freeDay,freeDay, freeDay));
                         }else if(cellEntryHour.getCellType() == CellType.STRING){
+                            String cellValue = cellEntryHour.getStringCellValue();
+                            models.add(new TableExcelModel(Integer.toString(day), cellValue,
+                                cellValue,cellValue));
+                            if(!cellValue.equalsIgnoreCase("Vacaciones")){
+                                monthCurrentValue += totalJournal;
+                            }
 
-                            models.add(new TableExcelModel(Integer.toString(day), cellEntryHour.getStringCellValue(),
-                                    cellExitHour.getStringCellValue(),cellJournalTime.getStringCellValue()));
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
                             LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
                             LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());

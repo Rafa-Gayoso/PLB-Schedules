@@ -189,7 +189,7 @@ public class EmployeeManagementBoardController implements Initializable {
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");
             dialogStage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-
+            dialogStage.setMaximized(true);
             Scene scene = new Scene(parent);
             dialogStage.setScene(scene);
             dialogStage.show();

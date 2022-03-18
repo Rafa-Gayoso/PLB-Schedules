@@ -37,10 +37,6 @@ U
 %src/resources/fxml/EmployeeBoard.fxml,0\9\09ee59b113b57a28075dc3a84f875ca55a40a7db
 a
 1src/controller/EmployeesManagementController.java,c\d\cda4158c5cf9c79caae42968ced8e380f4b18d73
-b
-2src/controller/EmployeeSchedulePaneController.java,4\5\4539518a905aed8efb3414ecbb7736292870dd89
-e
-5src/controller/EmployeeManagementBoardController.java,4\b\4b820145ba974b778f144ff1569af9583e3cae39
 V
 &src/controller/EmployeeController.java,4\3\43dfe91d4e3902525420598b45e7a445afa999cf
 [

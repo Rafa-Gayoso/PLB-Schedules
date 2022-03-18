@@ -1,9 +1,0 @@
-
-s
-java:S1450"XRemove the "vacations" field and declare it as a local variable in the relevant methods.(Ëöâ·ûÿÿÿÿ
-P	java:S125"<This block of commented-out lines of code should be removed.(ùù¢
-V	java:S125&"<This block of commented-out lines of code should be removed.(ô°×¥ÿÿÿÿÿ
-R
-java:S1128"7Remove this unused import 'javafx.scene.layout.Region'.(ñ³Áİıÿÿÿÿ
-H
-java:S1068"-Remove this unused "vacations" private field.(Ëöâ·ûÿÿÿÿ
