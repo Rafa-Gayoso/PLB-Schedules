@@ -1,26 +1,0 @@
-
-P
-java:S1118":Add a private constructor to hide the implicit public one.(µ÷çÎ
-;
-java:S1075"&Remove this hard-coded path-delimiter.(şí„
-;
-java:S1075"&Remove this hard-coded path-delimiter.(şí„
-;
-java:S1075"&Remove this hard-coded path-delimiter.(şí„
-E
-java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-E
-java:S20930"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-Q	java:S125L"<This block of commented-out lines of code should be removed.(¯Å¸Õ
-E
-java:S2093H"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-E
-java:S2093]"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-E
-java:S2093}"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-F
-java:S1068"0Remove this unused "SHARE_DOMAIN" private field.(öÍ²Å
-f
-java:S1192"PUse already-defined constant 'SHARE_USER' instead of duplicating its value here.(öÍ²Å
-c
-java:S1192"MDefine a constant instead of duplicating this literal "Trabajadores" 3 times.(åšºø

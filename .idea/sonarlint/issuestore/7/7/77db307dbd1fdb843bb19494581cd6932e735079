@@ -1,0 +1,65 @@
+
+l	java:S116&"XRename this field "WEEKEND_COLOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Ú‚Z
+t	java:S116'"ZRename this field "AUTONOMIC_COLOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÔıÿÿÿÿ
+p	java:S116("VRename this field "LOCAL_COLOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓÕîııÿÿÿÿ
+s	java:S116)"YRename this field "NATIONAL_COLOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠŒ´ùÿÿÿÿ
+m	java:S116*"XRename this field "REGULAR_COLOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê½İ‘
+6
+java:S1170&"!Make this final field static too.(¯Ú‚Z
+<
+java:S1170'"!Make this final field static too.(ªÔıÿÿÿÿ
+<
+java:S1170("!Make this final field static too.(ÓÕîııÿÿÿÿ
+<
+java:S1170)"!Make this final field static too.(ŠŒ´ùÿÿÿÿ
+7
+java:S1170*"!Make this final field static too.(Ê½İ‘
+m
+java:S1450+"WRemove the "inFormat" field and declare it as a local variable in the relevant methods.(¡Ü¯
+i
+java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Ùà™
+_
+java:S1854§"IRemove this useless assignment to local variable "monthCurrentHourValue".(›ÇÄO
+Z
+java:S1854°"CRemove this useless assignment to local variable "cellJournalTime".(¾ÿÜÿ
+P
+java:S1481§":Remove this unused "monthCurrentHourValue" local variable.(›ÇÄO
+K
+java:S1481°"4Remove this unused "cellJournalTime" local variable.(¾ÿÜÿ
+F
+java:S1874Â"0Remove this use of "getHours"; it is deprecated.(Şüì/
+H
+java:S1874Â"2Remove this use of "getMinutes"; it is deprecated.(Şüì/
+L
+java:S1874Ã"0Remove this use of "getHours"; it is deprecated.(¨Í¹Íùÿÿÿÿ
+N
+java:S1874Ã"2Remove this use of "getMinutes"; it is deprecated.(¨Í¹Íùÿÿÿÿ
+T	java:S106™"9Replace this use of System.out or System.err by a logger.(áÖßûÿÿÿÿ
+ˆ
+java:S1130¢"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(’éÌ
+L
+java:S2209´"5Change this instance-reference to a static reference.(Íì×ú
+\
+java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª8Ş²èù/
+H
+java:S1128 "+Remove this unused import 'java.util.Date'.(¸…¼ü8Ş²èù/
+M
+java:S1068)"2Remove this unused "NATIONAL_COLOR" private field.(ŠŒ´ùÿÿÿÿ
+B
+java:S1068+",Remove this unused "inFormat" private field.(¡Ü¯
+r
+java:S1488€"[Immediately return this expression instead of assigning it to the temporary variable "row".(şª­¡
+f
+java:S2095œ"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(äËíˆÿÿÿÿÿ
+i
+java:S2095å"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¬Ğáƒùÿÿÿÿ
+f
+java:S2095ç"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(äËíˆÿÿÿÿÿ
+f
+java:S2095ñ"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(äËíˆÿÿÿÿÿ
+f
+java:S2095Ñ"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(äËíˆÿÿÿÿÿ
+i
+java:S2095ï"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¬Ğáƒùÿÿÿÿ
+i
+java:S2095Ï"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¬Ğáƒùÿÿÿÿ

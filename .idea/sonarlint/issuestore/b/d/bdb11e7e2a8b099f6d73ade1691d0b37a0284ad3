@@ -1,13 +1,0 @@
-
-A
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
-S
-java:S1128"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ
-Y
-java:S1128">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ
-j
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ü´šê
-w
-java:S1192"aDefine a constant instead of duplicating this literal "Cargando datos de trabajadores (" 3 times.(½¨‡ë
-j
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ˆ´Ìîøÿÿÿÿ

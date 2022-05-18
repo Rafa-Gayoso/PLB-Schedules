@@ -275,6 +275,9 @@ public class AppController {
                 if(empleado.getHoras_laborables() == 4){
                     fixEmployeeMidDay(book);
                 }
+                else if(empleado.getHoras_laborables() == 6){
+                    fixEmployeeSixHoursDay(book);
+                }
                 CellValue c=formulaEval.evaluate(book.getSheetAt(0).getRow(34).getCell(25));
                 int vacations = (int) c.getNumberValue();
                 empleado.setVacations(vacations);
@@ -349,6 +352,21 @@ public class AppController {
             //need to change the formula to calculate the remaining vacations day
             originalFormula = currentSheet.getRow(46).getCell(cellNumber).getCellFormula();
             correctedFormula =  originalFormula.replace(originalFormula.charAt(originalFormula.length()-1),'4');
+            currentSheet.getRow(46).getCell(cellNumber).setCellFormula(correctedFormula);
+        }
+
+
+    }
+
+    private void fixEmployeeSixHoursDay(XSSFWorkbook book){
+        int cellNumber = 6;
+        String originalFormula;
+        String correctedFormula;
+        for (int i = 1; i < 13; i++) {
+            XSSFSheet currentSheet =  book.getSheetAt(i);
+            //need to change the formula to calculate the remaining vacations day
+            originalFormula = currentSheet.getRow(46).getCell(cellNumber).getCellFormula();
+            correctedFormula =  originalFormula.replace(originalFormula.charAt(originalFormula.length()-1),'6');
             currentSheet.getRow(46).getCell(cellNumber).setCellFormula(correctedFormula);
         }
 
