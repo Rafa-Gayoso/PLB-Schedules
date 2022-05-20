@@ -28,34 +28,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4d349dae95976209494da9b79de4959a363300dc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8607444f744311201aa9260f5acf15a390a583e8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/d/bdb11e7e2a8b099f6d73ade1691d0b37a0284ad3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d944eaad-f131-4a48-a201-ba3fea9a4dbc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Alba Velle.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Alba Velle.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Amaia Iturmendi.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Amaia Iturmendi.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Horacio Moreno.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Horacio Moreno.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Irene Velilla.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Irene Velilla.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Laura González.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Laura González.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Richard Roberts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Richard Roberts.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Rodolfo Rodríguez.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Medibiofarma/Rodolfo Rodríguez.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Boris A. Rodríguez.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Boris A. Rodríguez.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/David Ramos.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/David Ramos.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Alina Ariosa.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Ivette Amalfi.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Ivette Amalfi.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Jenniesley Rojo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Jenniesley Rojo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Julio C. Castro.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Julio C. Castro.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/María Begoña Hernández.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/María Begoña Hernández.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Miriam Soler.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Miriam Soler.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Nahomi Castro.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Nahomi Castro.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Saul Saldaña.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Mataró/Saul Saldaña.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Abdelaziz El Maatougui.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Abdelaziz El Maatougui.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Alely Gessa.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Alely Gessa.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Francisco Javier García.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Francisco Javier García.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Juan A. Camacho.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Juan A. Camacho.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Nerea Castrillo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Nerea Castrillo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Tamara Cordero.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Horarios/Palobiofarma, S.L Pamplona/Tamara Cordero.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EmployeeExcelTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/fxml/EmployeeExcelTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fxml/EmployeeExcelTable.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,31 +136,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="OverrideImplement.combined" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/resources/images" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Rafael Gayoso/AppData/Local/SceneBuilder/SceneBuilder.exe"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rafa Gayoso\Documents\Github\PLB-Schedules\src\resources\images" />
@@ -428,6 +391,9 @@
       <workItem from="1648479394553" duration="251000" />
       <workItem from="1649327279575" duration="7000" />
       <workItem from="1651505746107" duration="951000" />
+      <workItem from="1652908114791" duration="65000" />
+      <workItem from="1652969774031" duration="222000" />
+      <workItem from="1653059128694" duration="3025000" />
     </task>
     <servers />
   </component>

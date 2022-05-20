@@ -64,6 +64,10 @@ public class EmployeeExcelTableController /*implements Initializable */{
     @FXML
     private MenuItem validateBtn;
 
+
+    @FXML
+    private Label workedHoursLbl;
+
     @FXML
     private MenuItem unlockBtn;
 
@@ -210,7 +214,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
                 excelTable.setEditable(false);
                 contextMenu.getItems().remove(contextMenu.getItems().size() - 1);
             }
-            tooltip.setText("Horas "+monthCurrentValue+"/"+monthValue);
+            workedHoursLbl.setText(monthCurrentValue+"/"+monthValue);
             b.close();
 
         }catch (Exception e){
@@ -314,6 +318,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             model.setJournalTime(value);
             model.setExitHour(value);
             model.setEntryHour(value);
+
         }
 
     }

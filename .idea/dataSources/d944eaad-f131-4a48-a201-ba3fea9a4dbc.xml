@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="palobiofarma.db">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.31">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.39">
     <root id="1"/>
     <collation id="2" parent="1" name="BINARY"/>
     <collation id="3" parent="1" name="NOCASE"/>
@@ -17,10 +17,10 @@
       <System>1</System>
     </table>
     <column id="10" parent="6" name="cod_empleado">
+      <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="11" parent="6" name="nombre_empleado">
       <DataType>TEXT|0s</DataType>
@@ -61,7 +61,6 @@
     </foreign-key>
     <index id="19" parent="6" name="sqlite_autoindex_empleado_1">
       <ColNames>nif</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
@@ -78,10 +77,10 @@
       <UnderlyingIndexName>sqlite_autoindex_empleado_1</UnderlyingIndexName>
     </key>
     <column id="23" parent="7" name="cod_empresa">
+      <AutoIncrement>1</AutoIncrement>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="24" parent="7" name="nombre_empresa">
       <DataType>TEXT|0s</DataType>
@@ -105,13 +104,11 @@
     </column>
     <index id="28" parent="7" name="sqlite_autoindex_empresa_1">
       <ColNames>nombre_empresa</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <index id="29" parent="7" name="sqlite_autoindex_empresa_2">
       <ColNames>c_c_c</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
