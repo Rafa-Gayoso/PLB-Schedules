@@ -78,9 +78,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private MenuItem saveSchedule;
 
     @FXML
-    private Tooltip tooltip;
-
-    @FXML
     private JFXButton saveBtn;
     private int totalJournal;
 
@@ -144,10 +141,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
         populateTable(employee.getDireccionCronograma(), employeeFileName, sheet);
 
-        if(LoginController.getUsu().getRol() == Roles.EMPLEADO.getCode()){
-           tooltip.setText("Tabla de Horario");
-        }
-
     }
 
     private void populateTable(String address, String employeeFileName, int sheetNumber) {
@@ -168,7 +161,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
             int monthValue = (int) monthHourValue.getNumberValue();
 
-            CellValue monthCurrentHourValue=formulaEval.evaluate(currentWorkingMonthCell);
+
             int monthCurrentValue =0;
 
             for(int i =15; i < 46; i++){
@@ -177,7 +170,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
                     XSSFCell cell = row.getCell(1);
                     XSSFCell cellEntryHour = row.getCell(2);
                     XSSFCell cellExitHour = row.getCell(4);
-                    XSSFCell cellJournalTime = row.getCell(6);
                     if(cell != null){
                         int day = (int)cell.getNumericCellValue();
                         String color = cell.getCellStyle().getFillForegroundColorColor().getARGBHex();
@@ -190,10 +182,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             String cellValue = cellEntryHour.getStringCellValue();
                             models.add(new TableExcelModel(Integer.toString(day), cellValue,
                                 cellValue,cellValue));
-                            if(!cellValue.equalsIgnoreCase("Vacaciones")){
-                                monthCurrentValue += totalJournal;
-                            }
-
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
                             LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
                             LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());

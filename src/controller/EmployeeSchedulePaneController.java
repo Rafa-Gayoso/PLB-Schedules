@@ -37,7 +37,7 @@ public class EmployeeSchedulePaneController{
                 test.setData(employee, i);
                 //anchorPane.getChildren().add(label);
                 tab.setContent(anchorPane);
-                if (i > month) tab.setDisable(true);
+                if (i > month && LoginController.getUsu().getRol() != 1) tab.setDisable(true);
                 i++;
             }
 
