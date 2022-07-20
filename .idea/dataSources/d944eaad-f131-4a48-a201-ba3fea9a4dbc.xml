@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="palobiofarma.db">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.39">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.40">
     <root id="1"/>
     <collation id="2" parent="1" name="BINARY"/>
     <collation id="3" parent="1" name="NOCASE"/>
@@ -67,6 +67,7 @@
     <key id="20" parent="6">
       <ColNames>cod_empleado</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>cod_empleado</UnderlyingIndexColNames>
     </key>
     <key id="21" parent="6">
       <ColNames>nif</ColNames>
@@ -115,6 +116,7 @@
     <key id="30" parent="7">
       <ColNames>cod_empresa</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>cod_empresa</UnderlyingIndexColNames>
     </key>
     <key id="31" parent="7">
       <ColNames>nombre_empresa</ColNames>

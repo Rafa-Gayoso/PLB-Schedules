@@ -51,35 +51,19 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private Label resultLabel;
-
     @FXML
     private StackPane stackPane;
-
     @FXML
     private JFXButton fileMenu;
-
-
     @FXML
     private ProgressBar progressBar;
-
     @FXML
     private AnchorPane root;
-
     @FXML
     private Pane dropInstructions;
-
     private ArrayList<File> listFiles;
-
     private ImageView[] slides;
-
-
     private File file;
-
-    @FXML
-    private JFXButton scheduleControllerBtn;
-
-    private InputStream calendarSheet, scheduleSheet;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -96,6 +80,77 @@ public class MainMenuController implements Initializable {
 
 
     }
+
+    @FXML
+    void generateSchedule(){
+        Stage stage = new Stage();
+        FileChooser fc = new FileChooser();
+
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Documento Excel", "*xlsx"));
+        file = fc.showOpenDialog(stage);
+
+        if (file != null) {
+            mergeExcel();
+        }
+    }
+
+
+    @FXML
+    void showEmployeesData() {
+        try{
+            FXMLLoader loader = new FXMLLoader();
+
+            loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployeeManagementBoard.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Gestionar Empleados");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+
+            dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
+
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            dialogStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void showHelp() throws IOException {
+        File file = new File(HELP);
+
+        //first check if Desktop is supported by Platform or not
+        if(!Desktop.isDesktopSupported()){
+            System.out.println("Desktop is not supported");
+            return;
+        }
+
+        Desktop desktop = Desktop.getDesktop();
+
+        //let's try to open PDF file
+        if(file.exists()) {
+            desktop.open(file);
+        }
+    }
+
+    @FXML
+    void executeKeyboardShortcuts(KeyEvent event) throws IOException{
+        KeyCode code = event.getCode();
+        if(code == KeyCode.A){
+            showHelp();
+        }
+        else if(code == KeyCode.G){
+            generateSchedule();
+        }
+        else if(code == KeyCode.E){
+            showEmployeesData();
+        }
+    }
+
 
     private void makeTextAreaDragTarget(Node node) {
         node.setOnDragOver(event -> event.acceptTransferModes(TransferMode.COPY));
@@ -120,16 +175,8 @@ public class MainMenuController implements Initializable {
         Task<String> loadFileTask = new Task() {
             @Override
             protected String call() {
-                System.out.println(fileToLoad.getName());
                 file = fileToLoad;
-                listFiles.add(fileToLoad);
-                if(fileToLoad.getName().contains("Mat")){
-                    mergeExcel(1, System.getProperty("user.home") + "/Desktop");
-                }else{
-                    mergeExcel(2, System.getProperty("user.home") + "/Desktop");
-                    mergeExcel(3, System.getProperty("user.home") + "/Desktop");
-                }
-
+                mergeExcel();
                 return fileToLoad.getAbsolutePath();
             }
         };
@@ -200,33 +247,18 @@ public class MainMenuController implements Initializable {
         }
     }
 
-    @FXML
-    void generateSchedule(){
-        Stage stage = new Stage();
-        FileChooser fc = new FileChooser();
+    private void mergeExcel() {
+        listFiles.add(file);
+        if(file.getName().contains("Mat")){
+            mergeExcel(1);
 
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Documento Excel", "*xlsx"));
-        file = fc.showOpenDialog(stage);
-
-        if (file == null) {
-
+        }else{
+            mergeExcel(2);
+            mergeExcel(3);
         }
-        else{
-            listFiles.add(file);
-            if(file.getName().contains("Mat")){
-                mergeExcel(1, System.getProperty("user.home") + "/Desktop");
-
-            }else{
-                mergeExcel(2, System.getProperty("user.home") + "/Desktop");
-                mergeExcel(3, System.getProperty("user.home") + "/Desktop");
-            }
-
-        }
-
-
     }
 
-    public void mergeExcel(int cod_empresa, String ruta) {
+    private void mergeExcel(int cod_empresa) {
 
         try {
 
@@ -242,17 +274,11 @@ public class MainMenuController implements Initializable {
 
             listFiles.add(file);
 
-            /*File foto1 = new File(PALOBIOFARMA);
-            listFiles.add(foto1);
-
-            File foto2 = new File(MEDIBIOFARMA);
-            listFiles.add(foto2);*/
-
             Task<Void> longTask = new Task<Void>() {
                 @Override
                 protected Void call() {
                     AppController controller = new AppController();
-                    controller.mergeExcelFiles(lista, empresa, listFiles, ruta);
+                    controller.mergeExcelFiles(lista, empresa, listFiles);
                     return null;
                 }
             };
@@ -278,61 +304,6 @@ public class MainMenuController implements Initializable {
 
     }
 
-    @FXML
-    void showEmployeesData() {
-        try{
-            FXMLLoader loader = new FXMLLoader();
-
-            loader.setLocation(MainMenuController.class.getResource("/resources/fxml/EmployeeManagementBoard.fxml"));
-            AnchorPane page = loader.load();
-
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Gestionar Empleados");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-
-            dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/palobiofarma.png")));
-
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            dialogStage.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @FXML
-    void showHelp() throws IOException {
-        File file = new File(HELP);
-
-        //first check if Desktop is supported by Platform or not
-        if(!Desktop.isDesktopSupported()){
-            System.out.println("Desktop is not supported");
-            return;
-        }
-
-        Desktop desktop = Desktop.getDesktop();
-
-        //let's try to open PDF file
-        if(file.exists()) {
-            desktop.open(file);
-        }
-    }
-
-    @FXML
-    void executeKeyboardShortcuts(KeyEvent event) throws IOException{
-        KeyCode code = event.getCode();
-        if(code == KeyCode.A){
-            showHelp();
-        }
-        else if(code == KeyCode.G){
-            generateSchedule();
-        }
-        else if(code == KeyCode.E){
-            showEmployeesData();
-        }
-    }
 
 
 }

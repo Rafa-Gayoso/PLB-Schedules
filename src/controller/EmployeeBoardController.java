@@ -35,14 +35,8 @@ public class EmployeeBoardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Empleado employee = LoginController.getEmpleado();
         try {
-            SMBUtils.downloadSmbPhoto(employee.getNombre()+".png",PIC_DIR);
-            File file = new File(PIC_DIR+File.separator+employee.getNombre()+".png");
-            if(!file.exists()){
-                file = new File(PIC_DIR+File.separator+"profile.png");
-            }
-            Image image = null;
 
-            image = new Image(new FileInputStream(file));
+            Image image = downloadEmployeePhoto(employee, PIC_DIR);
             InputStream inputStream;
             if (employee.getNombre_empresa().contains("Palobiofarma")) {
                 inputStream =  getClass().getResourceAsStream("/resources/images/palo.png");
@@ -92,6 +86,15 @@ public class EmployeeBoardController implements Initializable {
 
         });
 
+    }
+
+    static Image downloadEmployeePhoto(Empleado employee, String pic_dir) throws FileNotFoundException {
+        SMBUtils.downloadSmbPhoto(employee.getNombre()+".png", pic_dir);
+        File file = new File(pic_dir +File.separator+employee.getNombre()+".png");
+        if(!file.exists()){
+            file = new File(pic_dir +File.separator+"profile.png");
+        }
+       return new Image(new FileInputStream(file));
     }
 
 }
