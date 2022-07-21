@@ -20,20 +20,13 @@ import java.io.InputStream;
 public class EmployeeController {
 
     private final String PIC_DIR = "config_files" + File.separator + "Employees";
-
     @FXML
     private Label nameLabel2;
-
     @FXML
     private AnchorPane employeePane;
-
     @FXML
     private ImageView img;
-
-
     private Empleado empleado;
-
-
     public void setData(Empleado empleado) {
         try{
             this.empleado = empleado;
@@ -59,18 +52,8 @@ public class EmployeeController {
         }
 
     }
-
     public Empleado getEmpleado() {
         return empleado;
     }
 
-    @FXML
-    void hoverEntered(MouseEvent event) {
-        //new ZoomIn(employeePane).setSpeed(0.8).play();
-    }
-
-    @FXML
-    void hoverExited(MouseEvent event) {
-       // new ZoomOut((Node) event.getSource()).setSpeed(0.8).play();
-    }
 }
