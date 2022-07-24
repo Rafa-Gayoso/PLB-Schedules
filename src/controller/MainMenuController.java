@@ -77,8 +77,6 @@ public class MainMenuController implements Initializable {
         resultLabel.setText("");
 
         progressBar.setProgress(0);
-
-
     }
 
     @FXML
@@ -93,7 +91,6 @@ public class MainMenuController implements Initializable {
             mergeExcel();
         }
     }
-
 
     @FXML
     void showEmployeesData() {

@@ -65,7 +65,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <JFXButton fx:id="exportBtn" buttonType="RAISED" onAction="#exportEmployees" ripplerFill="#b27070" style="-fx-background-color: green;" text="Exportar empleados" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="monthValidatedBtn" buttonType="RAISED" onAction="#validatedMonths" ripplerFill="#b27070" style="-fx-background-color: green;" text="Meses Validados" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -77,7 +77,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="68.0" prefWidth="0.0" stylesheets="@../styles/Style.css" HBox.hgrow="ALWAYS">
                      <children>
-                        <JFXButton fx:id="vacationsBtn" buttonType="RAISED" onAction="#vacationsReport" prefHeight="31.0" prefWidth="175.0" ripplerFill="#b27070" style="-fx-background-color: green;" text="Reporte de Vacaciones" textFill="WHITE" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="vacationsBtn" buttonType="RAISED" onAction="#vacationsReport" prefHeight="25.0" prefWidth="140.0" ripplerFill="#b27070" style="-fx-background-color: green;" text="Reporte de Vacaciones" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

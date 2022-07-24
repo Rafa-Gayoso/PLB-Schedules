@@ -1,13 +1,9 @@
 package controller;
 
-import animatefx.animation.*;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import model.Empleado;
@@ -15,7 +11,6 @@ import utils.SMBUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 
 public class EmployeeController {
 
@@ -41,12 +36,6 @@ public class EmployeeController {
             img.setClip(clip);
 
             nameLabel2.setText(empleado.getNombre());
-
-            /*img.hoverProperty().addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
-                if (newValue) {
-                    new Hinge(employeePane).setSpeed(0.5).play();
-                }
-            });*/
         }catch(Exception e){
 
         }

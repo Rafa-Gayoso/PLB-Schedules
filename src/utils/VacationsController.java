@@ -40,9 +40,7 @@ public class VacationsController {
                             int day = (int)cell.getNumericCellValue();
                             if(cellEntryHour.getCellType() == CellType.STRING &&
                                 cellEntryHour.getStringCellValue().equalsIgnoreCase("Vacaciones")){
-
                                     days.add(String.valueOf(day));
-
                             }
                         }
                     }
@@ -50,8 +48,8 @@ public class VacationsController {
                 Locale spanishLocale=new Locale("es", "ES");
                 String month = Month.of(i).getDisplayName(TextStyle.FULL, spanishLocale);
                 vacations.put(month,days);
-                inputStream1.close();
             }
+            inputStream1.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -62,7 +60,7 @@ public class VacationsController {
         ArrayList<Map<String, ArrayList<String>>> vacations = new ArrayList<>();
 
         for(Empleado employee : employees){
-            Map<String, ArrayList<String>> vacationsMap = VacationsController.getVacationsDays(employee);
+            Map<String, ArrayList<String>> vacationsMap = getVacationsDays(employee);
             vacations.add(vacationsMap);
         }
 

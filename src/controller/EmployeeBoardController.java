@@ -65,7 +65,6 @@ public class EmployeeBoardController implements Initializable {
 
         scheduleBtn.setOnAction(action -> {
 
-
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/EmployeeSchedulePane.fxml"));
                 Parent parent = fxmlLoader.load();

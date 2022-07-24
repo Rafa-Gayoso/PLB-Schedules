@@ -27,9 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Empleado;
 import services.GetVacationsService;
-import utils.CreateSplashScreen;
-import utils.FormatEmployeeName;
-import utils.SMBUtils;
+import utils.*;
 
 import java.awt.*;
 import java.io.File;
@@ -38,7 +36,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
-import utils.VacationsController;
 
 
 public class EmployeeManagementBoardController implements Initializable {
@@ -148,6 +145,7 @@ public class EmployeeManagementBoardController implements Initializable {
         MenuItem delete = new MenuItem("Eliminar empleado");
         MenuItem schedule = new MenuItem("Ver Horario");
         MenuItem vacations = new MenuItem("Ver Vacaciones");
+        MenuItem validatedMonths = new MenuItem("Ver Meses Validados");
 
         update.setOnAction(e-> employeeDataManagement(employee, grid));
         delete.setOnAction(e-> deleteEmployee(employee));
@@ -156,24 +154,18 @@ public class EmployeeManagementBoardController implements Initializable {
             ArrayList<Empleado> employeesList = new ArrayList<>();
             employeesList.add(employee);
             VacationsController.getVacationsDaysEmployees(employeesList);
-            /*GetVacationsService task = new GetVacationsService(employeesList);
-            task.start();
-
-            Stage stage = CreateSplashScreen.createPDFSplashScreen(task);
-
-
-            task.setOnRunning(event -> stage.show());
-
-
-            task.setOnSucceeded(event -> stage.close());
-
-            task.setOnFailed(event -> stage.close());*/
+        });
+        validatedMonths.setOnAction(e-> {
+            ArrayList<Empleado> employeesList = new ArrayList<>();
+            employeesList.add(employee);
+            MonthValidator.getMonthValidatedByEmployees(employeesList);
         });
 
         items.add(schedule);
         items.add(update);
         items.add(delete);
         items.add(vacations);
+        items.add(validatedMonths);
 
         return items;
     }
@@ -290,5 +282,9 @@ public class EmployeeManagementBoardController implements Initializable {
         VacationsController.getVacationsDaysEmployees(LoginController.getEmployees());
     }
 
+    @FXML
+    void validatedMonths(ActionEvent event) {
+        MonthValidator.getMonthValidatedByEmployees(LoginController.getEmployees());
+    }
 
 }
