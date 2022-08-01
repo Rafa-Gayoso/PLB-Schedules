@@ -1,11 +1,9 @@
 package utils;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import javafx.print.PageOrientation;
 import model.Empleado;
 
 import java.awt.*;
@@ -16,18 +14,15 @@ import java.time.format.TextStyle;
 import java.util.*;
 
 public class VacationsReport {
-
-  private static final String PALOBIOFARMA = "config_files" + File.separator + "palobiofarma.png";
-  private static final String MEDIBIOFARMA = "config_files" + File.separator + "medibiofarma.png";
   private static final String PDF_Directory =
-      System.getProperty("user.home") + "/Desktop" + File.separator;
+          "config_files" + File.separator;
   private static ArrayList<String> months;
-  private static int usedVacationsDays = 0;
 
   public static void exportEmployees(ArrayList<Map<String, ArrayList<String>>> vacations,
       ArrayList<Empleado> employees) {
     Document document = new Document(PageSize.A4.rotate());
     try {
+
       String fileName = "Reporte de Vacaciones.pdf";
       if (employees.size() == 1) {
         fileName = "Reporte de Vacaciones de "
@@ -60,7 +55,7 @@ public class VacationsReport {
       }
       setTableStyle(table);
       addTableHeader(table, 1, 13, employees.size());
-      addRows(table, vacations, employees, 1, 13);
+      int usedVacationsDays = addRows(table, vacations, employees, 1, 13);
 
       document.add(table);
 
@@ -113,8 +108,9 @@ public class VacationsReport {
 
   }
 
-  private static void addRows(PdfPTable table, ArrayList<Map<String, ArrayList<String>>> vacations,
-      ArrayList<Empleado> employees, int firstMonth, int lastMonth) {
+  private static int addRows(PdfPTable table, ArrayList<Map<String, ArrayList<String>>> vacations,
+                             ArrayList<Empleado> employees, int firstMonth, int lastMonth) {
+    int usedVacationsDays = 0;
     for (Empleado em : employees) {
       table.addCell(em.getNombre());
       int total = 0;
@@ -131,6 +127,8 @@ public class VacationsReport {
         table.addCell(String.valueOf(total));
       }
     }
+
+    return usedVacationsDays;
   }
 
   private static void setTableStyle(PdfPTable table) {
