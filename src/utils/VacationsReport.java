@@ -18,72 +18,7 @@ public class VacationsReport {
           "config_files" + File.separator;
   private static ArrayList<String> months;
 
-  public static void exportEmployees(ArrayList<Map<String, ArrayList<String>>> vacations,
-      ArrayList<Empleado> employees) {
-    Document document = new Document(PageSize.A4.rotate());
-    try {
-
-      String fileName = "Reporte de Vacaciones.pdf";
-      if (employees.size() == 1) {
-        fileName = "Reporte de Vacaciones de "
-            + employees.get(0).getNombre() + ".pdf";
-      }
-      FileOutputStream fileOutputStream = new FileOutputStream(PDF_Directory + fileName);
-
-      PdfWriter.getInstance(document, fileOutputStream);
-
-      document.open();
-
-      Paragraph header = new Paragraph("Reporte de Vacaciones");
-      header.setAlignment(Element.ALIGN_CENTER);
-      document.add(header);
-
-      Paragraph header2 = new Paragraph("Días reportados de Vacaciones");
-
-      document.add(header2);
-
-      Locale spanishLocale = new Locale("es", "ES");
-      months = new ArrayList<>();
-
-      for (Month month : Month.values()) {
-        months.add(month.getDisplayName(TextStyle.FULL, spanishLocale));
-      }
-      months.add(0, "Empleado");
-      PdfPTable table = new PdfPTable(13);
-      if (employees.size() > 1) {
-        table = new PdfPTable(14);
-      }
-      setTableStyle(table);
-      addTableHeader(table, 1, 13, employees.size());
-      int usedVacationsDays = addRows(table, vacations, employees, 1, 13);
-
-      document.add(table);
-
-      if (employees.size() == 1) {
-        document.add(new Paragraph("Días de vacaciones totales "
-            + employees.get(0).getVacations()));
-        document.add(new Paragraph("Días de vacaciones utilizados "
-            + usedVacationsDays));
-        document.add(new Paragraph("Días de vacaciones restantes "
-            + (employees.get(0).getVacations() - usedVacationsDays)));
-      }
-      document.close();
-
-      File file = new File(PDF_Directory + fileName);
-
-      //first check if Desktop is supported by Platform or not
-      Desktop desktop = Desktop.getDesktop();
-
-      if (file.exists()) {
-        desktop.open(file);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-  }
-
-  public static void exportEmployeesType(ArrayList<Map<String, ArrayList<VacationType>>> vacations,
+  public static void exportEmployees(ArrayList<Map<String, ArrayList<VacationType>>> vacations,
                                      ArrayList<Empleado> employees) {
     Document document = new Document(PageSize.A4.rotate());
     try {
@@ -119,8 +54,8 @@ public class VacationsReport {
         table = new PdfPTable(14);
       }
       setTableStyle(table);
-      addTableHeader(table, 1, 13, employees.size());
-      double usedVacationsDays = addRowsType(table, vacations, employees, 1, 13);
+      addTableHeader(table, employees.size());
+      double usedVacationsDays = addRows(table, vacations, employees);
 
       document.add(table);
 
@@ -148,15 +83,15 @@ public class VacationsReport {
 
   }
 
-  private static void addTableHeader(PdfPTable table, int firstMonth, int lastMonth,
-      int employees) {
+  private static void addTableHeader(PdfPTable table,
+                                     int employees) {
 
     PdfPCell header = new PdfPCell();
     header.setBackgroundColor(BaseColor.LIGHT_GRAY);
     header.setBorderWidth(2);
     header.setPhrase(new Phrase(months.get(0)));
     table.addCell(header);
-    for (int i = firstMonth; i < lastMonth; i++) {
+    for (int i = 1; i < 13; i++) {
       header = new PdfPCell();
       header.setBackgroundColor(BaseColor.LIGHT_GRAY);
       header.setBorderWidth(2);
@@ -173,40 +108,23 @@ public class VacationsReport {
 
   }
 
-  private static int addRows(PdfPTable table, ArrayList<Map<String, ArrayList<String>>> vacations,
-                             ArrayList<Empleado> employees, int firstMonth, int lastMonth) {
-    int usedVacationsDays = 0;
-    for (Empleado em : employees) {
-      table.addCell(em.getNombre());
-      int total = 0;
-      for (int i = firstMonth; i < lastMonth; i++) {
-        ArrayList<String> days = vacations.get(employees.indexOf(em)).get(months.get(i));
-        table.addCell(String.join(",", days));
-        total += days.size();
-      }
-
-      //
-      if (employees.size() == 1) {
-        usedVacationsDays += total;
-      }else{
-        table.addCell(String.valueOf(total));
-      }
-    }
-
-    return usedVacationsDays;
-  }
-
-  private static double addRowsType(PdfPTable table, ArrayList<Map<String, ArrayList<VacationType>>> vacations,
-                             ArrayList<Empleado> employees, int firstMonth, int lastMonth) {
+  private static double addRows(PdfPTable table, ArrayList<Map<String, ArrayList<VacationType>>> vacations,
+                                    ArrayList<Empleado> employees) {
     double usedVacationsDays = 0;
     for (Empleado em : employees) {
       table.addCell(em.getNombre());
       double total = 0;
-      for (int i = firstMonth; i < lastMonth; i++) {
+      for (int i = 1; i < 13; i++) {
         ArrayList<VacationType> days = vacations.get(employees.indexOf(em)).get(months.get(i));
         StringBuilder daysString = new StringBuilder();
         for (VacationType day : days) {
-          daysString.append(day.getVacationDay()).append(" ");
+          daysString.append(day.getVacationDay());
+
+          if(day.getDayWorked() == 0.5)
+            daysString.append("(1/2)");
+
+          daysString.append(" ");
+
           total += day.getDayWorked();
         }
 
@@ -216,8 +134,6 @@ public class VacationsReport {
         table.addCell(daysString
                 .toString().replace(" ", ","));
       }
-
-      //
       if (employees.size() == 1) {
         usedVacationsDays += total;
       }else{
