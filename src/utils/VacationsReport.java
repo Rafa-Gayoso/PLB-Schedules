@@ -83,6 +83,71 @@ public class VacationsReport {
 
   }
 
+  public static void exportEmployeesType(ArrayList<Map<String, ArrayList<VacationType>>> vacations,
+                                     ArrayList<Empleado> employees) {
+    Document document = new Document(PageSize.A4.rotate());
+    try {
+
+      String fileName = "Reporte de Vacaciones.pdf";
+      if (employees.size() == 1) {
+        fileName = "Reporte de Vacaciones de "
+                + employees.get(0).getNombre() + ".pdf";
+      }
+      FileOutputStream fileOutputStream = new FileOutputStream(PDF_Directory + fileName);
+
+      PdfWriter.getInstance(document, fileOutputStream);
+
+      document.open();
+
+      Paragraph header = new Paragraph("Reporte de Vacaciones");
+      header.setAlignment(Element.ALIGN_CENTER);
+      document.add(header);
+
+      Paragraph header2 = new Paragraph("Días reportados de Vacaciones");
+
+      document.add(header2);
+
+      Locale spanishLocale = new Locale("es", "ES");
+      months = new ArrayList<>();
+
+      for (Month month : Month.values()) {
+        months.add(month.getDisplayName(TextStyle.FULL, spanishLocale));
+      }
+      months.add(0, "Empleado");
+      PdfPTable table = new PdfPTable(13);
+      if (employees.size() > 1) {
+        table = new PdfPTable(14);
+      }
+      setTableStyle(table);
+      addTableHeader(table, 1, 13, employees.size());
+      double usedVacationsDays = addRowsType(table, vacations, employees, 1, 13);
+
+      document.add(table);
+
+      if (employees.size() == 1) {
+        document.add(new Paragraph("Días de vacaciones totales "
+                + employees.get(0).getVacations()));
+        document.add(new Paragraph("Días de vacaciones utilizados "
+                + usedVacationsDays));
+        document.add(new Paragraph("Días de vacaciones restantes "
+                + (employees.get(0).getVacations() - usedVacationsDays)));
+      }
+      document.close();
+
+      File file = new File(PDF_Directory + fileName);
+
+      //first check if Desktop is supported by Platform or not
+      Desktop desktop = Desktop.getDesktop();
+
+      if (file.exists()) {
+        desktop.open(file);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+  }
+
   private static void addTableHeader(PdfPTable table, int firstMonth, int lastMonth,
       int employees) {
 
@@ -118,6 +183,38 @@ public class VacationsReport {
         ArrayList<String> days = vacations.get(employees.indexOf(em)).get(months.get(i));
         table.addCell(String.join(",", days));
         total += days.size();
+      }
+
+      //
+      if (employees.size() == 1) {
+        usedVacationsDays += total;
+      }else{
+        table.addCell(String.valueOf(total));
+      }
+    }
+
+    return usedVacationsDays;
+  }
+
+  private static double addRowsType(PdfPTable table, ArrayList<Map<String, ArrayList<VacationType>>> vacations,
+                             ArrayList<Empleado> employees, int firstMonth, int lastMonth) {
+    double usedVacationsDays = 0;
+    for (Empleado em : employees) {
+      table.addCell(em.getNombre());
+      double total = 0;
+      for (int i = firstMonth; i < lastMonth; i++) {
+        ArrayList<VacationType> days = vacations.get(employees.indexOf(em)).get(months.get(i));
+        StringBuilder daysString = new StringBuilder();
+        for (VacationType day : days) {
+          daysString.append(day.getVacationDay()).append(" ");
+          total += day.getDayWorked();
+        }
+
+        if(daysString.length() > 1)
+          daysString.deleteCharAt(daysString.length() - 1);
+
+        table.addCell(daysString
+                .toString().replace(" ", ","));
       }
 
       //

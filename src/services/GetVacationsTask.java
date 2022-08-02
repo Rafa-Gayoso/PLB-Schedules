@@ -2,12 +2,13 @@ package services;
 
 import javafx.concurrent.Task;
 import model.Empleado;
+import utils.VacationType;
 import utils.VacationsController;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class GetVacationsTask extends Task<ArrayList<Map<String, ArrayList<String>>>> {
+public class GetVacationsTask extends Task<ArrayList<Map<String, ArrayList<VacationType>>>> {
 
 
     private ArrayList<Empleado> employees;
@@ -18,7 +19,7 @@ public class GetVacationsTask extends Task<ArrayList<Map<String, ArrayList<Strin
     }
 
     @Override
-    protected ArrayList<Map<String, ArrayList<String>>>call(){
+    protected ArrayList<Map<String, ArrayList<VacationType>>> call(){
         return VacationsController.getVacationsDaysEmployees(employees);
     }
 }

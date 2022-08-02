@@ -28,9 +28,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class EmployeeExcelTableController /*implements Initializable */{
 
@@ -40,6 +38,9 @@ public class EmployeeExcelTableController /*implements Initializable */{
     private final String LOCAL_COLOR = "FF00B0F0";
     private final String NATIONAL_COLOR = "FFFF0000";
     private final String REGULAR_COLOR = "FFFFFFFF";
+
+    private ArrayList<String> specialText =  new ArrayList<>(
+            Arrays.asList("BAJA", "VACACIONES", "MEDIO DIA","VACACIONES ANTERIORES"));
     private DateFormat inFormat;
 
 
@@ -139,15 +140,15 @@ public class EmployeeExcelTableController /*implements Initializable */{
 
         saveBtn.setOnAction(actionEvent -> saveData(employee, employeeFileName, sheet, month));
 
-        populateTable(employee.getDireccionCronograma(), employeeFileName, sheet);
+        populateTable(employee, employeeFileName, sheet);
 
     }
 
-    private void populateTable(String address, String employeeFileName, int sheetNumber) {
+    private void populateTable(Empleado employee, String employeeFileName, int sheetNumber) {
         ArrayList<TableExcelModel> models = new ArrayList<>();
         try {
 
-            File file = new File(address + File.separator + employeeFileName);
+            File file = new File(employee.getDireccionCronograma() + File.separator + employeeFileName);
             FileInputStream inputStream1 = new FileInputStream(file);
             ZipSecureFile.setMinInflateRatio(0);
             XSSFWorkbook b = new XSSFWorkbook(inputStream1);
@@ -182,6 +183,8 @@ public class EmployeeExcelTableController /*implements Initializable */{
                             String cellValue = cellEntryHour.getStringCellValue();
                             models.add(new TableExcelModel(Integer.toString(day), cellValue,
                                 cellValue,cellValue));
+                            if(cellValue.equalsIgnoreCase("Medio Dia"))
+                                monthCurrentValue += employee.getHoras_laborables() / 2;
                         }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
                             LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
                             LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());
@@ -249,9 +252,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
                     cellExitHour.setCellStyle(cellStyle);
                     cellEntryHour.setCellValue(DateUtil.convertTime(model.getEntryHour()));
                     cellExitHour.setCellValue(DateUtil.convertTime(model.getExitHour()));
-                }else if(model.getEntryHour().equalsIgnoreCase("Vacaciones") ||
-                        model.getEntryHour().equalsIgnoreCase("Baja") ||
-                        model.getEntryHour().equalsIgnoreCase("Vacaciones Anteriores")){
+                }else if(specialText.contains(model.getEntryHour().toUpperCase())){
                     cellEntryHour.setCellValue(model.getEntryHour());
                     cellExitHour.setCellValue(model.getEntryHour());
                     cellJournalTime.setCellType(CellType.STRING);
@@ -264,7 +265,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             b.close();
             out.close();
             inputStream1.close();
-            SendMail.sendCompilationEmail(employee.getNombre(), month);
+            //SendMail.sendCompilationEmail(employee.getNombre(), month);
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
         }catch (Exception e){
             e.printStackTrace();
@@ -273,7 +274,6 @@ public class EmployeeExcelTableController /*implements Initializable */{
             System.out.println(model);
         }
     }
-
 
     private boolean validateHour(String hour){
         return hour.contains(":");
