@@ -265,7 +265,7 @@ public class EmployeeExcelTableController /*implements Initializable */{
             b.close();
             out.close();
             inputStream1.close();
-            //SendMail.sendCompilationEmail(employee.getNombre(), month);
+            SendMail.sendCompilationEmail(employee.getNombre(), month);
             SMBUtils.uploadFile(employee.getNombre_empresa(),employeeFileName,employee.getDireccionCronograma());
         }catch (Exception e){
             e.printStackTrace();
