@@ -9,10 +9,10 @@ public class DatabaseConnection {
     public DatabaseConnection()  {
 
         try{
-            String url = "jdbc:mysql://palo-db.crra9zetpa9g.eu-west-3.rds.amazonaws.com:3306/palo-db";
+            String url = "jdbc:mysql://containers-us-west-182.railway.app:6865/railway";
 
-            String userName = "RafaGayoso";
-            String password = "rafa1997.";
+            String userName = "root";
+            String password = "xkkgTvHf1TGgmzheZq1S";
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, userName,
