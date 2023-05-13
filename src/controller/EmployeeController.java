@@ -25,8 +25,12 @@ public class EmployeeController {
     public void setData(Empleado empleado) {
         try{
             this.empleado = empleado;
-            SMBUtils.downloadSmbPhoto(empleado.getNombre()+".png", PIC_DIR);
-            File file = new File(PIC_DIR+File.separator+empleado.getNombre()+".png");
+            String employeeFullName = new StringBuilder().append(empleado.getNombre())
+                    .append(" ")
+                    .append(empleado.getPrimer_apellido())
+                    .toString();
+            SMBUtils.downloadSmbPhoto(employeeFullName+".png", PIC_DIR);
+            File file = new File(PIC_DIR+File.separator+employeeFullName+".png");
             if(!file.exists()){
                 file = new File(PIC_DIR+File.separator+"profile.png");
             }

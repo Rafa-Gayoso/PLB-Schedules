@@ -171,29 +171,32 @@ public class EmployeeExcelTableController /*implements Initializable */{
                     XSSFCell cell = row.getCell(1);
                     XSSFCell cellEntryHour = row.getCell(2);
                     XSSFCell cellExitHour = row.getCell(4);
-                    if(cell != null){
-                        int day = (int)cell.getNumericCellValue();
+                    if(cell != null) {
+                        int day = (int) cell.getNumericCellValue();
                         String color = cell.getCellStyle().getFillForegroundColorColor().getARGBHex();
                         String freeDay = "";
+                        if (day != 0){
+                            if ((color != null && !color.equalsIgnoreCase("FFFFFFFF")) || cellEntryHour.getCellType() == CellType.BLANK) {
+                                freeDay = returnFreeDay(color);
+                                models.add(new TableExcelModel(Integer.toString(day), freeDay, freeDay, freeDay));
+                            } else if (cellEntryHour.getCellType() == CellType.STRING) {
+                                String cellValue = cellEntryHour.getStringCellValue();
+                                models.add(new TableExcelModel(Integer.toString(day), cellValue,
+                                        cellValue, cellValue));
+                                if (cellValue.equalsIgnoreCase("Medio Dia"))
+                                    monthCurrentValue += employee.getHoras_laborables() / 2;
+                                else if(cellValue.equalsIgnoreCase("Vacaciones Anteriores"))
+                                    monthCurrentValue += employee.getHoras_laborables();
+                            } else if (cellEntryHour.getCellType() == CellType.NUMERIC) {
+                                LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(), cellEntryHour.getDateCellValue().getMinutes());
+                                LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(), cellExitHour.getDateCellValue().getMinutes());
 
-                        if((color != null && !color.equalsIgnoreCase("FFFFFFFF")) || cellEntryHour.getCellType() == CellType.BLANK){
-                            freeDay = returnFreeDay(color);
-                            models.add(new TableExcelModel(Integer.toString(day), freeDay,freeDay, freeDay));
-                        }else if(cellEntryHour.getCellType() == CellType.STRING){
-                            String cellValue = cellEntryHour.getStringCellValue();
-                            models.add(new TableExcelModel(Integer.toString(day), cellValue,
-                                cellValue,cellValue));
-                            if(cellValue.equalsIgnoreCase("Medio Dia"))
-                                monthCurrentValue += employee.getHoras_laborables() / 2;
-                        }else if(cellEntryHour.getCellType() == CellType.NUMERIC){
-                            LocalTime entry = LocalTime.of(cellEntryHour.getDateCellValue().getHours(),cellEntryHour.getDateCellValue().getMinutes());
-                            LocalTime exit = LocalTime.of(cellExitHour.getDateCellValue().getHours(),cellExitHour.getDateCellValue().getMinutes());
-
-                            String resultHour = subtractHours(entry, exit);
-                            models.add(new TableExcelModel(Integer.toString(day), entry.toString(),
-                                exit.toString(),resultHour));
-                            monthCurrentValue += Integer.parseInt(resultHour.substring(0, 1));
-                        }
+                                String resultHour = subtractHours(entry, exit);
+                                models.add(new TableExcelModel(Integer.toString(day), entry.toString(),
+                                        exit.toString(), resultHour));
+                                monthCurrentValue += Integer.parseInt(resultHour.substring(0, 1));
+                            }
+                    }
                     }
                 }
             }

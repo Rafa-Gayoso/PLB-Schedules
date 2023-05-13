@@ -88,8 +88,12 @@ public class EmployeeBoardController implements Initializable {
     }
 
     static Image downloadEmployeePhoto(Empleado employee, String pic_dir) throws FileNotFoundException {
-        SMBUtils.downloadSmbPhoto(employee.getNombre()+".png", pic_dir);
-        File file = new File(pic_dir +File.separator+employee.getNombre()+".png");
+        String employeeFullName = new StringBuilder().append(employee.getNombre())
+                .append(" ")
+                .append(employee.getPrimer_apellido())
+                .toString();
+        SMBUtils.downloadSmbPhoto(employeeFullName+".png", pic_dir);
+        File file = new File(pic_dir +File.separator+employeeFullName+".png");
         if(!file.exists()){
             file = new File(pic_dir +File.separator+"profile.png");
         }

@@ -243,7 +243,8 @@ public class AppController {
     private void setStyleAndData(XSSFWorkbook book,XSSFCell cell,Date date, String calendarYear){
         int month = date.getMonth() + 1;
         int day = date.getDate();
-        if (date.getDay() == 0 || date.getDay() == 6 || !cell.getCellStyle().getFillForegroundColorColor().getARGBHex().equalsIgnoreCase("FFFFFFFF")) {
+        if (date.getDay() == 0 || date.getDay() == 6 || (!cell.getCellStyle().getFillForegroundColorColor().getARGBHex().equalsIgnoreCase("FFFFFFFF")
+        && cell.getCellStyle().getFillForegroundColorColor().getARGBHex() != null) ){
             passStyleToCell(book.getSheetAt(month), day, cell.getCellStyle(), month);
         }
 

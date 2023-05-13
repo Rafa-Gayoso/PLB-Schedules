@@ -182,8 +182,12 @@ public class AddEmployeeDialogController /*implements Initializable*/ {
 
                 employee = new Empleado();
                 setEmployeeData(employee);
-                SMBUtils.uploadPhoto(employee.getNombre()+".png",address);
-                SMBUtils.downloadSmbPhoto(employee.getNombre()+".png", PIC_DIR);
+                String employeeFullName = new StringBuilder().append(employee.getNombre())
+                        .append(" ")
+                        .append(employee.getPrimer_apellido())
+                        .toString();
+                SMBUtils.uploadPhoto(employeeFullName+".png",address);
+                SMBUtils.downloadSmbPhoto(employeeFullName+".png", PIC_DIR);
                 AESCypher aesCypher = new AESCypher();
 
                 String encryptedPassword = aesCypher.encrypt(employee.getNif());

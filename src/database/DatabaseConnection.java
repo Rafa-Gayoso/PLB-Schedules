@@ -9,7 +9,7 @@ public class DatabaseConnection {
     public DatabaseConnection()  {
 
         try{
-            String url = "jdbc:mysql://palobiofarmadatabase.cmh8cyovqwqt.eu-west-3.rds.amazonaws.com/palodb";
+            String url = "jdbc:mysql://plb-database-instnace.cjegth52ua6i.eu-west-3.rds.amazonaws.com/palodb";
 
             String userName = "RafaGayoso";
             String password = "rafa1997.";

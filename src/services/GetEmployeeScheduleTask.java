@@ -30,7 +30,11 @@ public class GetEmployeeScheduleTask extends Task<Stage> {
         EmployeeSchedulePaneController test  = fxmlLoader.getController();
         String employeeFileName = FormatEmployeeName.getEmployeesFileName(employee);
         SMBUtils.downloadSmbFile(employee.getNombre_empresa(),employeeFileName, employee.getDireccionCronograma());
-        SMBUtils.downloadSmbPhoto(employee.getNombre()+".png",PIC_DIR);
+        String employeeFullName = new StringBuilder().append(employee.getNombre())
+                .append(" ")
+                .append(employee.getPrimer_apellido())
+                .toString();
+        SMBUtils.downloadSmbPhoto(employeeFullName+".png",PIC_DIR);
         test.setData(employee);
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Control de Horarios Palobiofarma S.L & Medibiofarma");

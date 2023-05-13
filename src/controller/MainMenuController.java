@@ -248,7 +248,7 @@ public class MainMenuController implements Initializable {
         listFiles.add(file);
         if(file.getName().contains("Mat")){
             mergeExcel(1);
-
+            mergeExcel(5);
         }else{
             mergeExcel(2);
             mergeExcel(3);
