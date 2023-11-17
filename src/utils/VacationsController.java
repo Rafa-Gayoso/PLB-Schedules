@@ -16,7 +16,7 @@ import java.util.*;
 
 public class VacationsController {
 
-    private static final ArrayList<String> specialText = new ArrayList<>(Arrays.asList("VACACIONES", "MEDIO DIA"));
+    private static final ArrayList<String> specialText = new ArrayList<>(Arrays.asList("VACACIONES", "MEDIO DIA", "VACACIONES ANTERIORES"));
 
     private static Map<String, ArrayList<VacationType>> getVacationsDays(Empleado employee){
         Map<String, ArrayList<VacationType>> vacations = new HashMap<>();
@@ -37,7 +37,7 @@ public class VacationsController {
                         XSSFCell cellEntryHour = row.getCell(2);
                         if(cell != null){
                             int day = (int)cell.getNumericCellValue();
-                            if(cellEntryHour.getCellType() == CellType.STRING &&
+                            if(cellEntryHour.getCellType() != null && cellEntryHour.getCellType() == CellType.STRING &&
                                     specialText.contains(cellEntryHour.getStringCellValue().toUpperCase())){
                                 int pos = specialText.indexOf(cellEntryHour.getStringCellValue().toUpperCase());
                                 if(pos == 0)

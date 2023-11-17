@@ -18,8 +18,6 @@ public class EmployeeController {
     @FXML
     private Label nameLabel2;
     @FXML
-    private AnchorPane employeePane;
-    @FXML
     private ImageView img;
     private Empleado empleado;
     public void setData(Empleado empleado) {
